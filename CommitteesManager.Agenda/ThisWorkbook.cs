@@ -6,15 +6,15 @@ using Microsoft.VisualStudio.Tools.Applications.Runtime;
 using Excel = Microsoft.Office.Interop.Excel;
 using Office = Microsoft.Office.Core;
 
-namespace CommitteesManger.Agenda
+namespace CommitteesManager.Agenda
 {
-    public partial class Лист1
+    public partial class ThisWorkbook
     {
-        private void Лист1_Startup(object sender, System.EventArgs e)
+        private void ThisWorkbook_Startup(object sender, System.EventArgs e)
         {
         }
 
-        private void Лист1_Shutdown(object sender, System.EventArgs e)
+        private void ThisWorkbook_Shutdown(object sender, System.EventArgs e)
         {
         }
 
@@ -26,8 +26,8 @@ namespace CommitteesManger.Agenda
         /// </summary>
         private void InternalStartup()
         {
-            this.Startup += new System.EventHandler(Лист1_Startup);
-            this.Shutdown += new System.EventHandler(Лист1_Shutdown);
+            this.Startup += new System.EventHandler(ThisWorkbook_Startup);
+            this.Shutdown += new System.EventHandler(ThisWorkbook_Shutdown);
         }
 
         #endregion

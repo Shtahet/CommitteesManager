@@ -9,13 +9,13 @@
 //------------------------------------------------------------------------------
 
 #pragma warning disable 414
-namespace CommitteesManger.Agenda {
+namespace CommitteesManager.Agenda {
     
     
     /// 
     [Microsoft.VisualStudio.Tools.Applications.Runtime.StartupObjectAttribute(0)]
     [global::System.Security.Permissions.PermissionSetAttribute(global::System.Security.Permissions.SecurityAction.Demand, Name="FullTrust")]
-    public sealed partial class ThisWorkbook : Microsoft.Office.Tools.Excel.WorkbookBase {
+    public sealed partial class  : Microsoft.Office.Tools.Excel.WorkbookBase {
         
         internal Microsoft.Office.Tools.ActionsPane ActionsPane;
         
@@ -28,7 +28,7 @@ namespace CommitteesManger.Agenda {
         /// 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public ThisWorkbook(global::Microsoft.Office.Tools.Excel.Factory factory, global::System.IServiceProvider serviceProvider) : 
+        public (global::Microsoft.Office.Tools.Excel.Factory factory, global::System.IServiceProvider serviceProvider) : 
                 base(factory, serviceProvider, "ThisWorkbook", "ThisWorkbook") {
             Globals.Factory = factory;
         }
@@ -40,7 +40,7 @@ namespace CommitteesManger.Agenda {
         protected override void Initialize() {
             base.Initialize();
             this.ThisApplication = this.GetHostItem<Microsoft.Office.Interop.Excel.Application>(typeof(Microsoft.Office.Interop.Excel.Application), "Application");
-            Globals.ThisWorkbook = this;
+            Globals. = this;
             global::System.Windows.Forms.Application.EnableVisualStyles();
             this.InitializeCachedData();
             this.InitializeControls();
@@ -174,19 +174,19 @@ namespace CommitteesManger.Agenda {
         private Globals() {
         }
         
-        private static ThisWorkbook _ThisWorkbook;
+        private static void _;
         
         private static global::Microsoft.Office.Tools.Excel.Factory _factory;
         
         private static ThisRibbonCollection _ThisRibbonCollection;
         
-        internal static ThisWorkbook ThisWorkbook {
+        internal static void  {
             get {
-                return _ThisWorkbook;
+                return _;
             }
             set {
-                if ((_ThisWorkbook == null)) {
-                    _ThisWorkbook = value;
+                if ((_ == null)) {
+                    _ = value;
                 }
                 else {
                     throw new System.NotSupportedException();

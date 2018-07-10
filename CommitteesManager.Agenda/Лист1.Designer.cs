@@ -15,7 +15,7 @@ namespace CommitteesManager.Agenda {
     /// 
     [Microsoft.VisualStudio.Tools.Applications.Runtime.StartupObjectAttribute(1)]
     [global::System.Security.Permissions.PermissionSetAttribute(global::System.Security.Permissions.SecurityAction.Demand, Name="FullTrust")]
-    public sealed partial class  : Microsoft.Office.Tools.Excel.WorksheetBase {
+    public sealed partial class Лист1 : Microsoft.Office.Tools.Excel.WorksheetBase {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "15.0.0.0")]
         private global::System.Object missing = global::System.Type.Missing;
@@ -23,7 +23,7 @@ namespace CommitteesManager.Agenda {
         /// 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public (global::Microsoft.Office.Tools.Excel.Factory factory, global::System.IServiceProvider serviceProvider) : 
+        public Лист1(global::Microsoft.Office.Tools.Excel.Factory factory, global::System.IServiceProvider serviceProvider) : 
                 base(factory, serviceProvider, "Лист1", "Лист1") {
         }
         
@@ -33,7 +33,7 @@ namespace CommitteesManager.Agenda {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         protected override void Initialize() {
             base.Initialize();
-            Globals. = this;
+            Globals.Лист1 = this;
             global::System.Windows.Forms.Application.EnableVisualStyles();
             this.InitializeCachedData();
             this.InitializeControls();
@@ -148,15 +148,15 @@ namespace CommitteesManager.Agenda {
     
     internal sealed partial class Globals {
         
-        private static void _;
+        private static Лист1 _Лист1;
         
-        internal static void  {
+        internal static Лист1 Лист1 {
             get {
-                return _;
+                return _Лист1;
             }
             set {
-                if ((_ == null)) {
-                    _ = value;
+                if ((_Лист1 == null)) {
+                    _Лист1 = value;
                 }
                 else {
                     throw new System.NotSupportedException();

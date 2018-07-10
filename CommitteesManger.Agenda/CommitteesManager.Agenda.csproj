@@ -6,17 +6,40 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
-    <RootNamespace>CommitteesManger.Agenda</RootNamespace>
-    <AssemblyName>CommitteesManger.Agenda</AssemblyName>
+    <RootNamespace>CommitteesManager.Agenda</RootNamespace>
+    <AssemblyName>CommitteesManager.Agenda</AssemblyName>
     <VSTO_HostDocumentName>Agenda.xlsb</VSTO_HostDocumentName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <DefineConstants>VSTO40</DefineConstants>
     <OfficeApplication>Excel</OfficeApplication>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <BootstrapperComponentsLocation>HomeSite</BootstrapperComponentsLocation>
     <ProjectGuid>{3E29A960-5471-4AF4-BDEC-0D0A843C580F}</ProjectGuid>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <PublishUrl>publish\</PublishUrl>
+    <InstallUrl />
+    <TargetCulture>en</TargetCulture>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>days</UpdateIntervalUnits>
+    <IsWebBootstrapper>False</IsWebBootstrapper>
+    <ProductName>CommitteesManager.Agenda</ProductName>
+    <PublisherName />
+    <SupportUrl />
+    <FriendlyName>CommitteesManager.Agenda</FriendlyName>
+    <OfficeApplicationDescription />
   </PropertyGroup>
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.VSTORuntime.4.0">
       <Visible>False</Visible>
       <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime %28x86 and x64%29</ProductName>
@@ -123,15 +146,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Agenda.xlsb" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ThisWorkbook.Designer.xml">
@@ -153,7 +167,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
         <ProjectProperties HostName="Agenda.xlsb" HostPackage="{3F2B7691-D1D1-402F-9370-2704A737CF60}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="XLS" Language="CS" TemplatesPath="VSTOTemplates" DebugInfoExeName="C:\Program Files\Microsoft Office\Office15\excel.exe" DebugInfoCommandLine="/t /x &quot;[$OUTPUT]Agenda.xlsb&quot;" />
-        <Host Name="Excel Document" Path=".\Agenda.xlsb" GeneratedCodeNamespace="CommitteesManger.Agenda">
+        <Host Name="Excel Document" Path=".\Agenda.xlsb" GeneratedCodeNamespace="CommitteesManager.Agenda">
           <HostItem Name="ThisWorkbook" Code="ThisWorkbook.cs" CanonicalName="ThisWorkbook" Blueprint="ThisWorkbook.Designer.xml" GeneratedCode="ThisWorkbook.Designer.cs" />
           <HostItem Name="Лист1" Code="Лист1.cs" CanonicalName="Лист1" DisplayName="Лист1" Blueprint="Лист1.Designer.xml" GeneratedCode="Лист1.Designer.cs" />
         </Host>
