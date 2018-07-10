@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{9e1ab47a-8f52-400a-8968-f8af2dd86e49}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -23,6 +23,7 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultSchema>CMDB</DefaultSchema>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -57,5 +58,20 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="CMDB" />
+    <Folder Include="CMDB\Tables" />
+    <Folder Include="CMDB\Scripts" />
+    <Folder Include="CMDB\Stored Procedures" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="CMDB\CMDB.sql" />
+    <Build Include="CMDB\Tables\Environment.sql" />
+    <Build Include="CMDB\Stored Procedures\GetEnvironment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="CommitteesManager.SQLDatabase.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="CMDB\Scripts\PostDeployment.Environment.sql" />
   </ItemGroup>
 </Project>

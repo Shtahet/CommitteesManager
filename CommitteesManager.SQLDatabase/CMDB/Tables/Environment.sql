@@ -1,0 +1,7 @@
+﻿CREATE TABLE [CMDB].[Environment]
+(
+	[EnvID] INT NOT NULL IDENTITY(1, 1),
+	EnvName		VARCHAR(50)		NOT NULL,
+	EnvValue	VARCHAR(100)	NOT NULL,
+	CONSTRAINT PK_Environment_EnvirID PRIMARY KEY (EnvID)
+)

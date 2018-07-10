@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="f5292549-a9a9-4acb-a133-a23a27aa58e4" ChangeDateTime="07/10/2018 22:06:07">
+    <Property Name="ElementName" Value="[CMDB].[Environment].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[CMDB].[Environment]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EnvID" />
+  </Operation>
+</Operations>
