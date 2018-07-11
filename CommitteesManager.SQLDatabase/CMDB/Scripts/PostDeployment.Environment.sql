@@ -26,7 +26,7 @@ VALUES (EnvName, EnvValue)
 -- DELETE rows that ARE IN the TARGET but NOT the SOURCE
 --WHEN NOT MATCHED BY SOURCE THEN
 --DELETE
-
+;
 
 --Set fields for committe date
 MERGE INTO CMDB.Environment AS env
@@ -40,3 +40,4 @@ ON env.EnvName = Source.EnvName
 WHEN NOT MATCHED BY TARGET THEN
 INSERT (EnvName, EnvValue)
 VALUES (EnvName, EnvValue)
+;
