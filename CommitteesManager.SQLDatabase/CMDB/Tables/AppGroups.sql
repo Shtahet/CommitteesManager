@@ -1,0 +1,9 @@
+﻿CREATE TABLE [CMDB].[AppGroups]
+(
+	AppGroupID			INT				NOT NULL IDENTITY(1, 1),
+	AppGroup_name_UA	NVARCHAR(100)	NOT NULL,
+	AppGroup_name_US	NVARCHAR(100)	NULL,
+	Is_available		BIT				NOT NULL 
+		CONSTRAINT DFT_AppGroups_IsAvaliable DEFAULT(1),
+	CONSTRAINT PK_AppGroups_AppGroupID PRIMARY KEY CLUSTERED (AppGroupID)
+)
