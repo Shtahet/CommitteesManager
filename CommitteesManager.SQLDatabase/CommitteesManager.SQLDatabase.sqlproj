@@ -73,6 +73,7 @@
     <Build Include="CMDB\Stored Procedures\GetCounterpart.sql" />
     <Build Include="CMDB\Tables\Committees.sql" />
     <Build Include="CMDB\Stored Procedures\GetCommittee.sql" />
+    <Build Include="CMDB\Tables\Covenants.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CommitteesManager.SQLDatabase.refactorlog" />
