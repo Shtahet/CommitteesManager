@@ -71,6 +71,8 @@
     <Build Include="CMDB\Tables\AppGroups.sql" />
     <Build Include="CMDB\Tables\Counterparties.sql" />
     <Build Include="CMDB\Stored Procedures\GetCounterpart.sql" />
+    <Build Include="CMDB\Tables\Committees.sql" />
+    <Build Include="CMDB\Stored Procedures\GetCommittee.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CommitteesManager.SQLDatabase.refactorlog" />
@@ -80,5 +82,6 @@
     <None Include="CMDB\Scripts\PostDeployment.DecisionTypes.sql" />
     <None Include="CMDB\Scripts\PostDeployment.AppGroups.sql" />
     <None Include="CMDB\Scripts\PostDeployment.Counterparties.sql" />
+    <None Include="CMDB\Scripts\PostDeployment.Committees.sql" />
   </ItemGroup>
 </Project>
