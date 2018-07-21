@@ -74,6 +74,8 @@
     <Build Include="CMDB\Tables\Committees.sql" />
     <Build Include="CMDB\Stored Procedures\GetCommittee.sql" />
     <Build Include="CMDB\Tables\Covenants.sql" />
+    <Build Include="CMDB\Tables\DealTypes.sql" />
+    <Build Include="CMDB\Stored Procedures\GetDealTypes.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CommitteesManager.SQLDatabase.refactorlog" />
@@ -84,5 +86,6 @@
     <None Include="CMDB\Scripts\PostDeployment.AppGroups.sql" />
     <None Include="CMDB\Scripts\PostDeployment.Counterparties.sql" />
     <None Include="CMDB\Scripts\PostDeployment.Committees.sql" />
+    <None Include="CMDB\Scripts\PostDeployment.DealTypes.sql" />
   </ItemGroup>
 </Project>
