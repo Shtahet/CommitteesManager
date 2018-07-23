@@ -80,6 +80,8 @@
     <Build Include="CMDB\Stored Procedures\GetModes.sql" />
     <Build Include="CMDB\Tables\Reasons.sql" />
     <Build Include="CMDB\Tables\Regions.sql" />
+    <Build Include="CMDB\Tables\Statuses.sql" />
+    <Build Include="CMDB\Stored Procedures\GetStatuses.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CommitteesManager.SQLDatabase.refactorlog" />
@@ -94,5 +96,6 @@
     <None Include="CMDB\Scripts\PostDeployment.Modes.sql" />
     <None Include="CMDB\Scripts\PostDeployment.Reasons.sql" />
     <None Include="CMDB\Scripts\PostDeployment.Regions.sql" />
+    <None Include="CMDB\Scripts\PostDeployment.Statuses.sql" />
   </ItemGroup>
 </Project>
