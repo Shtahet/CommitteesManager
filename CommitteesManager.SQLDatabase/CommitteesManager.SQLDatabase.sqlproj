@@ -100,5 +100,6 @@
     <None Include="CMDB\Scripts\PostDeployment.Regions.sql" />
     <None Include="CMDB\Scripts\PostDeployment.Statuses.sql" />
     <None Include="CMDB\Scripts\PostDeployment.AccessTypes.sql" />
+    <None Include="CMDB\Scripts\PostDeployment.Users.sql" />
   </ItemGroup>
 </Project>
