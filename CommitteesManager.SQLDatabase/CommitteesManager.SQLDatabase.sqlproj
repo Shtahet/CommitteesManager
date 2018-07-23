@@ -78,6 +78,7 @@
     <Build Include="CMDB\Stored Procedures\GetDealTypes.sql" />
     <Build Include="CMDB\Tables\Modes.sql" />
     <Build Include="CMDB\Stored Procedures\GetModes.sql" />
+    <Build Include="CMDB\Tables\Reasons.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CommitteesManager.SQLDatabase.refactorlog" />
@@ -90,5 +91,6 @@
     <None Include="CMDB\Scripts\PostDeployment.Committees.sql" />
     <None Include="CMDB\Scripts\PostDeployment.DealTypes.sql" />
     <None Include="CMDB\Scripts\PostDeployment.Modes.sql" />
+    <None Include="CMDB\Scripts\PostDeployment.Reasons.sql" />
   </ItemGroup>
 </Project>
