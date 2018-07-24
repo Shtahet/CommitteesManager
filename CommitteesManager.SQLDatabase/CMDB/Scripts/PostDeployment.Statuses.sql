@@ -39,10 +39,10 @@ USING (VALUES
 AS Source (StatusID, Status_typeID, Status_type_name, Status_name_UA, Status_name_US)
 ON s.StatusID = Source.StatusID
 WHEN MATCHED THEN
-	UPDATE SET	Status_typeID = Status_typeID,
-				Status_type_name = Status_type_name,
-				Status_name_UA = Status_name_UA,
-				Status_name_US = Status_name_US
+	UPDATE SET	Status_typeID = Source.Status_typeID,
+				Status_type_name = Source.Status_type_name,
+				Status_name_UA = Source.Status_name_UA,
+				Status_name_US = Source.Status_name_US
 WHEN NOT MATCHED BY TARGET THEN
 INSERT (StatusID, Status_typeID, Status_type_name, Status_name_UA, Status_name_US)
 VALUES (StatusID, Status_typeID, Status_type_name, Status_name_UA, Status_name_US)

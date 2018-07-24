@@ -45,8 +45,8 @@ USING (VALUES
 AS Source (Id, NameUA, NameUS)
 ON c.CounterpartID = Source.Id
 WHEN MATCHED THEN
-	UPDATE SET	Counterpart_name_UA = NameUA,
-				Counterpart_name_US = NameUS
+	UPDATE SET	Counterpart_name_UA = Source.NameUA,
+				Counterpart_name_US = Source.NameUS
 WHEN NOT MATCHED BY TARGET THEN
 INSERT (CounterpartID, Counterpart_name_UA, Counterpart_name_US)
 VALUES (Id, NameUA, NameUS)

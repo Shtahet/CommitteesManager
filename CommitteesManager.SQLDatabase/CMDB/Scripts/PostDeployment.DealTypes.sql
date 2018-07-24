@@ -59,12 +59,12 @@ USING (VALUES
 AS Source (Deal_typeID, Deal_name_UA,								Question_type_UA,			Deal_name_US,								Question_type_US,		Deal_type,			Is_available)
 ON d.Deal_typeID = Source.Deal_typeID
 WHEN MATCHED THEN
-	UPDATE SET	Deal_name_UA = Deal_name_UA,
-				Question_type_UA = Question_type_UA,
-				Deal_name_US = Deal_name_US,
-				Question_type_US = Question_type_US,
-				Deal_type = Deal_type,
-				Is_available = Is_available
+	UPDATE SET	Deal_name_UA = Source.Deal_name_UA,
+				Question_type_UA = Source.Question_type_UA,
+				Deal_name_US = Source.Deal_name_US,
+				Question_type_US = Source.Question_type_US,
+				Deal_type = Source.Deal_type,
+				Is_available = Source.Is_available
 WHEN NOT MATCHED BY TARGET THEN
 INSERT (Deal_name_UA, Question_type_UA, Deal_name_US, Question_type_US, Deal_type, Is_available)
 VALUES (Deal_name_UA, Question_type_UA, Deal_name_US, Question_type_US, Deal_type, Is_available)

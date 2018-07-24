@@ -26,8 +26,8 @@ USING (VALUES
 AS Source (ModeID, Mode_name_UA, Mode_name_US)
 ON m.ModeID = Source.ModeID
 WHEN MATCHED THEN
-	UPDATE SET Mode_name_UA = Mode_name_UA,
-				Mode_name_US = Mode_name_US
+	UPDATE SET Mode_name_UA = Source.Mode_name_UA,
+				Mode_name_US = Source.Mode_name_US
 WHEN NOT MATCHED BY TARGET THEN
 INSERT (ModeID, Mode_name_UA, Mode_name_UA)
 VALUES (ModeID, Mode_name_UA, Mode_name_UA)

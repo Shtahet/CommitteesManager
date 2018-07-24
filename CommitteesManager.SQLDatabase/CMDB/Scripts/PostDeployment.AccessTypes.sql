@@ -27,11 +27,9 @@ USING (VALUES
 AS Source (Type_level, Type_name_UA, Type_name_US)
 ON act.Type_level = Source.Type_level
 WHEN MATCHED THEN
-	UPDATE SET	Type_name_UA = Type_name_UA,
-				Type_name_US = Type_name_US
+	UPDATE SET	Type_name_UA = Source.Type_name_UA,
+				Type_name_US = Source.Type_name_US
 WHEN NOT MATCHED BY TARGET THEN
 INSERT (Type_level, Type_name_UA, Type_name_US)
 VALUES (Type_level, Type_name_UA, Type_name_US)
 ;
-
-SET IDENTITY_INSERT CMDB.Regions OFF;

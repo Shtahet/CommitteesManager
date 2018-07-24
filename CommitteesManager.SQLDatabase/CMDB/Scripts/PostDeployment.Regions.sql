@@ -49,8 +49,8 @@ USING (VALUES
 AS Source (RegionID, Region_name_UA, Region_name_US)
 ON r.RegionID = Source.RegionID
 WHEN MATCHED THEN
-	UPDATE SET	Region_name_UA = Region_name_UA,
-				Region_name_US = Region_name_US
+	UPDATE SET	Region_name_UA = Source.Region_name_UA,
+				Region_name_US = Source.Region_name_US
 WHEN NOT MATCHED BY TARGET THEN
 INSERT (RegionID, Region_name_UA,Region_name_US)
 VALUES (ReasonID, Region_name_UA, Region_name_US)

@@ -28,14 +28,14 @@ USING (VALUES
 AS Source (UserID, Access_typeID, User_name_UA, User_name_US, Job_title, Email, Phone_number, HeadID, User_order)
 ON u.UserID = Source.UserID
 WHEN MATCHED THEN
-	UPDATE SET	Access_typeID = Access_typeID,
-				User_name_UA = User_name_UA,
-				User_name_US = User_name_US,
-				Job_title = Job_title,
-				Email = Email,
-				Phone_number = Phone_number,
-				HeadID = HeadID, 
-				User_order = User_order
+	UPDATE SET	Access_typeID = Source.Access_typeID,
+				User_name_UA = Source.User_name_UA,
+				User_name_US = Source.User_name_US,
+				Job_title = Source.Job_title,
+				Email = Source.Email,
+				Phone_number = Source.Phone_number,
+				HeadID = Source.HeadID, 
+				User_order = Source.User_order
 WHEN NOT MATCHED BY TARGET THEN
 INSERT (UserID, Access_typeID, User_name_UA, User_name_US, Job_title, Email, Phone_number, HeadID, User_order)
 VALUES (UserID, Access_typeID, User_name_UA, User_name_US, Job_title, Email, Phone_number, HeadID, User_order)

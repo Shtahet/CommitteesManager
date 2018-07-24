@@ -30,7 +30,7 @@ USING (VALUES
 AS Source (ReasonID, Reason_name_UA)
 ON r.ReasonID = Source.ReasonID
 WHEN MATCHED THEN
-	UPDATE SET	Reason_name_UA = Reason_name_UA
+	UPDATE SET	Reason_name_UA = Source.Reason_name_UA
 WHEN NOT MATCHED BY TARGET THEN
 INSERT (ReasonID, Reason_name_UA)
 VALUES (ReasonID, Reason_name_UA)

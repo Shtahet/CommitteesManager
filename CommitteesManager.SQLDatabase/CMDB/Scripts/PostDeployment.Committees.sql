@@ -25,7 +25,7 @@ USING (VALUES
 AS Source (Committee_name_UA, Committee_name_US, Is_available)
 ON c.committee_name_US = Source.Committee_name_US
 WHEN MATCHED THEN
-	UPDATE SET	Committee_name_UA = Committee_name_UA
+	UPDATE SET	Committee_name_UA = Source.Committee_name_UA
 WHEN NOT MATCHED BY TARGET THEN
 INSERT (Committee_name_UA, Committee_name_US, Is_available)
 VALUES (Committee_name_UA, Committee_name_US, Is_available)
