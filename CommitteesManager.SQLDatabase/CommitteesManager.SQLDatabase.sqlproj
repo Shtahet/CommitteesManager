@@ -67,8 +67,6 @@
     <Build Include="CMDB\CMDB.sql" />
     <Build Include="CMDB\Tables\Environment.sql" />
     <Build Include="CMDB\Stored Procedures\GetEnvironment.sql" />
-    <Build Include="CMDB\Tables\DecisionTypes.sql" />
-    <Build Include="CMDB\Tables\AppGroups.sql" />
     <Build Include="CMDB\Tables\Counterparties.sql" />
     <Build Include="CMDB\Stored Procedures\GetCounterpart.sql" />
     <Build Include="CMDB\Tables\Committees.sql" />
@@ -85,14 +83,14 @@
     <Build Include="CMDB\Tables\Users.sql" />
     <Build Include="CMDB\Tables\AccessTypes.sql" />
     <Build Include="CMDB\Tables\Protocols.sql" />
+    <Build Include="CMDB\Tables\Agendas.sql" />
+    <Build Include="CMDB\Tables\Deals.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CommitteesManager.SQLDatabase.refactorlog" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="CMDB\Scripts\PostDeployment.Environment.sql" />
-    <None Include="CMDB\Scripts\PostDeployment.DecisionTypes.sql" />
-    <None Include="CMDB\Scripts\PostDeployment.AppGroups.sql" />
     <None Include="CMDB\Scripts\PostDeployment.Counterparties.sql" />
     <None Include="CMDB\Scripts\PostDeployment.Committees.sql" />
     <None Include="CMDB\Scripts\PostDeployment.DealTypes.sql" />
