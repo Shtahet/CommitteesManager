@@ -85,6 +85,7 @@
     <Build Include="CMDB\Tables\Protocols.sql" />
     <Build Include="CMDB\Tables\Agendas.sql" />
     <Build Include="CMDB\Tables\Deals.sql" />
+    <Build Include="CMDB\Tables\RegisterOfApproved.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CommitteesManager.SQLDatabase.refactorlog" />

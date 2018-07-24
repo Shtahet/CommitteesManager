@@ -48,3 +48,17 @@ WHEN NOT MATCHED BY TARGET THEN
 INSERT (EnvName, EnvValue)
 VALUES (EnvName, EnvValue)
 ;
+
+--Set fields for nomenclature number
+MERGE INTO CMDB.Environment AS env
+USING (VALUES
+	('NomenclatureNumber','114-98/')
+)
+AS SOURCE (EnvName, EnvValue)
+ON env.EnvName = Source.EnvName
+WHEN MATCHED THEN
+	UPDATE SET EnvValue = Source.EnvValue
+WHEN NOT MATCHED BY TARGET THEN
+INSERT (EnvName, EnvValue)
+VALUES (EnvName, EnvValue)
+;

@@ -29,6 +29,7 @@ CREATE TABLE [CMDB].[Protocols]
 	Protocol_date			DATE			NOT NULL,
 	CommitteeID				INT				NOT NULL,
 	StatusID				INT				NULL,
+	RegisterID				INT				NULL,
 	Add_date				DATETIME		NOT NULL
 		CONSTRAINT DFT_Protocols_Add_date DEFAULT GetDate(),
 	EXPIRIOD_DATE_DECISION	DATE			NULL,
@@ -44,5 +45,7 @@ CREATE TABLE [CMDB].[Protocols]
 	CONSTRAINT FK_Protocols_Committees FOREIGN KEY (CommitteeID)
 		REFERENCES CMDB.Committees (CommitteeID),
 	CONSTRAINT FK_Protocols_Statuses FOREIGN KEY (StatusID)
-		REFERENCES CMDB.Statuses (StatusID)
+		REFERENCES CMDB.Statuses (StatusID),
+	CONSTRAINT FK_Protocols_RegOfApproved FOREIGN KEY (REgisterID)
+		REFERENCES CMDB.RegisterOfApproved (RegisterID)
 )
