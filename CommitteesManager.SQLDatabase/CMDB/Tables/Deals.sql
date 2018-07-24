@@ -41,5 +41,7 @@ CREATE TABLE [CMDB].[Deals]
 	CONSTRAINT FK_DealsDecision_Statuses FOREIGN KEY (DecisionID)
 		REFERENCES CMDB.Statuses (StatusID),
 	CONSTRAINT FK_DealsStatus_Statuses FOREIGN KEY (Deal_statusID)
-		REFERENCES CMDB.Statuses (StatusID)
+		REFERENCES CMDB.Statuses (StatusID),
+	CONSTRAINT FK_Deals_Reasons FOREIGN KEY (ReasonID)
+		REFERENCES CMDB.Reasons (ReasonID)
 )
