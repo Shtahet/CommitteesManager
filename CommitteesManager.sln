@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommitteesManager.Agenda", 
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CommitteesManager.SQLDatabase", "CommitteesManager.SQLDatabase\CommitteesManager.SQLDatabase.sqlproj", "{9E1AB47A-8F52-400A-8968-F8AF2DD86E49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommittessManager.DAL", "CommittessManager.DAL\CommittessManager.DAL.csproj", "{9C860DCF-0D9A-4C98-A787-A2A7EC9CA078}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{9E1AB47A-8F52-400A-8968-F8AF2DD86E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E1AB47A-8F52-400A-8968-F8AF2DD86E49}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9E1AB47A-8F52-400A-8968-F8AF2DD86E49}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9C860DCF-0D9A-4C98-A787-A2A7EC9CA078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C860DCF-0D9A-4C98-A787-A2A7EC9CA078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C860DCF-0D9A-4C98-A787-A2A7EC9CA078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C860DCF-0D9A-4C98-A787-A2A7EC9CA078}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
