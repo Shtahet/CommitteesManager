@@ -18,12 +18,12 @@
 
 MERGE INTO CMDB.Users AS u
 USING (VALUES
-	('ADU07ROG',	999,	'Смірнов В.Л.',		'Smirnov Vladislav',	'Директор департаменту',	'vsmirnov@mycompany.org',		'4401',	NULL,		999),
-	('ADU12PFK',	999,	'Громова А.В.',		'Gromova Alexandra',	'Начальник управління',		'agromova@mycompany.org',		'4458',	'ADU07ROG', 999),
-	('Derien',		999,	'Гергало А.В.',		'Gergalo Alex',			'Спеціаліст',				'agergalo@mycompany.org',		'6380',	'ADU12PFK',	999),
-	('ADU25SRN',	999,	'Беспалова Я.Р.',	'Bespalova Yana',		'Головний економіст',		'yabespalova@mycompany.org',	'4418', 'ADU07ROG',	2),
-	('ADU75TGW',	999,	'Воронцов Д.Д.',	'Vorontsov Danylo',		'Економіст',				'dvorotsov@mycompany.org',		'4436', 'ADU25SRN',	3),
-	('ADU44FAJ',	999,	'Белова Н.Т.',		'Belova Nina',			'Молодший економіст',		'nbelova@mycompany.org',		'4467', 'ADU25SRN',	1)
+	('ADU07ROG',	999,	N'Смірнов В.Л.',	'Smirnov Vladislav',	N'Директор департаменту',	'vsmirnov@mycompany.org',		'4401',	NULL,		999),
+	('ADU12PFK',	999,	N'Громова А.В.',	'Gromova Alexandra',	N'Начальник управління',	'agromova@mycompany.org',		'4458',	'ADU07ROG', 999),
+	('Derien',		999,	N'Гергало А.В.',	'Gergalo Alex',			N'Спеціаліст',				'agergalo@mycompany.org',		'6380',	'ADU12PFK',	999),
+	('ADU25SRN',	999,	N'Беспалова Я.Р.',	'Bespalova Yana',		N'Головний економіст',		'yabespalova@mycompany.org',	'4418', 'ADU07ROG',	2),
+	('ADU75TGW',	999,	N'Воронцов Д.Д.',	'Vorontsov Danylo',		N'Економіст',				'dvorotsov@mycompany.org',		'4436', 'ADU25SRN',	3),
+	('ADU44FAJ',	999,	N'Белова Н.Т.',		'Belova Nina',			N'Молодший економіст',		'nbelova@mycompany.org',		'4467', 'ADU25SRN',	1)
 )
 AS Source (UserID, Access_typeID, User_name_UA, User_name_US, Job_title, Email, Phone_number, HeadID, User_order)
 ON u.UserID = Source.UserID

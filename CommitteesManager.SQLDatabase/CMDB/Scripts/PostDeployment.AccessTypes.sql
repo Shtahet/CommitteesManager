@@ -18,11 +18,11 @@
 
 MERGE INTO CMDB.AccessTypes AS act
 USING (VALUES
-	(0,		'Користувач',		'User'),
-	(100,	'Керівник команди',	'Team leader'),
-	(250,	'Секретар',			'Secretary'),
-	(800,	'Аналітик',			'Analyst'),
-	(999,	'Адмінистратор',	'Administrator')
+	(0,		N'Користувач',			'User'),
+	(100,	N'Керівник команди',	'Team leader'),
+	(250,	N'Секретар',			'Secretary'),
+	(800,	N'Аналітик',			'Analyst'),
+	(999,	N'Адмінистратор',		'Administrator')
 )
 AS Source (Type_level, Type_name_UA, Type_name_US)
 ON act.Type_level = Source.Type_level

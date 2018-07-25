@@ -16,35 +16,33 @@
 --You should have received a copy of the GNU General Public License
 --along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 
-SET IDENTITY_INSERT CMDB.Regions ON;
-
 MERGE INTO CMDB.Regions AS r
 USING (VALUES
-	(11, 'Вінницька ОД', 'Vinnitsa'),
-	(6, 'Волиньська ОД', 'Volyn'),
-	(3, 'Дніпропетровська ОД', 'Dnepropetrovsk'),
-	(4, 'Донецька ОД', 'Donetsk'),
-	(5, 'Житомирська ОД', 'Zhytomir'),
-	(9, 'Закарпатська ОД', 'Zakarpatye'),
-	(7, 'Запорізька ОД', 'Zaporozhye'),
-	(8, 'Івано-Франківська ОД', 'Ivano-Frankovsk'),
-	(29, 'Київська РД', 'Kiev'),
-	(10, 'Кіровоградська ОД', 'Kirovograd'),
-	(1, 'Кримська РД', 'Crym'),
-	(12, 'Луганська ОД', 'Lugansk'),
-	(13, 'Львівська ОД', 'Lvov'),
-	(14, 'Миколаївська ОД', 'Nikolaev'),
-	(15, 'Одеська ОД', 'Odessa'),
-	(16, 'Полтавська ОД', 'Poltava'),
-	(17, 'Рівненська ОД', 'Rovno'),
-	(18, 'Сумська ОД', 'Sumy'),
-	(19, 'Тернопільська ОД', 'Ternopol'),
-	(20, 'Харківська ОД', 'Kharkov'),
-	(21, 'Херсонська ОД', 'Kherson'),
-	(22, 'Хмельницька ОД', 'Khmelnitsk'),
-	(23, 'Черкаська ОД', 'Cherkassy'),
-	(25, 'Чернівецька ОД', 'Chernovtsy'),
-	(24,' Чернігівська ОД', 'Chernigov')
+	(11, N'Вінницька ОД', 'Vinnitsa'),
+	(6, N'Волиньська ОД', 'Volyn'),
+	(3, N'Дніпропетровська ОД', 'Dnepropetrovsk'),
+	(4, N'Донецька ОД', 'Donetsk'),
+	(5, N'Житомирська ОД', 'Zhytomir'),
+	(9, N'Закарпатська ОД', 'Zakarpatye'),
+	(7, N'Запорізька ОД', 'Zaporozhye'),
+	(8, N'Івано-Франківська ОД', 'Ivano-Frankovsk'),
+	(29, N'Київська РД', 'Kiev'),
+	(10, N'Кіровоградська ОД', 'Kirovograd'),
+	(1, N'Кримська РД', 'Crym'),
+	(12, N'Луганська ОД', 'Lugansk'),
+	(13, N'Львівська ОД', 'Lvov'),
+	(14, N'Миколаївська ОД', 'Nikolaev'),
+	(15, N'Одеська ОД', 'Odessa'),
+	(16, N'Полтавська ОД', 'Poltava'),
+	(17, N'Рівненська ОД', 'Rovno'),
+	(18, N'Сумська ОД', 'Sumy'),
+	(19, N'Тернопільська ОД', 'Ternopol'),
+	(20, N'Харківська ОД', 'Kharkov'),
+	(21, N'Херсонська ОД', 'Kherson'),
+	(22, N'Хмельницька ОД', 'Khmelnitsk'),
+	(23, N'Черкаська ОД', 'Cherkassy'),
+	(25, N'Чернівецька ОД', 'Chernovtsy'),
+	(24, N'Чернігівська ОД', 'Chernigov')
 )
 AS Source (RegionID, Region_name_UA, Region_name_US)
 ON r.RegionID = Source.RegionID
@@ -53,9 +51,7 @@ WHEN MATCHED THEN
 				Region_name_US = Source.Region_name_US
 WHEN NOT MATCHED BY TARGET THEN
 INSERT (RegionID, Region_name_UA,Region_name_US)
-VALUES (ReasonID, Region_name_UA, Region_name_US)
+VALUES (RegionID, Region_name_UA, Region_name_US)
 WHEN NOT MATCHED BY SOURCE THEN
 DELETE
 ;
-
-SET IDENTITY_INSERT CMDB.Regions OFF;

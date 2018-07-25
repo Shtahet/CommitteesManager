@@ -20,8 +20,8 @@ SET IDENTITY_INSERT CMDB.Modes ON;
 
 MERGE INTO CMDB.Modes AS m
 USING (VALUES
-	(2, 'в індивідуальному порядку', 'on a case-by-case basis'),
-	(1, 'в запланованому порядку', 'as planned')
+	(2, N'в індивідуальному порядку',	'on a case-by-case basis'),
+	(1, N'в запланованому порядку',		'as planned')
 )
 AS Source (ModeID, Mode_name_UA, Mode_name_US)
 ON m.ModeID = Source.ModeID
@@ -29,8 +29,8 @@ WHEN MATCHED THEN
 	UPDATE SET Mode_name_UA = Source.Mode_name_UA,
 				Mode_name_US = Source.Mode_name_US
 WHEN NOT MATCHED BY TARGET THEN
-INSERT (ModeID, Mode_name_UA, Mode_name_UA)
-VALUES (ModeID, Mode_name_UA, Mode_name_UA)
+INSERT (ModeID, Mode_name_UA, Mode_name_US)
+VALUES (ModeID, Mode_name_UA, Mode_name_US)
 ;
 
 SET IDENTITY_INSERT CMDB.Modes OFF;

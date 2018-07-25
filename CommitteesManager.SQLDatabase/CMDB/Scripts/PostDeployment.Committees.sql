@@ -18,9 +18,9 @@
 
 MERGE INTO CMDB.Committees AS c
 USING (VALUES
-	('Регіональний комітет',	'Regional_Committee', 1),
-	('Великий комітет',			'BigBoss_Committee', 1),
-	('Постанова правління',		'BR', 0)
+	(N'Регіональний комітет',		'Regional_Committee', 1),
+	(N'Великий комітет',			'BigBoss_Committee', 1),
+	(N'Постанова правління',		'BR', 0)
 )
 AS Source (Committee_name_UA, Committee_name_US, Is_available)
 ON c.committee_name_US = Source.Committee_name_US

@@ -91,7 +91,7 @@
     <RefactorLog Include="CommitteesManager.SQLDatabase.refactorlog" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="CMDB\Scripts\PostDeployment.Environment.sql" />
+    <None Include="CMDB\Scripts\PostDeployment.Environment.sql" />
     <None Include="CMDB\Scripts\PostDeployment.Counterparties.sql" />
     <None Include="CMDB\Scripts\PostDeployment.Committees.sql" />
     <None Include="CMDB\Scripts\PostDeployment.DealTypes.sql" />
@@ -101,5 +101,6 @@
     <None Include="CMDB\Scripts\PostDeployment.Statuses.sql" />
     <None Include="CMDB\Scripts\PostDeployment.AccessTypes.sql" />
     <None Include="CMDB\Scripts\PostDeployment.Users.sql" />
+    <PostDeploy Include="CMDB\Scripts\PostDeployment.RUN_ALL.sql" />
   </ItemGroup>
 </Project>
