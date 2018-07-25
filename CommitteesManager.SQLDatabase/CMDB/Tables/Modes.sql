@@ -19,7 +19,7 @@
 CREATE TABLE [CMDB].[Modes]
 (
 	ModeID			INT				NOT NULL IDENTITY(1, 1),
-	Mode_name_UA	VARCHAR(100)	NOT NULL,
+	Mode_name_UA	NVARCHAR(100)	NOT NULL,
 	Mode_name_US	VARCHAR(100)	NULL,
 	Is_available	BIT				NOT NULL
 		CONSTRAINT DF_Mode_avaliable DEFAULT(1),

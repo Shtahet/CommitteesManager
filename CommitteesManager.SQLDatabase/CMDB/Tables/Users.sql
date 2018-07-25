@@ -20,9 +20,9 @@ CREATE TABLE [CMDB].[Users]
 (
 	[UserID]				varchar(20) NOT NULL,
 	[Access_typeID]			int NULL,
-	[User_name_UA]			varchar(100) NOT NULL,
+	[User_name_UA]			nvarchar(100) NOT NULL,
 	[User_name_US]			varchar(100) NOT NULL,
-	[Job_title]				varchar(255) NULL,
+	[Job_title]				nvarchar(255) NULL,
 	[Email]					varchar(100) NOT NULL,
 	[Phone_number]			varchar(20) NULL,
 	[HeadID]				varchar(20) NULL,
