@@ -46,6 +46,6 @@ CREATE TABLE [CMDB].[Protocols]
 		REFERENCES CMDB.Committees (CommitteeID),
 	CONSTRAINT FK_Protocols_Statuses FOREIGN KEY (StatusID)
 		REFERENCES CMDB.Statuses (StatusID),
-	CONSTRAINT FK_Protocols_RegOfApproved FOREIGN KEY (REgisterID)
+	CONSTRAINT FK_Protocols_RegOfApproved FOREIGN KEY (RegisterID)
 		REFERENCES CMDB.RegisterOfApproved (RegisterID)
 )

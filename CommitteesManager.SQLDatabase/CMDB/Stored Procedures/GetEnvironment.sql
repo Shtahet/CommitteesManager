@@ -23,7 +23,7 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 	SELECT	@EnvValue = EnvValue
-	FROM PLC.Environment
+	FROM CMDB.Environment
 	WHERE EnvName = @EnvName;
 	RETURN;
 END
