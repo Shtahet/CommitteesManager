@@ -26,11 +26,11 @@
         </Storyboard>
     </Window.Resources>
     <Window.Triggers>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonMenuOpen">
-            <BeginStoryboard Storyboard="{DynamicResource MenuOpen}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonMenuClose">
+        <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="MenuToggleButton">
             <BeginStoryboard Storyboard="{DynamicResource MenuClose}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="MenuToggleButton">
+            <BeginStoryboard Storyboard="{DynamicResource MenuOpen}"/>
         </EventTrigger>
     </Window.Triggers>
     <DockPanel>
@@ -66,29 +66,27 @@
 
                 </materialDesign:PopupBox>
             </StackPanel>
-            <Button x:Name="ButtonMenuClose" 
-                    Width="50" Height="50"
+
+            <ToggleButton x:Name="MenuToggleButton"
+                    Style="{StaticResource MaterialDesignActionToggleButton}"
                     HorizontalAlignment="Left"
-                    Padding="0"
-                    Background="{x:Null}"
-                    BorderBrush="{x:Null}"
-                    Visibility="Collapsed">
-                <materialDesign:PackIcon Kind="ArrowLeft"
-                                         Width="30" Height="30"/>
-            </Button>
-            <Button x:Name="ButtonMenuOpen" Width="50" Height="50"
-                    HorizontalAlignment="Left"
-                    Padding="0"
-                    Background="{x:Null}"
-                    BorderBrush="{x:Null}">
-                <materialDesign:PackIcon Kind="Menu"
-                                         Width="30" Height="30"/>
-            </Button>
+                    Width="50" Height="50">
+                <materialDesign:ToggleButtonAssist.OnContent>
+                    <materialDesign:PackIcon Kind="ArrowLeft"
+                                                 Width="30" Height="30"/>
+                </materialDesign:ToggleButtonAssist.OnContent>
+                <ToggleButton.Content>
+                    <materialDesign:PackIcon Kind="Menu"
+                                                 Width="30" Height="30"/>
+                </ToggleButton.Content>
+            </ToggleButton>
+
         </Grid>
         <Grid x:Name="GridMenu" DockPanel.Dock="Left"
               Background="{DynamicResource PrimaryHueDarkBrush}"
               Width="50">
-            <ListView DockPanel.Dock="Left">
+            <ListView DockPanel.Dock="Left"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.Resources>
                     <Style x:Key ="MainMenuListItemStyle" TargetType="ListViewItem"
                            BasedOn="{StaticResource MaterialDesignListBoxItem}">
@@ -143,7 +141,7 @@
                 </ListViewItem>
             </ListView>
         </Grid>
-        
+
         <StackPanel Orientation="Horizontal">
             <TextBlock Background ="{DynamicResource PrimaryHueLightBrush}">Первое окно</TextBlock>
             <TextBlock Background ="{DynamicResource PrimaryHueMidBrush}">Второе окно</TextBlock>
