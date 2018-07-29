@@ -11,9 +11,10 @@ namespace CommitteesManager.AppUIClient.Infrastructure
     {
         Action<object> _action;
         Predicate<object> _canAction;
-        public RelayCommand(Action<object> act, Predicate<object> canAct)
+        public RelayCommand(Action<object> act, Predicate<object> canAct = null)
         {
-
+            _action = act;
+            _canAction = canAct;
         }
 
         public event EventHandler CanExecuteChanged
