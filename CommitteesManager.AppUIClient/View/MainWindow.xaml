@@ -6,8 +6,148 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:CommitteesManager.AppUIClient"
         mc:Ignorable="d"
-        Title="Менеджер засідань комітетів" Height="450" Width="800">
-    <Grid>
+        Title="Менеджер засідань комітетів" 
+        Height="700" Width="1000"
+        WindowStartupLocation="CenterScreen" IsHitTestVisible="True">
+    <Window.Resources>
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"
+                                           Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"
+                                           Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonMenuOpen">
+            <BeginStoryboard Storyboard="{DynamicResource MenuOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonMenuClose">
+            <BeginStoryboard Storyboard="{DynamicResource MenuClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" 
+              Background="{DynamicResource PrimaryHueMidBrush}">
+            <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center"
+                           FontSize="16" FontWeight="Medium"
+                           Foreground="White">
+                    Меню
+                </TextBlock>
+                <materialDesign:PopupBox HorizontalAlignment="Right"
+                                     Foreground="White"
+                                     Margin="5"
+                                     StaysOpen="False"
+                                     PlacementMode="BottomAndAlignRightEdges">
+                    <StackPanel>
+                        <Button>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="InformationOutline" />
+                                <TextBlock>Інфо</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Separator/>
+                        <Button>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Logout" />
+                                <TextBlock>Вихід</TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+
+                </materialDesign:PopupBox>
+            </StackPanel>
+            <Button x:Name="ButtonMenuClose" 
+                    Width="50" Height="50"
+                    HorizontalAlignment="Left"
+                    Padding="0"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    Visibility="Collapsed">
+                <materialDesign:PackIcon Kind="ArrowLeft"
+                                         Width="30" Height="30"/>
+            </Button>
+            <Button x:Name="ButtonMenuOpen" Width="50" Height="50"
+                    HorizontalAlignment="Left"
+                    Padding="0"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}">
+                <materialDesign:PackIcon Kind="Menu"
+                                         Width="30" Height="30"/>
+            </Button>
+        </Grid>
+        <Grid x:Name="GridMenu" DockPanel.Dock="Left"
+              Background="{DynamicResource PrimaryHueDarkBrush}"
+              Width="50">
+            <ListView DockPanel.Dock="Left">
+                <ListView.Resources>
+                    <Style x:Key ="MainMenuListItemStyle" TargetType="ListViewItem"
+                           BasedOn="{StaticResource MaterialDesignListBoxItem}">
+                        <Setter Property="Foreground" Value="WhiteSmoke"/>
+                        <Setter Property="Background" Value="{DynamicResource PrimaryHueDarkBrush}"/>
+                        <Setter Property="Padding" Value="10 15"/>
+                    </Style>
+                    <Style x:Key="TextBlockMenuStile" TargetType="TextBlock"
+                           BasedOn="{StaticResource MaterialDesignBody2TextBlock}">
+                        <Setter Property="Margin" Value="10 5"/>
+                    </Style>
+                </ListView.Resources>
+                <ListViewItem Style="{StaticResource MainMenuListItemStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Calendar"
+                                             Width="30" Height="30"
+                                             VerticalAlignment="Center"/>
+                        <TextBlock Style="{StaticResource TextBlockMenuStile}" >
+                        Запланувати засідання
+                        </TextBlock>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Style="{StaticResource MainMenuListItemStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="BookVariant"
+                                             Width="30" Height="30"
+                                             VerticalAlignment="Center"/>
+                        <TextBlock Style="{StaticResource TextBlockMenuStile}">
+                        Огляд заявок
+                        </TextBlock>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Style="{StaticResource MainMenuListItemStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Certificate"
+                                             Width="30" Height="30"
+                                             VerticalAlignment="Center"/>
+                        <TextBlock Style="{StaticResource TextBlockMenuStile}">
+                        Реєстер рішень
+                        </TextBlock>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Style="{StaticResource MainMenuListItemStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="ClipboardCheck"
+                                             Width="30" Height="30"
+                                             VerticalAlignment="Center"/>
+                        <TextBlock Style="{StaticResource TextBlockMenuStile}">
+                        Результати виконання
+                        </TextBlock>
+                    </StackPanel>
+                </ListViewItem>
+            </ListView>
+        </Grid>
         
-    </Grid>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Background ="{DynamicResource PrimaryHueLightBrush}">Первое окно</TextBlock>
+            <TextBlock Background ="{DynamicResource PrimaryHueMidBrush}">Второе окно</TextBlock>
+            <TextBlock Background ="{DynamicResource PrimaryHueDarkBrush}">Третье окно</TextBlock>
+        </StackPanel>
+    </DockPanel>
 </Window>
