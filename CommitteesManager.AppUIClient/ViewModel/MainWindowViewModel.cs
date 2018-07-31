@@ -1,23 +1,24 @@
 ﻿using CommitteesManager.AppUIClient.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
+using System.Collections.ObjectModel;
 
 namespace CommitteesManager.AppUIClient.ViewModel
 {
-    class MainWindowViewModel: INotifyPropertyChanged
+    class MainWindowViewModel: ViewModelBase
     {
-        
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
+        public MainWindowViewModel()
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            _openedViews = new ObservableCollection<string>()
+            {
+                "FirstWindow", "Second Window", "third window"
+            };
         }
+
+        private ObservableCollection<string> _openedViews;
+        public ObservableCollection<string> OpenedViews
+        {
+            get { return _openedViews; }
+            set { _openedViews = value; }
+        }
+        
     }
 }
