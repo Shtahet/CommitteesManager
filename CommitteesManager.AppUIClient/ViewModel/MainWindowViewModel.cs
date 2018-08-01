@@ -1,5 +1,6 @@
 ﻿using CommitteesManager.AppUIClient.Infrastructure;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace CommitteesManager.AppUIClient.ViewModel
 {
@@ -19,6 +20,16 @@ namespace CommitteesManager.AppUIClient.ViewModel
             get { return _openedViews; }
             set { _openedViews = value; }
         }
-        
+
+        private RelayCommand _selectedMenu;
+        public RelayCommand SelectMenu
+        {
+            get
+            {
+                if (_selectedMenu == null)
+                    _selectedMenu = new RelayCommand(obj => MessageBox.Show("Test command"));
+                return _selectedMenu;
+            }
+        }
     }
 }
