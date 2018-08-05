@@ -27,8 +27,8 @@ namespace CommitteesManager.AppUIClient.ViewModel
                     _selectedMenu = new RelayCommand(obj =>
                     {
                         ViewModels raiseView = (ViewModels)obj;
-                        MessageBox.Show($"Create view of {raiseView.ToString()}");
-
+                        ViewModelBase newView = ViewModelBase.GetViewModel(raiseView);
+                        OpenedViews.AddLast(newView);
                      });
                 return _selectedMenu;
             }
