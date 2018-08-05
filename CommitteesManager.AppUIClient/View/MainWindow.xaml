@@ -178,7 +178,7 @@
                               IsExpanded="True">
                         <Expander.Header>
                             <Grid>
-                                <TextBlock Text="{Binding}"
+                                <TextBlock Text="{Binding Path=Name}"
                                                RenderTransformOrigin=".5,.5">
                                     <TextBlock.LayoutTransform>
                                         <RotateTransform Angle="90" />

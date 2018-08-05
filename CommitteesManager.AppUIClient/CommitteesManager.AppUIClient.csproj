@@ -72,7 +72,11 @@
     <Compile Include="Infrastructure\ObservableLinkedList.cs" />
     <Compile Include="Infrastructure\RelayCommand.cs" />
     <Compile Include="Infrastructure\ViewModelBase.cs" />
+    <Compile Include="ViewModel\IssuesViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\PlaneMeetingViewModel.cs" />
+    <Compile Include="ViewModel\ProtocolsViewModel.cs" />
+    <Compile Include="ViewModel\RegistryViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
