@@ -8,14 +8,11 @@ namespace CommitteesManager.AppUIClient.ViewModel
     {
         public MainWindowViewModel()
         {
-            _openedViews = new ObservableCollection<string>()
-            {
-                "FirstWindow", "Second Window", "third window"
-            };
+            _openedViews = new ObservableLinkedList<ViewModelBase>();
         }
 
-        private ObservableCollection<string> _openedViews;
-        public ObservableCollection<string> OpenedViews
+        private ObservableLinkedList<ViewModelBase> _openedViews;
+        public ObservableLinkedList<ViewModelBase> OpenedViews
         {
             get { return _openedViews; }
             set { _openedViews = value; }
@@ -27,7 +24,12 @@ namespace CommitteesManager.AppUIClient.ViewModel
             get
             {
                 if (_selectedMenu == null)
-                    _selectedMenu = new RelayCommand(obj => MessageBox.Show("Test command"));
+                    _selectedMenu = new RelayCommand(obj =>
+                    {
+                        ViewModels raiseView = (ViewModels)obj;
+                        MessageBox.Show($"Create view of {raiseView.ToString()}");
+
+                     });
                 return _selectedMenu;
             }
         }

@@ -7,6 +7,14 @@ using System.Threading.Tasks;
 
 namespace CommitteesManager.AppUIClient.Infrastructure
 {
+    public enum ViewModels
+    {
+        PlaneMeeting,
+        Issues,
+        ReqistryOfDecisions,
+        Protocols
+    }
+
     class ViewModelBase: INotifyPropertyChanged
     {
 
