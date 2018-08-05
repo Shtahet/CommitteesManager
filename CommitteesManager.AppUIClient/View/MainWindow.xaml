@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:CommitteesManager.AppUIClient"
+        xmlns:localInfra="clr-namespace:CommitteesManager.AppUIClient.Infrastructure"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="Менеджер засідань комітетів" 
         Height="700" Width="1000"
@@ -99,8 +101,13 @@
                         <Setter Property="Margin" Value="10 5"/>
                     </Style>
                 </ListView.Resources>
-                <ListViewItem Style="{StaticResource MainMenuListItemStyle}">
-                    <StackPanel Orientation="Horizontal">
+                <ListViewItem Style="{StaticResource MainMenuListItemStyle}" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding SelectMenu}" CommandParameter="{x:Static localInfra:ViewModels.PlaneMeeting}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <StackPanel Orientation="Horizontal" >
                         <materialDesign:PackIcon Kind="Calendar"
                                              Width="30" Height="30"
                                              VerticalAlignment="Center"/>
@@ -110,6 +117,11 @@
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Style="{StaticResource MainMenuListItemStyle}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding SelectMenu}" CommandParameter="{x:Static localInfra:ViewModels.Issues}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="BookVariant"
                                              Width="30" Height="30"
@@ -120,6 +132,11 @@
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Style="{StaticResource MainMenuListItemStyle}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding SelectMenu}" CommandParameter="{x:Static localInfra:ViewModels.ReqistryOfDecisions}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Certificate"
                                              Width="30" Height="30"
@@ -130,6 +147,11 @@
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Style="{StaticResource MainMenuListItemStyle}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding SelectMenu}" CommandParameter="{x:Static localInfra:ViewModels.Protocols}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="ClipboardCheck"
                                              Width="30" Height="30"
