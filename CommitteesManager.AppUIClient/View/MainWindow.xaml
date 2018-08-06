@@ -163,54 +163,64 @@
                 </ListViewItem>
             </ListView>
         </Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
 
-        <ItemsControl ItemsSource="{Binding OpenedViews}"
+            <ItemsControl ItemsSource="{Binding OpenedViews}"
                       HorizontalAlignment="Left">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                    <Expander ExpandDirection="Right"
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Expander ExpandDirection="Right"
                               IsExpanded="True">
-                        <Expander.Header>
-                            <Grid>
-                                <TextBlock Text="{Binding Path=Name}"
+                                <Expander.Header>
+                                    <Grid>
+                                        <TextBlock Text="{Binding Path=Name}"
                                                RenderTransformOrigin=".5,.5">
-                                    <TextBlock.LayoutTransform>
-                                        <RotateTransform Angle="90" />
-                                    </TextBlock.LayoutTransform>
-                                </TextBlock>
-                            </Grid>
-                        </Expander.Header>
-                        <StackPanel Orientation="Vertical"
-                                        TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
-                                        Margin="8,16,16,16">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
-                                    <StackPanel Orientation="Horizontal"
+                                            <TextBlock.LayoutTransform>
+                                                <RotateTransform Angle="90" />
+                                            </TextBlock.LayoutTransform>
+                                        </TextBlock>
+                                    </Grid>
+                                </Expander.Header>
+                                <StackPanel Orientation="Vertical"
+                                        TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Orientation="Horizontal"
                                                 Background="{DynamicResource PrimaryHueLightBrush}">
-                                        <Button Padding= "7 0">
-                                            <materialDesign:PackIcon Kind="WindowMinimize"
+                                            <TextBlock Text="{Binding Path=Name}"
+                                                       Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                                                       VerticalAlignment="Center"
+                                                       Margin="10 5"/>
+                                            <Button Padding= "7 0"
+                                                    Margin="0 0 5 0"
+                                                    VerticalAlignment="Center">
+                                                <materialDesign:PackIcon Kind="WindowMinimize"
                                                                      Width="10" Height="10" />
-                                        </Button>
-                                        <Button Padding="7 0">
-                                            <materialDesign:PackIcon Kind="WindowClose"
+                                            </Button>
+                                            <Button Padding="7 0"
+                                                    Margin="0 0 5 0"
+                                                    VerticalAlignment="Center">
+                                                <materialDesign:PackIcon Kind="WindowClose"
                                                                      Width="10" Height="10" />
-                                        </Button>
-                                    </StackPanel>
-                                </Grid>
-                        </StackPanel>
-                    </Expander>
-                    </Grid>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                                            </Button>
+                                        </StackPanel>
+                                    </Grid>
+                                </StackPanel>
+                            </Expander>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </ScrollViewer>
     </DockPanel>
 </Window>
