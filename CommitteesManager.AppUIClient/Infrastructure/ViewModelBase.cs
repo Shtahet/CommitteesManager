@@ -19,6 +19,7 @@ namespace CommitteesManager.AppUIClient.Infrastructure
     class ViewModelBase: INotifyPropertyChanged
     {
         public string Name { get; set; }
+        public bool IsExpanded { get; set; } = true;
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {

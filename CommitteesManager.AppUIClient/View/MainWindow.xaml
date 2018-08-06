@@ -176,7 +176,7 @@
                     <DataTemplate>
                         <Grid>
                             <Expander ExpandDirection="Right"
-                              IsExpanded="True">
+                              IsExpanded="{Binding Path=IsExpanded}">
                                 <Expander.Header>
                                     <Grid>
                                         <TextBlock Text="{Binding Path=Name}"
