@@ -202,7 +202,8 @@
                                                        Margin="10 5"/>
                                             <Button Padding= "7 0"
                                                     Margin="0 0 5 0"
-                                                    VerticalAlignment="Center">
+                                                    VerticalAlignment="Center"
+                                                    Command="{Binding Path=Expand}">
                                                 <materialDesign:PackIcon Kind="WindowMinimize"
                                                                      Width="10" Height="10" />
                                             </Button>

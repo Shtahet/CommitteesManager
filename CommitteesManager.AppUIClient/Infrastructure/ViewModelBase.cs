@@ -20,6 +20,22 @@ namespace CommitteesManager.AppUIClient.Infrastructure
     {
         public string Name { get; set; }
         public bool IsExpanded { get; set; } = true;
+
+        private RelayCommand _expandCmd;
+        public RelayCommand Expand
+        {
+            get
+            {
+                if (_expandCmd == null)
+                    _expandCmd = new RelayCommand(obj => 
+                    {
+                        IsExpanded = false;
+                        OnPropertyChanged("IsExpanded");
+                    });
+
+                return _expandCmd;
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
