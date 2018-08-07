@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CommitteesManager.AppUIClient.ViewModel
 {
-    class RegistryViewModel:ViewModelBase
+    class RegistryViewModel: ViewModelSection
     {
 
     }

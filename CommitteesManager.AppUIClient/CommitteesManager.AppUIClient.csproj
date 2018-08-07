@@ -73,6 +73,7 @@
     <Compile Include="Infrastructure\RelayCommand.cs" />
     <Compile Include="Infrastructure\ViewModelBase.cs" />
     <Compile Include="Infrastructure\ViewModelEventArgs.cs" />
+    <Compile Include="Infrastructure\ViewModelSection.cs" />
     <Compile Include="ViewModel\IssuesViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PlaneMeetingViewModel.cs" />
