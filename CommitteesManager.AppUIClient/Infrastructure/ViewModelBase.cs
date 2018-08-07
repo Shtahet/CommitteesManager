@@ -16,10 +16,15 @@ namespace CommitteesManager.AppUIClient.Infrastructure
         Protocols
     }
 
+
+
     class ViewModelBase: INotifyPropertyChanged
     {
         public string Name { get; set; }
         public bool IsExpanded { get; set; } = true;
+
+        public event EventHandler<ViewModelEventArgs> CreateView;
+        public event EventHandler<ViewModelEventArgs> WantToClose;
 
         private RelayCommand _expandCmd;
         public RelayCommand Expand
@@ -36,6 +41,22 @@ namespace CommitteesManager.AppUIClient.Infrastructure
                 return _expandCmd;
             }
         }
+
+        private RelayCommand _closeCmd;
+        public RelayCommand Close
+        {
+            get
+            {
+                if (_closeCmd == null)
+                    _closeCmd = new RelayCommand(obj => 
+                    {
+                        WantToClose?.Invoke(this, new ViewModelEventArgs(JoinDirectionEnum.After));
+                    });
+
+                return _closeCmd;
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
