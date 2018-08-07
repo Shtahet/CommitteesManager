@@ -25,9 +25,9 @@ namespace CommitteesManager.AppUIClient.Infrastructure
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public static ViewModelBase GetViewModel(ViewModels viewType)
+        public static ViewModelSection GetNewSection(ViewModels viewType)
         {
-            ViewModelBase retView = null;
+            ViewModelSection retView = null;
 
             switch (viewType)
             {

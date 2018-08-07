@@ -9,11 +9,11 @@ namespace CommitteesManager.AppUIClient.ViewModel
     {
         public MainWindowViewModel()
         {
-            _openedViews = new ObservableLinkedList<ViewModelBase>();
+            _openedViews = new ObservableLinkedList<ViewModelSection>();
         }
 
-        private ObservableLinkedList<ViewModelBase> _openedViews;
-        public ObservableLinkedList<ViewModelBase> OpenedViews
+        private ObservableLinkedList<ViewModelSection> _openedViews;
+        public ObservableLinkedList<ViewModelSection> OpenedViews
         {
             get { return _openedViews; }
             set { _openedViews = value; }
@@ -28,7 +28,7 @@ namespace CommitteesManager.AppUIClient.ViewModel
                     _selectedMenu = new RelayCommand(obj =>
                     {
                         ViewModels raiseView = (ViewModels)obj;
-                        ViewModelBase newView = ViewModelBase.GetViewModel(raiseView);
+                        ViewModelSection newView = ViewModelBase.GetNewSection(raiseView);
                         newView.CreateView += CreateViewLisener;
                         newView.WantToClose += WantToCloseLisener;
                         OpenedViews.AddLast(newView);
@@ -43,10 +43,11 @@ namespace CommitteesManager.AppUIClient.ViewModel
             if (callingObj == null)
                 return;
 
+            var lastNode = _openedViews.Last;
             do
             {
-                var lastNode = _openedViews.Last;
                 _openedViews.RemoveLast();
+
             } while (lastNode != null);
         }
 
