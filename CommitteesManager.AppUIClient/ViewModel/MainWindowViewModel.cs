@@ -39,16 +39,18 @@ namespace CommitteesManager.AppUIClient.ViewModel
 
         private void WantToCloseLisener(object sender, ViewModelEventArgs e)
         {
-            ViewModelBase callingObj = sender as ViewModelBase;
+            ViewModelSection callingObj = sender as ViewModelSection;
             if (callingObj == null)
                 return;
 
-            var lastNode = _openedViews.Last;
             do
             {
+                var lastNode = _openedViews.Last;
                 _openedViews.RemoveLast();
 
-            } while (lastNode != null);
+                if (lastNode.Value == callingObj)
+                    break;
+            } while (_openedViews.Count > 0);
         }
 
         private void CreateViewLisener(object sender, ViewModelEventArgs e)
