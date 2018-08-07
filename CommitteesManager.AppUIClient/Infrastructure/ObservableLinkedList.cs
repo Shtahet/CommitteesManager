@@ -89,22 +89,22 @@ namespace CommitteesManager.AppUIClient.Infrastructure
 
         public void Remove(LinkedListNode<T> node)
         {
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, node.Value));
             _interiorLinkedList.Remove(node);
-            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, node));
         }
 
         public void RemoveFirst()
         {
             LinkedListNode<T> first = _interiorLinkedList.First;
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, first.Value, 0));
             _interiorLinkedList.RemoveFirst();
-            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, first));
         }
 
         public void RemoveLast()
         {
             LinkedListNode<T> last = _interiorLinkedList.Last;
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, last.Value, _interiorLinkedList.Count - 1));
             _interiorLinkedList.RemoveLast();
-            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, last));
         }
         #endregion
 
