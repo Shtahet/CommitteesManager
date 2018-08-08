@@ -14,7 +14,7 @@ namespace CommitteesManager.AppUIClient.Infrastructure
         public event EventHandler<ViewModelEventArgs> CreateView;
         public event EventHandler<ViewModelEventArgs> WantToClose;
 
-        private RelayCommand _expandCmd;
+        protected RelayCommand _expandCmd;
         public RelayCommand Expand
         {
             get
@@ -30,7 +30,7 @@ namespace CommitteesManager.AppUIClient.Infrastructure
             }
         }
 
-        private RelayCommand _closeCmd;
+        protected RelayCommand _closeCmd;
         public RelayCommand Close
         {
             get
