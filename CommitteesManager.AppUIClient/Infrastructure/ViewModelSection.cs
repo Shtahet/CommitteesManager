@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace CommitteesManager.AppUIClient.Infrastructure
 {
-    class ViewModelSection: ViewModelBase
+    abstract class ViewModelSection: ViewModelBase
     {
         public string Name { get; set; }
         public bool IsExpanded { get; set; } = true;
+
+        public abstract ViewModelSection Filter { get; set; }
 
         public event EventHandler<ViewModelEventArgs> CreateView;
         protected void InvokeCreateViewEvent(object derivedSender, ViewModelEventArgs e)
