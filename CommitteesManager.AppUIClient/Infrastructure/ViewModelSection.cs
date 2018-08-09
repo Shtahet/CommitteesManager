@@ -12,6 +12,11 @@ namespace CommitteesManager.AppUIClient.Infrastructure
         public bool IsExpanded { get; set; } = true;
 
         public event EventHandler<ViewModelEventArgs> CreateView;
+        protected void InvokeCreateViewEvent(object derivedSender, ViewModelEventArgs e)
+        {
+            CreateView?.Invoke(derivedSender, e);
+        }
+
         public event EventHandler<ViewModelEventArgs> WantToClose;
 
         protected RelayCommand _expandCmd;
@@ -38,7 +43,7 @@ namespace CommitteesManager.AppUIClient.Infrastructure
                 if (_closeCmd == null)
                     _closeCmd = new RelayCommand(obj =>
                     {
-                        WantToClose?.Invoke(this, new ViewModelEventArgs(JoinDirectionEnum.After));
+                        WantToClose?.Invoke(this, new ViewModelEventArgs(JoinDirectionEnum.After, null));
                     });
 
                 return _closeCmd;
