@@ -13,5 +13,7 @@ namespace CommitteesManager.AppUIClient.ViewModel
         {
             _closeCmd = new RelayCommand(obj => { }, obj => false);
         }
+
+        public override ViewModelSection Filter { get => null; set { } }
     }
 }

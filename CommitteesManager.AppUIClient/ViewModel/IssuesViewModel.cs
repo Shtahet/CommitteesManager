@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace CommitteesManager.AppUIClient.ViewModel
 {
-    class IssuesViewModel: ViewModelSection
+    class IssuesViewModel : ViewModelSection
     {
+        public IssuesViewModel()
+        {
+            _filter = ViewModelBase.GetNewSection(ViewModels.Filter) as FilterViewModel;
+        }
 
+        private FilterViewModel _filter;
+        public override ViewModelSection Filter { get => _filter; set => _filter = value as FilterViewModel; }
     }
 }

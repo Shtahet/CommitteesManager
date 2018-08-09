@@ -9,6 +9,12 @@ namespace CommitteesManager.AppUIClient.ViewModel
 {
     class ProtocolsViewModel: ViewModelSection
     {
+        public ProtocolsViewModel()
+        {
+            _filter = ViewModelBase.GetNewSection(ViewModels.Filter) as FilterViewModel;
+        }
 
+        private FilterViewModel _filter;
+        public override ViewModelSection Filter { get => _filter; set => _filter = value as FilterViewModel; }
     }
 }
