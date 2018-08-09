@@ -11,12 +11,14 @@ namespace CommitteesManager.AppUIClient.Infrastructure
         After,
         Before
     }
-    public class ViewModelEventArgs: EventArgs
+    internal class ViewModelEventArgs : EventArgs
     {
-        public ViewModelEventArgs(JoinDirectionEnum joinDirection)
+        public ViewModelEventArgs(JoinDirectionEnum joinDirection, ViewModelSection newVModel)
         {
             JoinType = joinDirection;
+            VMObject = newVModel;
         }
-        public JoinDirectionEnum JoinType { get; }
+        public JoinDirectionEnum JoinType { get; private set; }
+        public ViewModelSection VMObject{get; private set;}
     }
 }
