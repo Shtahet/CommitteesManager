@@ -31,6 +31,10 @@ namespace CommitteesManager.AppUIClient.ViewModel
                         ViewModelSection newView = ViewModelBase.GetNewSection(raiseView);
                         newView.CreateView += CreateViewLisener;
                         newView.WantToClose += WantToCloseLisener;
+
+                        if (newView.Filter != null)
+                            OpenedViews.AddLast(newView.Filter);
+
                         OpenedViews.AddLast(newView);
                      });
                 return _selectedMenu;
@@ -48,6 +52,10 @@ namespace CommitteesManager.AppUIClient.ViewModel
                 var lastNode = _openedViews.Last;
                 _openedViews.RemoveLast();
 
+                //Delete filter if exists
+                if (lastNode.Value.Filter != null)
+                    _openedViews.Remove(lastNode.Value.Filter);
+
                 if (lastNode.Value == callingObj)
                     break;
             } while (_openedViews.Count > 0);
@@ -55,7 +63,15 @@ namespace CommitteesManager.AppUIClient.ViewModel
 
         private void CreateViewLisener(object sender, ViewModelEventArgs e)
         {
-            
+            ViewModelSection newView = e.VMObject;
+            if (e.JoinType == JoinDirectionEnum.First)
+            {
+                _openedViews.AddFirst(e.VMObject);
+            }
+            else
+            {
+
+            }
         }
     }
 }
