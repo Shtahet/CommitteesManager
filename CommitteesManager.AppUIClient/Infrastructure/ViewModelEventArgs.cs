@@ -9,7 +9,7 @@ namespace CommitteesManager.AppUIClient.Infrastructure
     public enum JoinDirectionEnum
     {
         After,
-        Before
+        First
     }
     internal class ViewModelEventArgs : EventArgs
     {
