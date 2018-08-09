@@ -13,7 +13,8 @@ namespace CommitteesManager.AppUIClient.Infrastructure
         PlaneMeeting,
         Issues,
         ReqistryOfDecisions,
-        Protocols
+        Protocols,
+        Filter
     }
     
     class ViewModelBase: INotifyPropertyChanged
@@ -46,6 +47,10 @@ namespace CommitteesManager.AppUIClient.Infrastructure
                 case ViewModels.Protocols:
                     retView = new ProtocolsViewModel();
                     retView.Name = "Перелік протоколів";
+                    break;
+                case ViewModels.Filter:
+                    retView = new FilterViewModel();
+                    retView.Name = "Фільтр";
                     break;
                 default:
                     break;
