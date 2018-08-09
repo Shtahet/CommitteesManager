@@ -83,7 +83,7 @@ namespace CommitteesManager.AppUIClient.Infrastructure
         public bool Remove(T value)
         {
             bool retStatus = _interiorLinkedList.Remove(value);
-            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, value));
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
             return retStatus;
         }
 
