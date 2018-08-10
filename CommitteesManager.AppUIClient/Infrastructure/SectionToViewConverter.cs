@@ -21,6 +21,9 @@ namespace CommitteesManager.AppUIClient.Infrastructure
                 case PlaneMeetingViewModel pmvm:
                     retValue = new PlaneMeeting();                   
                     break;
+                case FilterViewModel fvm:
+                    retValue = new Filter();
+                    break;
                 case null:
                 default:
                     retValue = null;
