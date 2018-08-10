@@ -31,10 +31,12 @@ namespace CommitteesManager.AppUIClient.ViewModel
                         ViewModelSection newView = ViewModelBase.GetNewSection(raiseView);
                         newView.CreateView += CreateViewLisener;
                         newView.WantToClose += WantToCloseLisener;
+                        
+                        //Clear all open section
+                        WantToCloseLisener(this, new ViewModelEventArgs(JoinDirectionEnum.After, null));
 
                         if (newView.Filter != null)
                             OpenedViews.AddLast(newView.Filter);
-
                         OpenedViews.AddLast(newView);
                      });
                 return _selectedMenu;
@@ -44,7 +46,9 @@ namespace CommitteesManager.AppUIClient.ViewModel
         private void WantToCloseLisener(object sender, ViewModelEventArgs e)
         {
             ViewModelSection callingObj = sender as ViewModelSection;
-            if (callingObj == null)
+
+            //return if list of section is empty
+            if (_openedViews.Count == 0)
                 return;
 
             do
@@ -70,7 +74,7 @@ namespace CommitteesManager.AppUIClient.ViewModel
             }
             else
             {
-
+                _openedViews.AddLast(e.VMObject);
             }
         }
     }
