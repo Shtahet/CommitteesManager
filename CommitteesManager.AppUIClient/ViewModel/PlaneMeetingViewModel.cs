@@ -9,6 +9,6 @@ namespace CommitteesManager.AppUIClient.ViewModel
 {
     class PlaneMeetingViewModel: ViewModelSection
     {
-        public override ViewModelSection Filter { get => null; set => { } }
+        public override ViewModelSection Filter { get => null; set { } }
     }
 }

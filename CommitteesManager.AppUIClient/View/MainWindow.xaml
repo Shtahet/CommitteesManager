@@ -26,6 +26,7 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <localInfra:SectionToViewConverter x:Key="SectionConverter"/>
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="MenuToggleButton">
@@ -215,6 +216,9 @@
                                                                      Width="10" Height="10" />
                                             </Button>
                                         </StackPanel>
+                                        <ContentControl Grid.Row="1" 
+                                                        Content="{Binding Converter={StaticResource SectionConverter}}">
+                                        </ContentControl>
                                     </Grid>
                                 </StackPanel>
                             </Expander>
