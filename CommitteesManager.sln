@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommittessManager.DAL", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommitteesManager.AppUIClient", "CommitteesManager.AppUIClient\CommitteesManager.AppUIClient.csproj", "{A1B8F4E3-0053-435E-891B-7AB5ADDBDE47}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommittessManager.BLL", "CommittessManager.BLL\CommittessManager.BLL.csproj", "{340F0097-B342-4A2A-95D3-C727F88A74AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{A1B8F4E3-0053-435E-891B-7AB5ADDBDE47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1B8F4E3-0053-435E-891B-7AB5ADDBDE47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1B8F4E3-0053-435E-891B-7AB5ADDBDE47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{340F0097-B342-4A2A-95D3-C727F88A74AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{340F0097-B342-4A2A-95D3-C727F88A74AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{340F0097-B342-4A2A-95D3-C727F88A74AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{340F0097-B342-4A2A-95D3-C727F88A74AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
