@@ -130,6 +130,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CommitteesManager.BLL\CommitteesManager.BLL.csproj">
+      <Project>{340f0097-b342-4a2a-95d3-c727f88a74ab}</Project>
+      <Name>CommitteesManager.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommitteesManager.DAL\CommitteesManager.DAL.csproj">
+      <Project>{9c860dcf-0d9a-4c98-a787-a2a7ec9ca078}</Project>
+      <Name>CommitteesManager.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

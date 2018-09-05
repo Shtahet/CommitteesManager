@@ -1,4 +1,5 @@
 ﻿using CommitteesManager.AppUIClient.Infrastructure;
+using CommitteesManager.BLL.Abstract;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -7,8 +8,10 @@ namespace CommitteesManager.AppUIClient.ViewModel
 {
     class MainWindowViewModel: ViewModelBase
     {
-        public MainWindowViewModel()
+        private IServiceProvider _serviceProvider;
+        public MainWindowViewModel(IServiceProvider services)
         {
+            _serviceProvider = services;
             _openedViews = new ObservableLinkedList<ViewModelSection>();
         }
 

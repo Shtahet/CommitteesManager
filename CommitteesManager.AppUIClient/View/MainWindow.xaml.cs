@@ -24,7 +24,6 @@ namespace CommitteesManager.AppUIClient.View
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowViewModel();
         }
     }
 }
