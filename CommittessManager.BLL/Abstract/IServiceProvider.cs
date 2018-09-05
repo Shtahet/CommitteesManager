@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CommittessManager.BLL.Abstract
 {
-    interface IServiceProvider
+    public interface IServiceProvider
     {
-        public IScheduleService ScheduleService{ get; }
+        IScheduleService ScheduleService{ get; }
     }
 }

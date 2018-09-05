@@ -43,11 +43,18 @@
   <ItemGroup>
     <Compile Include="Abstract\IScheduleService.cs" />
     <Compile Include="Abstract\IServiceProvider.cs" />
+    <Compile Include="Concrete\ScheduleProvider.cs" />
+    <Compile Include="Concrete\ServiceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Concrete\" />
     <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommittessManager.DAL\CommittessManager.DAL.csproj">
+      <Project>{9c860dcf-0d9a-4c98-a787-a2a7ec9ca078}</Project>
+      <Name>CommittessManager.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
