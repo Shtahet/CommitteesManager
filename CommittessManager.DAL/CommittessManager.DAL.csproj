@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IDataProvider.cs" />
     <Compile Include="Model\AccessType.cs" />
     <Compile Include="Model\Agenda.cs" />
     <Compile Include="Model\CMDB.cs" />
@@ -71,5 +72,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
