@@ -64,7 +64,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Infrastructure\SectionToViewConverter.cs" />
+    <Compile Include="Infrastructure\Converters\ScheduleStatusToDescribeConverter.cs" />
+    <Compile Include="Infrastructure\Converters\SectionToViewConverter.cs" />
     <Compile Include="View\Filter.xaml.cs">
       <DependentUpon>Filter.xaml</DependentUpon>
     </Compile>

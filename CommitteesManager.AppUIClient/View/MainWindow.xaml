@@ -6,6 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:CommitteesManager.AppUIClient"
         xmlns:localInfra="clr-namespace:CommitteesManager.AppUIClient.Infrastructure"
+        xmlns:localConvert="clr-namespace:CommitteesManager.AppUIClient.Infrastructure.Converters"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="Менеджер засідань комітетів" 
@@ -26,7 +27,7 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        <localInfra:SectionToViewConverter x:Key="SectionConverter"/>
+        <localConvert:SectionToViewConverter x:Key="SectionConverter"/>
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="MenuToggleButton">
