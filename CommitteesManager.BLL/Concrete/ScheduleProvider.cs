@@ -16,9 +16,11 @@ namespace CommitteesManager.BLL.Concrete
         {
             _dataProvider = provider;
         }
-        public DateTime StartDate { get; set; }
-        public DateTime FinishDate { get; set; }
+        public DateTime AdmissionStartDate { get; set; }
+        public DateTime AdmissionStopDate { get; set; }
+        public DateTime CommitteeDate { get; set; }
         public DateTime LastCommitteeDate { get; set; }
+        public ScheduleStatus Status { get; set; }
 
         public bool CloseSchedule()
         {
@@ -26,6 +28,20 @@ namespace CommitteesManager.BLL.Concrete
         }
 
         public bool OpenSchedule()
+        {
+            throw new NotImplementedException();
+        }
+        public bool DismissSchedule()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected bool SaveChange()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected bool LoadData()
         {
             throw new NotImplementedException();
         }
