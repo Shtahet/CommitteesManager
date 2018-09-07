@@ -6,10 +6,11 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace CommitteesManager.AppUIClient.Infrastructure
+namespace CommitteesManager.AppUIClient.Infrastructure.Converters
 {
     public class SectionToViewConverter : IValueConverter
     {
@@ -34,7 +35,7 @@ namespace CommitteesManager.AppUIClient.Infrastructure
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return DependencyProperty.UnsetValue;
         }
     }
 }
