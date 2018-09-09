@@ -166,7 +166,6 @@
             </ListView>
         </Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
-
             <ItemsControl ItemsSource="{Binding OpenedViews}"
                       HorizontalAlignment="Left">
                 <ItemsControl.ItemsPanel>
@@ -196,15 +195,18 @@
                                             <RowDefinition/>
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
-                                        <StackPanel Orientation="Horizontal"
-                                                Background="{DynamicResource PrimaryHueLightBrush}">
-                                            <TextBlock Text="{Binding Path=Name}"
+                                        <Rectangle Grid.Row="0"
+                                                   RadiusX="5" RadiusY="5"
+                                                   Fill="{DynamicResource PrimaryHueLightBrush}"/>
+                                            <TextBlock Grid.Row="0" 
+                                                       Text="{Binding Path=Name}"
                                                        Style="{StaticResource MaterialDesignTitleTextBlock}"
                                                        VerticalAlignment="Center"
-                                                       Margin="10 5"/>
+                                                       Margin="10 5 70 5"/>
                                             <Button Padding= "7 0"
-                                                    Margin="0 10 10 10"
+                                                    Margin="0 10 40 10"
                                                     VerticalAlignment="Center"
+                                                    HorizontalAlignment="Right"
                                                     Command="{Binding Path=Expand}">
                                                 <materialDesign:PackIcon Kind="WindowMinimize"
                                                                      Width="10" Height="10" />
@@ -212,11 +214,11 @@
                                             <Button Padding="7 0"
                                                     Margin="0 10 10 10"
                                                     VerticalAlignment="Center"
+                                                    HorizontalAlignment="Right"
                                                     Command="{Binding Path=Close}">
                                                 <materialDesign:PackIcon Kind="WindowClose"
                                                                      Width="10" Height="10" />
                                             </Button>
-                                        </StackPanel>
                                         <ContentControl Grid.Row="1" 
                                                         Content="{Binding Converter={StaticResource SectionConverter}}">
                                         </ContentControl>
