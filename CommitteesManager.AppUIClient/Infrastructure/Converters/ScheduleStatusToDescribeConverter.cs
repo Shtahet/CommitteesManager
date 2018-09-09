@@ -17,22 +17,26 @@ namespace CommitteesManager.AppUIClient.Infrastructure.Converters
             if (value == null)
                 return DependencyProperty.UnsetValue;
 
+            string statusDescribe = String.Empty;
             ScheduleStatus status = (ScheduleStatus)value;
             switch (status)
             {
                 case ScheduleStatus.Completed:
-
+                    statusDescribe = "Комітет завершено";
                     break;
                 case ScheduleStatus.Preparing:
+                    statusDescribe = "Збір заявок";
                     break;
                 case ScheduleStatus.Scheduled:
+                    statusDescribe = "Комітет заплановано";
                     break;
                 case ScheduleStatus.InSession:
+                    statusDescribe = "Триває захист";
                     break;
                 default:
                     break;
             }
-            return "Windows";
+            return statusDescribe;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
