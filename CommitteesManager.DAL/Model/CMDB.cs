@@ -6,7 +6,7 @@ namespace CommitteesManager.DAL.Model
     using System.Linq;
     using CommitteesManager.DAL.Abstract;
 
-    public partial class CMDB : DbContext, IDataProvider
+    public partial class CMDB : DbContext
     {
         public CMDB()
             : base("name=CMDB")
