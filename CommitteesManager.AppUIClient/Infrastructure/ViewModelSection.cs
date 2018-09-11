@@ -10,7 +10,7 @@ namespace CommitteesManager.AppUIClient.Infrastructure
 {
     abstract class ViewModelSection: ViewModelBase
     {
-        IServiceProvider _services;
+        protected IServiceProvider _services;
         public ViewModelSection(IServiceProvider inServiceProvider)
         {
             _services = inServiceProvider;

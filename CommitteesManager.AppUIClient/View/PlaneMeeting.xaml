@@ -4,17 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CommitteesManager.AppUIClient.View"
+			 xmlns:conv="clr-namespace:CommitteesManager.AppUIClient.Infrastructure.Converters"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" >
+	<UserControl.Resources>
+		<conv:ScheduleStatusToDescribeConverter x:Key="ScheduleConverter"/>
+	</UserControl.Resources>
     <StackPanel >
+		<TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
+                   Text="Дата проведення засідання"
+                   VerticalAlignment="Center"
+                   Margin="20 10 10 0"
+                   FontSize="16px"/>
+		<TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                   Text="{Binding Path=LastCommitteeDate}"
+                   VerticalAlignment="Center"
+                   Margin="20 0 10 0"
+                   FontSize="24"/>
         <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
                    Text="Статус засідання"
                    VerticalAlignment="Center"
                    Margin="20 10 10 0"
                    FontSize="16px"/>
         <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                   Text="Заплановано"
+                   Text="{Binding MeetingStatus, Converter={StaticResource ScheduleConverter}}"
                    VerticalAlignment="Center"
                    Margin="20 0 10 0"
                    FontSize="24"/>
