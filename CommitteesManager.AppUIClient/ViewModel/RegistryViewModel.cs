@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IServiceProvider = CommitteesManager.BLL.Abstract.IServiceProvider;
 
 namespace CommitteesManager.AppUIClient.ViewModel
 {
     class RegistryViewModel: ViewModelSection
     {
-        public RegistryViewModel()
+        public RegistryViewModel(IServiceProvider inServiceProvider):base(inServiceProvider)
         {
-            _filter = ViewModelBase.GetNewSection(ViewModels.Filter) as FilterViewModel;
+            _filter = ViewModelBase.GetNewSection(ViewModels.Filter, inServiceProvider) as FilterViewModel;
         }
 
         private FilterViewModel _filter;

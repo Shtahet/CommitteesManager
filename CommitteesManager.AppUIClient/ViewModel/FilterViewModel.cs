@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IServiceProvider = CommitteesManager.BLL.Abstract.IServiceProvider;
 
 namespace CommitteesManager.AppUIClient.ViewModel
 {
     class FilterViewModel:ViewModelSection
     {
-        public FilterViewModel()
+        public FilterViewModel(IServiceProvider inServiceProvider):base(inServiceProvider)
         {
             _closeCmd = new RelayCommand(obj => { }, obj => false);
         }

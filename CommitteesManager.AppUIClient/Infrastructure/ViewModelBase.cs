@@ -1,5 +1,5 @@
 ﻿using CommitteesManager.AppUIClient.ViewModel;
-using System;
+using CommitteesManager.BLL.Abstract;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -26,30 +26,30 @@ namespace CommitteesManager.AppUIClient.Infrastructure
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public static ViewModelSection GetNewSection(ViewModels viewType)
+        public static ViewModelSection GetNewSection(ViewModels viewType, IServiceProvider _service)
         {
             ViewModelSection retView = null;
 
             switch (viewType)
             {
                 case ViewModels.PlaneMeeting:
-                    retView = new PlaneMeetingViewModel();
-                    retView.Name = "Планування засідання";
+                    retView = new PlaneMeetingViewModel(_service);
+                    retView.Name = "Інформація про засідання";
                     break;
                 case ViewModels.Issues:
-                    retView = new IssuesViewModel();
+                    retView = new IssuesViewModel(_service);
                     retView.Name = "Огляд заявок";
                     break;
                 case ViewModels.ReqistryOfDecisions:
-                    retView = new RegistryViewModel();
+                    retView = new RegistryViewModel(_service);
                     retView.Name = "Реєстр рішень";
                     break;
                 case ViewModels.Protocols:
-                    retView = new ProtocolsViewModel();
+                    retView = new ProtocolsViewModel(_service);
                     retView.Name = "Перелік протоколів";
                     break;
                 case ViewModels.Filter:
-                    retView = new FilterViewModel();
+                    retView = new FilterViewModel(_service);
                     retView.Name = "Фільтр";
                     break;
                 default:

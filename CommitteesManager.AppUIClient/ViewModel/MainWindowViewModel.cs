@@ -31,7 +31,7 @@ namespace CommitteesManager.AppUIClient.ViewModel
                     _selectedMenu = new RelayCommand(obj =>
                     {
                         ViewModels raiseView = (ViewModels)obj;
-                        ViewModelSection newView = ViewModelBase.GetNewSection(raiseView);
+                        ViewModelSection newView = ViewModelBase.GetNewSection(raiseView, _serviceProvider);
                         newView.CreateView += CreateViewLisener;
                         newView.WantToClose += WantToCloseLisener;
                         

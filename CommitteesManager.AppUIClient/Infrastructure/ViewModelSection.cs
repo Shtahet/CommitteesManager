@@ -1,13 +1,20 @@
-﻿using System;
+﻿using CommitteesManager.BLL.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IServiceProvider = CommitteesManager.BLL.Abstract.IServiceProvider;
 
 namespace CommitteesManager.AppUIClient.Infrastructure
 {
     abstract class ViewModelSection: ViewModelBase
     {
+        IServiceProvider _services;
+        public ViewModelSection(IServiceProvider inServiceProvider)
+        {
+            _services = inServiceProvider;
+        }
         public string Name { get; set; }
         public bool IsExpanded { get; set; } = true;
 
