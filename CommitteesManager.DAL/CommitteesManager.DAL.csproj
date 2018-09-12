@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="Abstract\IDataProvider.cs" />
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Concrete\DataProvider.cs" />
+    <Compile Include="Concrete\GeneralRepository.cs" />
     <Compile Include="Model\AccessType.cs" />
     <Compile Include="Model\Agenda.cs" />
     <Compile Include="Model\CMDB.cs" />
