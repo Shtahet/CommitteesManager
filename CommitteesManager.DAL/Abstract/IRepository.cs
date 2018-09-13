@@ -15,6 +15,4 @@ namespace CommitteesManager.DAL.Abstract
         void AddOrUpdate(T obj);
         void Delete(object key);
     }
-    {
-    }
 }
