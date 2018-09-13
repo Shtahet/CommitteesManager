@@ -10,7 +10,7 @@ using CommitteesManager.AppUIClient.ViewModel;
 using CommitteesManager.BLL.Abstract;
 using CommitteesManager.BLL.Concrete;
 using CommitteesManager.DAL.Abstract;
-using CommitteesManager.DAL.Model;
+using CommitteesManager.DAL.Concrete;
 
 namespace CommitteesManager.AppUIClient
 {
@@ -27,7 +27,7 @@ namespace CommitteesManager.AppUIClient
             //Configure DI container
             var builder = new ContainerBuilder();
             builder.RegisterType<ServiceProvider>().As<IServiceProvider>();
-            builder.RegisterType<CMDB>().As<IDataProvider>();
+            builder.RegisterType<DataProvider>().As<IDataProvider>();
             builder.RegisterType<MainWindowViewModel>().AsSelf();
 
             _diContainer = builder.Build();
