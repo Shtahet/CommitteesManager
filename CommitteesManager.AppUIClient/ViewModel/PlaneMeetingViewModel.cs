@@ -26,5 +26,14 @@ namespace CommitteesManager.AppUIClient.ViewModel
 			get { return _services.ScheduleService.LastCommitteeDate.Date; }
 		}
 
+		public DateTime AdmissionStartDate
+		{
+			get { return _services.ScheduleService.AdmissionStartDate; }
+		}
+
+		public DateTime AdmissionStopDate
+		{
+			get { return _services.ScheduleService.AdmissionStopDate; }
+		}
 	}
 }
