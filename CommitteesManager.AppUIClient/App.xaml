@@ -10,6 +10,14 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Indigo.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Orange.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <SolidColorBrush x:Key="SuccessBrush" Color="#28A745"/>
+            <SolidColorBrush x:Key="ImportantBrush" Color="#007BFF"/>
+            <SolidColorBrush x:Key="InfoBrush" Color="#17A2B8"/>
+            <SolidColorBrush x:Key="WarningBrush" Color="#FFC107" />
+            <SolidColorBrush x:Key="DangerBrush" Color="#DC3545" />
+            <SolidColorBrush x:Key="SecondBackgroundBrush" Color="#6C757D"/>
+            <SolidColorBrush x:Key="DarkGrayBackgroundBrush" Color="#343A40"/>
+            <SolidColorBrush x:Key="LightGrayBackgroundBrush" Color="#F8F9FA"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
