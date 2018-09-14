@@ -50,20 +50,27 @@ namespace CommitteesManager.BLL.Concrete
             IRepository<Environment> envRepo = _dataProvider.Environments;
 
             bool loadResult = true;
-            loadResult &= DateTime.TryParse(envRepo.FindBy(x => x.EnvName == "AdmissionStartDate").FirstOrDefault().EnvValue, out DateTime admStartDate);
-            AdmissionStartDate = admStartDate;
+			bool ParseResult = true;
 
-            loadResult &= DateTime.TryParse(envRepo.FindBy(x => x.EnvName == "AdmissionStopDate").FirstOrDefault().EnvValue, out DateTime admStopDate);
-            AdmissionStopDate = admStopDate;
+            loadResult &= ParseResult = DateTime.TryParse(envRepo.FindBy(x => x.EnvName == "AdmissionStartDate").FirstOrDefault()?.EnvValue, out DateTime admStartDate);
+			if (ParseResult)
+				AdmissionStartDate = admStartDate;
 
-            loadResult &= DateTime.TryParse(envRepo.FindBy(x => x.EnvName == "ScheduledCommitteeDate").FirstOrDefault().EnvValue, out DateTime schedDate);
-            CommitteeDate = schedDate.Date;
+			loadResult &= ParseResult = DateTime.TryParse(envRepo.FindBy(x => x.EnvName == "AdmissionStopDate").FirstOrDefault()?.EnvValue, out DateTime admStopDate);
+			if (ParseResult)
+				AdmissionStopDate = admStopDate;
 
-            loadResult &= DateTime.TryParse(envRepo.FindBy(x => x.EnvName == "LastCommitteeDate").FirstOrDefault().EnvValue, out DateTime lastComDate);
-            LastCommitteeDate = lastComDate.Date;
+			loadResult &= ParseResult = DateTime.TryParse(envRepo.FindBy(x => x.EnvName == "ScheduledCommitteeDate").FirstOrDefault()?.EnvValue, out DateTime schedDate);
+            if (ParseResult)
+				CommitteeDate = schedDate.Date;
 
-            loadResult &= Enum.TryParse(envRepo.FindBy(x => x.EnvName == "StatusCommitteeDate").FirstOrDefault().EnvValue, out ScheduleStatus schStatus);
-            Status = schStatus;
+			loadResult &= ParseResult = DateTime.TryParse(envRepo.FindBy(x => x.EnvName == "LastCommitteeDate").FirstOrDefault()?.EnvValue, out DateTime lastComDate);
+			if (ParseResult)
+				LastCommitteeDate = lastComDate.Date;
+
+			loadResult &= ParseResult = Enum.TryParse(envRepo.FindBy(x => x.EnvName == "StatusCommitteeDate").FirstOrDefault()?.EnvValue, out ScheduleStatus schStatus);
+			if (ParseResult)
+				Status = schStatus;
 
             return loadResult;
         }
