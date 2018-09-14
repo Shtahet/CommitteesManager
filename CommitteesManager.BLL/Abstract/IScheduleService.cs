@@ -4,10 +4,11 @@ namespace CommitteesManager.BLL.Abstract
 {
     public enum ScheduleStatus
     {
-        Completed = 0,
+        Undefine = 0,
         Preparing = 1,
         Scheduled = 2,
-        InSession = 3
+        InSession = 3,
+        Completed = 4
     }
     public interface IScheduleService
     {
