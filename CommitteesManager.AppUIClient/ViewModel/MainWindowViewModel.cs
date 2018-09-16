@@ -58,6 +58,8 @@ namespace CommitteesManager.AppUIClient.ViewModel
             {
                 var lastNode = _openedViews.Last;
                 _openedViews.RemoveLast();
+                lastNode.Value.CreateView -= AddSectionToPipe;
+                lastNode.Value.WantToClose -= CloseOpenedSection;
 
                 //Delete filter if exists
                 if (lastNode.Value.Filter != null)
@@ -71,13 +73,15 @@ namespace CommitteesManager.AppUIClient.ViewModel
         private void AddSectionToPipe(object sender, ViewModelEventArgs e)
         {
             ViewModelSection newView = e.VMObject;
+            newView.CreateView += AddSectionToPipe;
+            newView.WantToClose += CloseOpenedSection;
             if (e.JoinType == JoinDirectionEnum.First)
             {
-                _openedViews.AddFirst(e.VMObject);
+                _openedViews.AddFirst(newView);
             }
             else
             {
-                _openedViews.AddLast(e.VMObject);
+                _openedViews.AddLast(newView);
             }
         }
     }
