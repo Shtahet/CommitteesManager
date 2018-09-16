@@ -14,7 +14,8 @@ namespace CommitteesManager.AppUIClient.Infrastructure
         Issues,
         ReqistryOfDecisions,
         Protocols,
-        Filter
+        Filter,
+        CreateMeeting
     }
     
     class ViewModelBase: INotifyPropertyChanged
@@ -51,6 +52,10 @@ namespace CommitteesManager.AppUIClient.Infrastructure
                 case ViewModels.Filter:
                     retView = new FilterViewModel(_service);
                     retView.Name = "Фільтр";
+                    break;
+                case ViewModels.CreateMeeting:
+                    retView = new CreateMeetingViewModel(_service);
+                    retView.Name = "Планування нового засідання";
                     break;
                 default:
                     break;

@@ -32,11 +32,11 @@ namespace CommitteesManager.AppUIClient.ViewModel
                     {
                         ViewModels raiseView = (ViewModels)obj;
                         ViewModelSection newView = ViewModelBase.GetNewSection(raiseView, _serviceProvider);
-                        newView.CreateView += CreateViewLisener;
-                        newView.WantToClose += WantToCloseLisener;
+                        newView.CreateView += AddSectionToPipe;
+                        newView.WantToClose += CloseOpenedSection;
                         
                         //Clear all open section
-                        WantToCloseLisener(this, new ViewModelEventArgs(JoinDirectionEnum.After, null));
+                        CloseOpenedSection(this, new ViewModelEventArgs(JoinDirectionEnum.After, null));
 
                         if (newView.Filter != null)
                             OpenedViews.AddLast(newView.Filter);
@@ -46,7 +46,7 @@ namespace CommitteesManager.AppUIClient.ViewModel
             }
         }
 
-        private void WantToCloseLisener(object sender, ViewModelEventArgs e)
+        private void CloseOpenedSection(object sender, ViewModelEventArgs e)
         {
             ViewModelSection callingObj = sender as ViewModelSection;
 
@@ -68,7 +68,7 @@ namespace CommitteesManager.AppUIClient.ViewModel
             } while (_openedViews.Count > 0);
         }
 
-        private void CreateViewLisener(object sender, ViewModelEventArgs e)
+        private void AddSectionToPipe(object sender, ViewModelEventArgs e)
         {
             ViewModelSection newView = e.VMObject;
             if (e.JoinType == JoinDirectionEnum.First)

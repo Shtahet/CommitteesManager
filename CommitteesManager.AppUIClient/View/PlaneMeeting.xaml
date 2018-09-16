@@ -4,12 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CommitteesManager.AppUIClient.View"
-			 xmlns:conv="clr-namespace:CommitteesManager.AppUIClient.Infrastructure.Converters"
+			 xmlns:converts="clr-namespace:CommitteesManager.AppUIClient.Infrastructure.Converters"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="800" >
 	<UserControl.Resources>
-		<conv:ScheduleStatusToDescribeConverter x:Key="ScheduleConverter"/>
+		<converts:ScheduleStatusToDescribeConverter x:Key="ScheduleConverter"/>
 	</UserControl.Resources>
     <StackPanel >
 		<TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
@@ -18,7 +18,7 @@
                    Margin="20 10 10 0"
                    FontSize="16px"/>
 		<TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                   Text="{Binding Path=LastCommitteeDate}"
+                   Text="{Binding Path=LastCommitteeDate, StringFormat=dd.MM.yyyy}"
                    VerticalAlignment="Center"
                    Margin="20 0 10 0"
                    FontSize="24"/>
@@ -28,7 +28,7 @@
                    Margin="20 10 10 0"
                    FontSize="16px"/>
         <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                   Text="{Binding MeetingStatus, Converter={StaticResource ScheduleConverter}}"
+                   Text="{Binding MeetingStatus, Converter={StaticResource ScheduleConverter}, StringFormat=dd.MM.yyyy}"
                    VerticalAlignment="Center"
                    Margin="20 0 10 0"
                    FontSize="24"/>
@@ -38,96 +38,58 @@
                    Margin="20 10 10 0"
                    FontSize="16px"/>
 		<TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                   Text="{Binding AdmissionStartDate, StringFormat=З {0}}"
+                   Text="{Binding AdmissionStartDate, StringFormat=З {0:dd.MM.yyyy hh:mm}}"
                    VerticalAlignment="Center"
                    Margin="20 0 10 0"
-                   FontSize="24"/>
+                   FontSize="14"/>
 		<TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                   Text="{Binding AdmissionStartDate, StringFormat=З {0}}"
+                   Text="{Binding AdmissionStartDate, StringFormat=По {0:dd.MM.yyyy hh:mm}}"
                    VerticalAlignment="Center"
                    Margin="20 0 10 0"
-                   FontSize="24"/>
-		<GroupBox Header="Планування засідання"
-                  Margin="10 15 10 0"
-                  Style="{DynamicResource ResourceKey=MaterialDesignCardGroupBox}">
-            <GroupBox.Content>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <DatePicker Grid.Row="0" Grid.ColumnSpan="2" 
-                                materialDesign:HintAssist.Hint="Дата засідання" 
-                                materialDesign:HintAssist.FloatingScale="1"
-                                materialDesign:HintAssist.FloatingOffset="0,-20"
-                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
-                                FontSize="16px"
-                                Margin="5 0 0 0"/>
-                    <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
-                               Style="{StaticResource MaterialDesignBody2TextBlock}"
-                               FontSize="16"
-                               Text="Початок прийому заявок"
-                               Margin="5 15 0 0"/>
-                    <DatePicker Grid.Row="2" Grid.Column="0"
-                                materialDesign:HintAssist.Hint="Дата початку прийому"
-                                materialDesign:HintAssist.FloatingScale="1"
-                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                FontSize="12px"
-                                Margin="5 -5 0 0"/>
-                    <materialDesign:TimePicker Grid.Row="2" Grid.Column="1" 
-                                               Is24Hours="True"
-                                               materialDesign:HintAssist.Hint="Час початку прийому"
-                                               materialDesign:HintAssist.FloatingScale="1"
-                                               Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
-                                               Margin="5 -5 0 0"
-                                               FontSize="12px"
-                                               VerticalAlignment="Bottom"/>
-                    <TextBlock Grid.Row="3" Grid.ColumnSpan="2"
-                               Style="{StaticResource MaterialDesignBody2TextBlock}"
-                               FontSize="16"
-                               Text="Завершення прийому заявок"
-                               Margin="5 15 0 0"/>
-                    <DatePicker Grid.Row="4" Grid.Column="0"
-                                materialDesign:HintAssist.Hint="Дата завершення прийому"
-                                materialDesign:HintAssist.FloatingScale="1"
-                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                FontSize="12px"
-                                Margin="5 -5 0 0"/>
-                    <materialDesign:TimePicker Grid.Row="4" Grid.Column="1" 
-                                               Is24Hours="True"
-                                               materialDesign:HintAssist.Hint="Час завершення прийому"
-                                               materialDesign:HintAssist.FloatingScale="1"
-                                               Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
-                                               Margin="5 -5 0 0"
-                                               FontSize="12px"
-                                               VerticalAlignment="Bottom"/>
-                    <Button Grid.Row="5" Grid.ColumnSpan="5"
-                            Style="{StaticResource MaterialDesignRaisedButton}" 
-                            Margin="5 15 10 10"
-                            Padding="5 5"
-                            HorizontalAlignment="Right"
-                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
-                            materialDesign:ButtonProgressAssist.Value="10">
-                         <StackPanel Orientation="Horizontal">
-                            <Viewbox>
-                                <materialDesign:PackIcon Kind="ContentSave" 
-                                                        VerticalAlignment="Center"/>
-                            </Viewbox>
-                            <TextBlock Text="Зберегти"
-                                          FontSize="18px"
-                                          Margin="5 0 0 0"/>
-                         </StackPanel>
-                    </Button>
-                </Grid>
-            </GroupBox.Content>
-        </GroupBox>
+                   FontSize="14"/>
+        <Grid HorizontalAlignment="Right">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" 
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                Background="{StaticResource DangerBrush}"
+                Command="{Binding DismissSchedule}"
+                Margin="5 15 10 10"
+                Padding="5 5"
+                materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                materialDesign:ButtonProgressAssist.Value="10">
+                <StackPanel Orientation="Horizontal">
+                    <Viewbox>
+                        <materialDesign:PackIcon Kind="Cancel" 
+                                             VerticalAlignment="Center"/>
+                    </Viewbox>
+                    <TextBlock Text="Відмінити засідання"
+                           FontSize="18px"
+                           Margin="5 0 0 0"
+                           VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Row="1" 
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                Command="{Binding CreateMeeting}"
+                Margin="5 15 10 10"
+                Padding="5 5">
+                <StackPanel Orientation="Horizontal">
+                    <Viewbox>
+                        <materialDesign:PackIcon Kind="CalendarClock" 
+                                             VerticalAlignment="Center"/>
+                    </Viewbox>
+                    <TextBlock Text="Запланувати засідання"
+                           FontSize="18px"
+                           Margin="5 0 0 0"
+                           VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </Grid>
     </StackPanel>
 </UserControl>

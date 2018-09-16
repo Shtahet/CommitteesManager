@@ -73,12 +73,20 @@
     </ApplicationDefinition>
     <Compile Include="Infrastructure\Converters\ScheduleStatusToDescribeConverter.cs" />
     <Compile Include="Infrastructure\Converters\SectionToViewConverter.cs" />
+    <Compile Include="ViewModel\CreateMeetingViewModel.cs" />
+    <Compile Include="View\CreateMeeting.xaml.cs">
+      <DependentUpon>CreateMeeting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Filter.xaml.cs">
       <DependentUpon>Filter.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PlaneMeeting.xaml.cs">
       <DependentUpon>PlaneMeeting.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\CreateMeeting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Filter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

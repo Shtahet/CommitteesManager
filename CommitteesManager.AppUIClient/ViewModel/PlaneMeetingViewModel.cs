@@ -21,19 +21,55 @@ namespace CommitteesManager.AppUIClient.ViewModel
 			get { return _services.ScheduleService.Status; }
 		}
 
-		public DateTime LastCommitteeDate
+		public DateTime? LastCommitteeDate
 		{
-			get { return _services.ScheduleService.LastCommitteeDate.Date; }
+			get { return _services.ScheduleService.LastCommitteeDate?.Date; }
 		}
 
-		public DateTime AdmissionStartDate
+		public DateTime? AdmissionStartDate
 		{
 			get { return _services.ScheduleService.AdmissionStartDate; }
 		}
 
-		public DateTime AdmissionStopDate
+		public DateTime? AdmissionStopDate
 		{
 			get { return _services.ScheduleService.AdmissionStopDate; }
 		}
+
+        private RelayCommand _dismissScheduleCmd;
+        public RelayCommand DismissSchedule
+        {
+            get
+            {
+                if (_dismissScheduleCmd == null)
+                    _dismissScheduleCmd = new RelayCommand(
+                        obj => 
+                    {
+                        _services.ScheduleService.DismissSchedule();
+                    }, 
+                        execObj => 
+                    {
+                        return MeetingStatus == ScheduleStatus.Preparing || MeetingStatus == ScheduleStatus.Scheduled;
+                    });
+
+                return _dismissScheduleCmd;
+            }
+        }
+
+        private RelayCommand _createMeeting;
+        public RelayCommand CreateMeeting
+        {
+            get
+            {
+                if (_createMeeting == null)
+                    _createMeeting = new RelayCommand(obj =>
+                    {
+                        ViewModelSection createMeeting = ViewModelBase.GetNewSection(ViewModels.CreateMeeting, _services);
+                        InvokeCreateViewEvent(this, new ViewModelEventArgs(JoinDirectionEnum.After, createMeeting));
+                    });
+
+                return _createMeeting;
+            }
+        }
 	}
 }

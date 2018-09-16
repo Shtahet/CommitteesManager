@@ -22,6 +22,9 @@ namespace CommitteesManager.AppUIClient.Infrastructure.Converters
                 case PlaneMeetingViewModel pmvm:
                     retValue = new PlaneMeeting();                   
                     break;
+                case CreateMeetingViewModel cmvm:
+                    retValue = new CreateMeeting();
+                    break;
                 case FilterViewModel fvm:
                     retValue = new Filter();
                     break;
