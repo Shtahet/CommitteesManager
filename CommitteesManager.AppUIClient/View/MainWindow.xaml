@@ -10,7 +10,8 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="Менеджер засідань комітетів" 
-        Height="700" Width="1000"
+        ResizeMode="CanResizeWithGrip"
+        WindowState="Maximized"
         WindowStartupLocation="CenterScreen" IsHitTestVisible="True">
     <Window.Resources>
         <Storyboard x:Key="MenuOpen">
