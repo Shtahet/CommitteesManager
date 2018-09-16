@@ -33,6 +33,9 @@ namespace CommitteesManager.AppUIClient.Infrastructure.Converters
                 case ScheduleStatus.InSession:
                     statusDescribe = "Триває захист";
                     break;
+                case ScheduleStatus.Undefine:
+                    statusDescribe = "Не визначено";
+                    break;
                 default:
                     break;
             }
