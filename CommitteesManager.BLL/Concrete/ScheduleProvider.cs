@@ -20,10 +20,10 @@ namespace CommitteesManager.BLL.Concrete
             LoadData();
         }
 
-        public DateTime AdmissionStartDate { get; set; }
-        public DateTime AdmissionStopDate { get; set; }
-        public DateTime CommitteeDate { get; set; }
-        public DateTime LastCommitteeDate { get; set; }
+        public DateTime? AdmissionStartDate { get; set; }
+        public DateTime? AdmissionStopDate { get; set; }
+        public DateTime? CommitteeDate { get; set; }
+        public DateTime? LastCommitteeDate { get; set; }
         public ScheduleStatus Status { get; set; }
 
         public bool CloseSchedule()
@@ -40,7 +40,7 @@ namespace CommitteesManager.BLL.Concrete
             throw new NotImplementedException();
         }
 
-        protected bool SaveChange()
+        public bool SaveChange()
         {
             throw new NotImplementedException();
         }

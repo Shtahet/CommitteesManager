@@ -12,13 +12,14 @@ namespace CommitteesManager.BLL.Abstract
     }
     public interface IScheduleService
     {
-        DateTime AdmissionStartDate { get; set; }
-        DateTime AdmissionStopDate { get; set; }
-        DateTime CommitteeDate { get; set; }
-        DateTime LastCommitteeDate { get; set; }
+        DateTime? AdmissionStartDate { get; set; }
+        DateTime? AdmissionStopDate { get; set; }
+        DateTime? CommitteeDate { get; set; }
+        DateTime? LastCommitteeDate { get; set; }
         ScheduleStatus Status { get; set; }
         bool OpenSchedule();
         bool CloseSchedule();
         bool DismissSchedule();
+        bool SaveChange();
     }
 }
