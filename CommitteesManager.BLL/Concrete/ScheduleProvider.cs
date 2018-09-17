@@ -12,7 +12,13 @@ namespace CommitteesManager.BLL.Concrete
 {
     class ScheduleProvider: IScheduleService
     {
-        private readonly IDataProvider _dataProvider;
+		public const string AdmissionStartDateName = "AdmissionStartDate";
+		public const string AdmissionStopDateName = "AdmissionStopDate";
+		public const string CommitteeDateName = "ScheduledCommitteeDate";
+		public const string LastCommitteeDateName = "LastCommitteeDate";
+		public const string StatusName = "StatusCommitteeDate";
+
+		private readonly IDataProvider _dataProvider;
 
         public ScheduleProvider(IDataProvider provider)
         {
@@ -33,7 +39,63 @@ namespace CommitteesManager.BLL.Concrete
 
         public bool OpenSchedule()
         {
-            throw new NotImplementedException();
+			Environment startDate = _dataProvider.Environments.FindBy(x => x.EnvName == AdmissionStartDateName).FirstOrDefault();
+			if (startDate == null)
+			{
+				startDate = new Environment()
+				{
+					EnvName = AdmissionStartDateName,
+				};
+			}
+			startDate.EnvValue = AdmissionStartDate.ToString();
+			_dataProvider.Environments.AddOrUpdate(startDate);
+			
+
+			Environment stopDate = _dataProvider.Environments.FindBy(x => x.EnvName == AdmissionStopDateName).FirstOrDefault();
+			if (stopDate == null)
+			{
+				stopDate = new Environment()
+				{
+					EnvName = AdmissionStopDateName,
+				};
+			}
+			stopDate.EnvValue = AdmissionStopDate.ToString();
+			_dataProvider.Environments.AddOrUpdate(stopDate);
+
+			Environment committeeDate = _dataProvider.Environments.FindBy(x => x.EnvName == CommitteeDateName).FirstOrDefault();
+			if (committeeDate == null)
+			{
+				committeeDate = new Environment()
+				{
+					EnvName = CommitteeDateName,
+				};
+			}
+			committeeDate.EnvValue = CommitteeDate.ToString();
+			_dataProvider.Environments.AddOrUpdate(committeeDate);
+
+			Environment lastCommitteeDate = _dataProvider.Environments.FindBy(x => x.EnvName == LastCommitteeDateName).FirstOrDefault();
+			if (lastCommitteeDate == null)
+			{
+				lastCommitteeDate = new Environment()
+				{
+					EnvName = LastCommitteeDateName
+				};
+			}
+			lastCommitteeDate.EnvValue = LastCommitteeDate.ToString();
+			_dataProvider.Environments.AddOrUpdate(lastCommitteeDate);
+
+			ScheduleStatus committeStatus = (DateTime.Now >= AdmissionStartDate && DateTime.Now <= AdmissionStopDate) ? ScheduleStatus.Preparing : ScheduleStatus.Scheduled;
+			Environment dbStatus = _dataProvider.Environments.FindBy(x => x.EnvName == StatusName).FirstOrDefault();
+			if (dbStatus == null)
+			{
+				dbStatus = new Environment()
+				{
+					EnvName = StatusName
+				};
+			}
+			dbStatus.EnvValue = committeStatus.ToString();
+
+			return true;
         }
         public bool DismissSchedule()
         {
@@ -52,23 +114,23 @@ namespace CommitteesManager.BLL.Concrete
             bool loadResult = true;
 			bool ParseResult = true;
 
-            loadResult &= ParseResult = DateTime.TryParse(envRepo.FindBy(x => x.EnvName == "AdmissionStartDate").FirstOrDefault()?.EnvValue, out DateTime admStartDate);
+            loadResult &= ParseResult = DateTime.TryParse(envRepo.FindBy(x => x.EnvName == AdmissionStartDateName).FirstOrDefault()?.EnvValue, out DateTime admStartDate);
 			if (ParseResult)
 				AdmissionStartDate = admStartDate;
 
-			loadResult &= ParseResult = DateTime.TryParse(envRepo.FindBy(x => x.EnvName == "AdmissionStopDate").FirstOrDefault()?.EnvValue, out DateTime admStopDate);
+			loadResult &= ParseResult = DateTime.TryParse(envRepo.FindBy(x => x.EnvName == AdmissionStopDateName).FirstOrDefault()?.EnvValue, out DateTime admStopDate);
 			if (ParseResult)
 				AdmissionStopDate = admStopDate;
 
-			loadResult &= ParseResult = DateTime.TryParse(envRepo.FindBy(x => x.EnvName == "ScheduledCommitteeDate").FirstOrDefault()?.EnvValue, out DateTime schedDate);
+			loadResult &= ParseResult = DateTime.TryParse(envRepo.FindBy(x => x.EnvName == CommitteeDateName).FirstOrDefault()?.EnvValue, out DateTime schedDate);
             if (ParseResult)
 				CommitteeDate = schedDate.Date;
 
-			loadResult &= ParseResult = DateTime.TryParse(envRepo.FindBy(x => x.EnvName == "LastCommitteeDate").FirstOrDefault()?.EnvValue, out DateTime lastComDate);
+			loadResult &= ParseResult = DateTime.TryParse(envRepo.FindBy(x => x.EnvName == LastCommitteeDateName).FirstOrDefault()?.EnvValue, out DateTime lastComDate);
 			if (ParseResult)
 				LastCommitteeDate = lastComDate.Date;
 
-			loadResult &= ParseResult = Enum.TryParse(envRepo.FindBy(x => x.EnvName == "StatusCommitteeDate").FirstOrDefault()?.EnvValue, out ScheduleStatus schStatus);
+			loadResult &= ParseResult = Enum.TryParse(envRepo.FindBy(x => x.EnvName == StatusName).FirstOrDefault()?.EnvValue, out ScheduleStatus schStatus);
 			if (ParseResult)
 				Status = schStatus;
 
