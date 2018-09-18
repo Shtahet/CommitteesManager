@@ -81,8 +81,26 @@
                             materialDesign:ButtonProgressAssist.Value="10">
             <StackPanel Orientation="Horizontal">
                 <Viewbox>
-                    <materialDesign:PackIcon Kind="ContentSave" 
-                                                        VerticalAlignment="Center"/>
+                    <materialDesign:PackIcon >
+                        <materialDesign:PackIcon.Style>
+                            <Style TargetType="materialDesign:PackIcon" BasedOn="{StaticResource {x:Type materialDesign:PackIcon}}">
+                                <Setter Property="Kind" Value="ContentSave"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsSaveCompleted}" Value="True">
+                                        <Setter Property="Kind" Value="Check"/>
+                                        <DataTrigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:00:2"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </DataTrigger.EnterActions>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </materialDesign:PackIcon.Style>
+                    </materialDesign:PackIcon>
                 </Viewbox>
                 <TextBlock Text="Зберегти"
                                           FontSize="18px"

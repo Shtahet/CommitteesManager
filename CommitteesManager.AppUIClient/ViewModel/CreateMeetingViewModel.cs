@@ -21,6 +21,16 @@ namespace CommitteesManager.AppUIClient.ViewModel
         public DateTime? AdmissionStartTime { get; set; }
         public DateTime? AdmissionStopDate { get; set; }
         public DateTime? AdmissionStopTime { get; set; }
+        private bool _isSaveCompleted;
+        public bool IsSaveCompleted
+        {
+            get { return _isSaveCompleted; }
+            private set
+            {
+                _isSaveCompleted = value;
+                OnPropertyChanged("IsSaveCompleted");
+            }
+        }
 
         private RelayCommand _createMeeting;
         public RelayCommand CreateMeeting
@@ -47,7 +57,7 @@ namespace CommitteesManager.AppUIClient.ViewModel
             service.CommitteeDate = CommeetteeDate;
             service.AdmissionStartDate = AdmissionStartDate.Value.AddTicks(AdmissionStartTime.Value.Ticks);
             service.AdmissionStopDate = AdmissionStopDate.Value.AddTicks(AdmissionStopTime.Value.Ticks);
-            service.OpenSchedule();
+            IsSaveCompleted = service.OpenSchedule();
         }
     }
 }
