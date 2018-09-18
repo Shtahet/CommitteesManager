@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 using CommitteesManager.AppUIClient.Infrastructure;
 using CommitteesManager.BLL.Abstract;
 using IServiceProvider = CommitteesManager.BLL.Abstract.IServiceProvider;
@@ -16,6 +17,9 @@ namespace CommitteesManager.AppUIClient.ViewModel
         }
         public override ViewModelSection Filter { get => null; set { } }
 
+        private const double Interval = 50;         //Milliseconds
+        private const int SaveTime = 600;           //Milliseconds
+
         public DateTime? CommeetteeDate { get; set; }
         public DateTime? AdmissionStartDate { get; set; }
         public DateTime? AdmissionStartTime { get; set; }
@@ -28,7 +32,16 @@ namespace CommitteesManager.AppUIClient.ViewModel
             private set
             {
                 _isSaveCompleted = value;
-                OnPropertyChanged("IsSaveCompleted");
+            }
+        }
+        private double _saveProgress;
+        public double SaveProgressRate
+        {
+            get { return _saveProgress; }
+            private set
+            {
+                _saveProgress = value;
+                OnPropertyChanged("SaveProgressRate");
             }
         }
 
@@ -51,8 +64,35 @@ namespace CommitteesManager.AppUIClient.ViewModel
             }
         }
 
+        private DispatcherTimer _timer;
+
+        private void RaiseTimer()
+        {
+            _timer = new DispatcherTimer(
+                TimeSpan.FromMilliseconds(Interval),
+                DispatcherPriority.Normal,
+                new EventHandler( (o,e) =>
+                {
+                    SaveProgressRate += SaveTime / Interval;
+
+                    if (SaveProgressRate >= 100 && IsSaveCompleted)
+                    {
+                        ((DispatcherTimer)o).Stop();
+                        OnPropertyChanged("IsSaveCompleted");
+                        SaveProgressRate = 0;
+                    }
+                    if (SaveProgressRate >= 100)
+                    {
+                        SaveProgressRate = 0;
+                    }
+                }),
+                Dispatcher.CurrentDispatcher);
+            _timer.Start();
+        }
+
         private void saveMeeting(object obj)
         {
+            RaiseTimer();
             IScheduleService service = _services.ScheduleService;
             service.CommitteeDate = CommeetteeDate;
             service.AdmissionStartDate = AdmissionStartDate.Value.AddTicks(AdmissionStartTime.Value.Ticks);

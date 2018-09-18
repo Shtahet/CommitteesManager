@@ -77,8 +77,7 @@
                             Margin="5 15 10 10"
                             Padding="5 5"
                             HorizontalAlignment="Right"
-                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
-                            materialDesign:ButtonProgressAssist.Value="10">
+                            materialDesign:ButtonProgressAssist.Value="{Binding Path=SaveProgressRate}">
             <StackPanel Orientation="Horizontal">
                 <Viewbox>
                     <materialDesign:PackIcon >
@@ -92,7 +91,7 @@
                                         <DataTrigger.EnterActions>
                                             <BeginStoryboard>
                                                 <Storyboard>
-                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:00:2"/>
+                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:00:0.8"/>
                                                 </Storyboard>
                                             </BeginStoryboard>
                                         </DataTrigger.EnterActions>
