@@ -95,8 +95,8 @@ namespace CommitteesManager.AppUIClient.ViewModel
             RaiseTimer();
             IScheduleService service = _services.ScheduleService;
             service.CommitteeDate = CommeetteeDate;
-            service.AdmissionStartDate = AdmissionStartDate.Value.AddTicks(AdmissionStartTime.Value.Ticks);
-            service.AdmissionStopDate = AdmissionStopDate.Value.AddTicks(AdmissionStopTime.Value.Ticks);
+            service.AdmissionStartDate = AdmissionStartDate.Value.Add(new TimeSpan(AdmissionStartTime.Value.Hour, AdmissionStartTime.Value.Minute, 0));
+            service.AdmissionStopDate = AdmissionStopDate.Value.Add(new TimeSpan(AdmissionStopTime.Value.Hour, AdmissionStopTime.Value.Minute, 0));
             IsSaveCompleted = service.OpenSchedule();
         }
     }

@@ -39,7 +39,7 @@ namespace CommitteesManager.BLL.Concrete
 
         public bool OpenSchedule()
         {
-			Environment startDate = _dataProvider.Environments.FindBy(x => x.EnvName == AdmissionStartDateName).FirstOrDefault();
+            Environment startDate = _dataProvider.Environments.FindBy(x => x.EnvName == AdmissionStartDateName).FirstOrDefault();
 			if (startDate == null)
 			{
 				startDate = new Environment()
@@ -94,6 +94,7 @@ namespace CommitteesManager.BLL.Concrete
 				};
 			}
 			dbStatus.EnvValue = committeStatus.ToString();
+            _dataProvider.Environments.AddOrUpdate(dbStatus);
 
 			return true;
         }

@@ -18,7 +18,7 @@
                    Margin="20 10 10 0"
                    FontSize="16px"/>
 		<TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                   Text="{Binding Path=LastCommitteeDate, StringFormat=dd.MM.yyyy}"
+                   Text="{Binding Path=CommitteeDate, StringFormat=dd.MM.yyyy}"
                    VerticalAlignment="Center"
                    Margin="20 0 10 0"
                    FontSize="24"/>
@@ -38,12 +38,12 @@
                    Margin="20 10 10 0"
                    FontSize="16px"/>
 		<TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                   Text="{Binding AdmissionStartDate, StringFormat=З {0:dd.MM.yyyy hh:mm}}"
+                   Text="{Binding AdmissionStartDate, StringFormat=З {0:dd.MM.yyyy HH:mm}}"
                    VerticalAlignment="Center"
                    Margin="20 0 10 0"
                    FontSize="14"/>
 		<TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                   Text="{Binding AdmissionStartDate, StringFormat=По {0:dd.MM.yyyy hh:mm}}"
+                   Text="{Binding AdmissionStopDate, StringFormat=По {0:dd.MM.yyyy HH:mm}}"
                    VerticalAlignment="Center"
                    Margin="20 0 10 0"
                    FontSize="14"/>
