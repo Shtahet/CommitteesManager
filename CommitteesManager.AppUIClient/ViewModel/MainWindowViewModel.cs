@@ -3,6 +3,7 @@ using CommitteesManager.BLL.Abstract;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace CommitteesManager.AppUIClient.ViewModel
 {
@@ -13,6 +14,20 @@ namespace CommitteesManager.AppUIClient.ViewModel
         {
             _serviceProvider = services;
             _openedViews = new ObservableLinkedList<ViewModelSection>();
+        }
+
+        private ListViewItem _selectedMenuItem;
+        public ListViewItem SelectedMenuItem
+        {
+            get
+            {
+                return _selectedMenuItem;
+            }
+            set
+            {
+                _selectedMenuItem = value;
+                OnPropertyChanged("SelectedMenu");
+            }
         }
 
         private ObservableLinkedList<ViewModelSection> _openedViews;
@@ -68,6 +83,10 @@ namespace CommitteesManager.AppUIClient.ViewModel
                 if (lastNode.Value == callingObj)
                     break;
             } while (_openedViews.Count > 0);
+            if (_openedViews.Count == 0)
+            {
+                SelectedMenuItem.IsSelected = false;
+            }
         }
 
         private void AddSectionToPipe(object sender, ViewModelEventArgs e)

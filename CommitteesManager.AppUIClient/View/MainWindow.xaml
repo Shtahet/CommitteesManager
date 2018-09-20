@@ -91,7 +91,8 @@
               Background="{DynamicResource PrimaryHueDarkBrush}"
               Width="50">
             <ListView DockPanel.Dock="Left"
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      SelectedItem="{Binding Path=SelectedMenuItem, Mode=TwoWay}">
                 <ListView.Resources>
                     <Style x:Key ="MainMenuListItemStyle" TargetType="ListViewItem"
                            BasedOn="{StaticResource MaterialDesignListBoxItem}">
