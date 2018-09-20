@@ -11,7 +11,8 @@ namespace CommitteesManager.AppUIClient.ViewModel
 {
     class PlaneMeetingViewModel : ViewModelSection
     {
-        public PlaneMeetingViewModel(IServiceProvider provider) : base(provider)
+		private ViewModelSection _createMeetingVM;
+		public PlaneMeetingViewModel(IServiceProvider provider) : base(provider)
         {
         }
         public override ViewModelSection Filter { get => null; set { } }
@@ -64,12 +65,26 @@ namespace CommitteesManager.AppUIClient.ViewModel
                 if (_createMeeting == null)
                     _createMeeting = new RelayCommand(obj =>
                     {
-                        ViewModelSection createMeeting = ViewModelBase.GetNewSection(ViewModels.CreateMeeting, _services);
-                        InvokeCreateViewEvent(this, new ViewModelEventArgs(JoinDirectionEnum.After, createMeeting));
+                        _createMeetingVM = ViewModelBase.GetNewSection(ViewModels.CreateMeeting, _services);
+						_createMeetingVM.WantToClose += GetResultFromSection;
+                        InvokeCreateViewEvent(this, new ViewModelEventArgs(JoinDirectionEnum.After, _createMeetingVM));
                     });
 
                 return _createMeeting;
             }
         }
+
+		private void GetResultFromSection(object sender, ViewModelEventArgs e)
+		{
+			OnPropertyChanged("MeetingStatus");
+			OnPropertyChanged("CommitteeDate");
+			OnPropertyChanged("AdmissionStartDate");
+			OnPropertyChanged("AdmissionStopDate");
+			ViewModelSection castSender = sender as ViewModelSection;
+			if (castSender != null)
+			{
+				castSender.WantToClose -= GetResultFromSection;
+			}
+		}
 	}
 }

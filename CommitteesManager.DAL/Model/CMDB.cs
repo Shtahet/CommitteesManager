@@ -9,7 +9,7 @@ namespace CommitteesManager.DAL.Model
     public partial class CMDB : DbContext
     {
         public CMDB()
-            : base("name=CMDB")
+            : base("name=CMDB2")
         {
         }
 
