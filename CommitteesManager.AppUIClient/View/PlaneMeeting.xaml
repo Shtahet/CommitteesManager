@@ -61,12 +61,30 @@
                 Command="{Binding DismissSchedule}"
                 Margin="5 15 10 10"
                 Padding="5 5"
-                materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
-                materialDesign:ButtonProgressAssist.Value="10">
+                materialDesign:ButtonProgressAssist.Value="{Binding Path=SaveProgressRate}">
                 <StackPanel Orientation="Horizontal">
                     <Viewbox>
-                        <materialDesign:PackIcon Kind="Cancel" 
-                                             VerticalAlignment="Center"/>
+                        <materialDesign:PackIcon >
+                            <materialDesign:PackIcon.Style>
+                                <Style TargetType="materialDesign:PackIcon" BasedOn="{StaticResource {x:Type materialDesign:PackIcon}}">
+                                    <Setter Property="Kind" Value="Cancel"/>
+                                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsCanceled}" Value="True">
+                                            <Setter Property="Kind" Value="Check"/>
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:00:0.8"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </materialDesign:PackIcon.Style>
+                        </materialDesign:PackIcon>
                     </Viewbox>
                     <TextBlock Text="Відмінити засідання"
                            FontSize="18px"
