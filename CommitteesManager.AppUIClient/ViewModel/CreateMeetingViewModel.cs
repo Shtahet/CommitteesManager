@@ -25,15 +25,8 @@ namespace CommitteesManager.AppUIClient.ViewModel
         public DateTime? AdmissionStartTime { get; set; }
         public DateTime? AdmissionStopDate { get; set; }
         public DateTime? AdmissionStopTime { get; set; }
-        private bool _isSaveCompleted;
-        public bool IsSaveCompleted
-        {
-            get { return _isSaveCompleted; }
-            private set
-            {
-                _isSaveCompleted = value;
-            }
-        }
+        public bool IsSaveCompleted { get; private set; }
+
         private double _saveProgress;
         public double SaveProgressRate
         {
@@ -51,7 +44,7 @@ namespace CommitteesManager.AppUIClient.ViewModel
             get
             {
                 if (_createMeeting == null)
-                    _createMeeting = new RelayCommand(saveMeeting, obj =>
+                    _createMeeting = new RelayCommand(SaveMeeting, obj =>
                     {
                         return CommeetteeDate != null &&
                             AdmissionStartDate != null &&
@@ -90,7 +83,7 @@ namespace CommitteesManager.AppUIClient.ViewModel
             _timer.Start();
         }
 
-        private void saveMeeting(object obj)
+        private void SaveMeeting(object obj)
         {
             RaiseTimer();
             IScheduleService service = _services.ScheduleService;
