@@ -149,7 +149,7 @@
                         </TextBlock>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem Style="{StaticResource MainMenuListItemStyle}">
+                <!--<ListViewItem Style="{StaticResource MainMenuListItemStyle}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Selected">
                             <i:InvokeCommandAction Command="{Binding SelectMenu}" CommandParameter="{x:Static localInfra:ViewModels.Protocols}"/>
@@ -163,7 +163,7 @@
                         Результати виконання
                         </TextBlock>
                     </StackPanel>
-                </ListViewItem>
+                </ListViewItem>-->
             </ListView>
         </Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
