@@ -85,6 +85,7 @@ namespace CommitteesManager.BLL.Concrete
 			_dataProvider.Environments.AddOrUpdate(lastCommitteeDate);
 
 			ScheduleStatus committeStatus = (DateTime.Now >= AdmissionStartDate && DateTime.Now <= AdmissionStopDate) ? ScheduleStatus.Preparing : ScheduleStatus.Scheduled;
+			Status = committeStatus;
 			Environment dbStatus = _dataProvider.Environments.FindBy(x => x.EnvName == StatusName).FirstOrDefault();
 			if (dbStatus == null)
 			{

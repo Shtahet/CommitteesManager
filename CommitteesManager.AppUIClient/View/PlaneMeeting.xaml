@@ -28,7 +28,7 @@
                    Margin="20 10 10 0"
                    FontSize="16px"/>
         <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                   Text="{Binding MeetingStatus, Converter={StaticResource ScheduleConverter}, StringFormat=dd.MM.yyyy}"
+                   Text="{Binding MeetingStatus, Converter={StaticResource ScheduleConverter}, Mode=OneWay, StringFormat=dd.MM.yyyy}"
                    VerticalAlignment="Center"
                    Margin="20 0 10 0"
                    FontSize="24"/>
