@@ -8,7 +8,8 @@ namespace CommitteesManager.BLL.Abstract
         Preparing = 1,
         Scheduled = 2,
         InSession = 3,
-        Completed = 4
+        Completed = 4,
+        Canceled = 5
     }
     public interface IScheduleService
     {

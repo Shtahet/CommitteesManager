@@ -36,6 +36,9 @@ namespace CommitteesManager.AppUIClient.Infrastructure.Converters
                 case ScheduleStatus.Undefine:
                     statusDescribe = "Не визначено";
                     break;
+                case ScheduleStatus.Canceled:
+                    statusDescribe = "Відмінено";
+                    break;
                 default:
                     break;
             }
