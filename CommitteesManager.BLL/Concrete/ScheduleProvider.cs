@@ -84,8 +84,7 @@ namespace CommitteesManager.BLL.Concrete
 			lastCommitteeDate.EnvValue = LastCommitteeDate.ToString();
 			_dataProvider.Environments.AddOrUpdate(lastCommitteeDate);
 
-			ScheduleStatus committeStatus = (DateTime.Now >= AdmissionStartDate && DateTime.Now <= AdmissionStopDate) ? ScheduleStatus.Preparing : ScheduleStatus.Scheduled;
-			Status = committeStatus;
+            Status = (DateTime.Now >= AdmissionStartDate && DateTime.Now <= AdmissionStopDate) ? ScheduleStatus.Preparing : ScheduleStatus.Scheduled;
 			Environment dbStatus = _dataProvider.Environments.FindBy(x => x.EnvName == StatusName).FirstOrDefault();
 			if (dbStatus == null)
 			{
@@ -94,14 +93,29 @@ namespace CommitteesManager.BLL.Concrete
 					EnvName = StatusName
 				};
 			}
-			dbStatus.EnvValue = committeStatus.ToString();
+			dbStatus.EnvValue = Status.ToString();
             _dataProvider.Environments.AddOrUpdate(dbStatus);
 
 			return true;
         }
         public bool DismissSchedule()
         {
-            throw new NotImplementedException();
+            bool result = false;
+            LoadData();
+            if (Status == ScheduleStatus.Preparing || Status == ScheduleStatus.Scheduled)
+            {
+                Status = ScheduleStatus.Canceled;
+                Environment dbStatus = _dataProvider.Environments.FindBy(x => x.EnvName == StatusName).FirstOrDefault();
+                if (dbStatus == null)
+                {
+                    dbStatus = new Environment() { EnvName = StatusName };
+                }
+                dbStatus.EnvValue = Status.ToString();
+                _dataProvider.Environments.AddOrUpdate(dbStatus);
+                result = true;
+            }
+
+            return result;
         }
 
         public bool SaveChange()
