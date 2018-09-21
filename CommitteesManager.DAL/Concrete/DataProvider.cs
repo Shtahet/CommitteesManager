@@ -13,11 +13,14 @@ namespace CommitteesManager.DAL.Concrete
     {
         private CMDB _dbContext;
         private GeneralRepository<Environment> _environmentRepo;
+		private GeneralRepository<Committee> _committeeRepo;
+		private GeneralRepository<Mode> _modeRepo;
+		private GeneralRepository<DealType> _dealTypeRepo;
         public DataProvider()
         {
             _dbContext = new CMDB();
         }
-        public IRepository<Model.Environment> Environments
+        public IRepository<Environment> Environments
         {
             get
             {
@@ -28,5 +31,31 @@ namespace CommitteesManager.DAL.Concrete
                 return _environmentRepo;
             }
         }
-    }
+
+		public IRepository<Committee> Committees
+		{
+			get
+			{
+				if (_committeeRepo == null)
+				{
+					_committeeRepo = new GeneralRepository<Committee>(_dbContext);
+				}
+				return _committeeRepo;
+			}
+		}
+
+		public IRepository<Mode> Modes
+		{
+			get
+			{
+				if (_modeRepo == null)
+				{
+					_modeRepo = new GeneralRepository<Mode>(_dbContext);
+				}
+				return _modeRepo;
+			}
+		}
+
+		public IRepository<DealType> DealTypes => throw new NotImplementedException();
+	}
 }
