@@ -12,5 +12,8 @@ namespace CommitteesManager.DAL.Abstract
     public interface IDataProvider
     {
         IRepository<Environment> Environments { get; }
+		IRepository<Committee> Committees { get; }
+		IRepository<Mode> Modes { get; }
+		IRepository<DealType> DealTypes { get; }
     }
 }
