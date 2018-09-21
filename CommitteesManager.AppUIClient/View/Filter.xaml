@@ -12,17 +12,41 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBox materialDesign:HintAssist.Hint="Тип комітету"
-                 Grid.Row="0"
+		<!--Filter for Committee type-->
+        <TextBox Grid.Row="0" 
+				 materialDesign:HintAssist.Hint="Тип комітету"
+				 materialDesign:HintAssist.FloatingScale="1"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  Margin="5"/>
-        <materialDesign:PackIcon Kind="Magnify"
-                                 Foreground="{DynamicResource PrimaryHueDarkBrush}"
-                                 Grid.Row="0"
-                                 VerticalAlignment="Center"
-                                 HorizontalAlignment="Right"
-                                 Margin="0 10 5 0"/>
+		<Button Grid.Row="0"
+				HorizontalAlignment="Right"
+				VerticalAlignment="Center"
+				Height="Auto" Width="Auto"
+				Margin="0 15 5 0"
+				Padding="0"
+				Style="{x:Null}"
+				Background="{x:Null}"
+				BorderBrush="{x:Null}">
+			<materialDesign:PackIcon Kind="Magnify"
+									 Foreground="{DynamicResource PrimaryHueDarkBrush}"
+									 VerticalAlignment="Center" HorizontalAlignment="Center"
+									 Margin="0" Padding="0"/>
+		</Button>
         <ListBox Grid.Row="1">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -31,5 +55,147 @@
             </ListBox.ItemsPanel>
         </ListBox>
         <ListBox Grid.Row="2"></ListBox>
-    </Grid>
+		<Button Grid.Row="3"
+				Style="{StaticResource MaterialDesignFlatButton}"
+				Padding="40 5"
+				HorizontalAlignment="Center"
+				Height="Auto"
+				BorderBrush="{StaticResource PrimaryHueLightBrush}" BorderThickness="1">
+				<materialDesign:PackIcon Kind="DragHorizontal"/>
+		</Button>
+		<!--End filter for Committee type-->
+		<!--Filter for Deal mode type-->
+		<TextBox Grid.Row="4"
+				 materialDesign:HintAssist.Hint="Тип слухання"
+				 materialDesign:HintAssist.FloatingScale="1"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 Margin="5"/>
+		<Button Grid.Row="4"
+				HorizontalAlignment="Right"
+				VerticalAlignment="Center"
+				Height="Auto" Width="Auto"
+				Margin="0 15 5 0"
+				Padding="0"
+				Style="{x:Null}"
+				Background="{x:Null}"
+				BorderBrush="{x:Null}">
+			<materialDesign:PackIcon Kind="Magnify"
+									 Foreground="{DynamicResource PrimaryHueDarkBrush}"
+									 VerticalAlignment="Center" HorizontalAlignment="Center"
+									 Margin="0" Padding="0"/>
+		</Button>
+		<ListBox Grid.Row="5">
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel Orientation="Horizontal"/>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+		</ListBox>
+		<ListBox Grid.Row="6"></ListBox>
+		<Button Grid.Row="7"
+				Style="{StaticResource MaterialDesignFlatButton}"
+				Padding="40 5"
+				HorizontalAlignment="Center"
+				Height="Auto"
+				BorderBrush="{StaticResource PrimaryHueLightBrush}" BorderThickness="1">
+			<materialDesign:PackIcon Kind="DragHorizontal"/>
+		</Button>
+		<!--End filter for Deal mode type-->
+		<!--Filter for start/end period-->
+		<Grid Grid.Row="8">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<DatePicker Grid.Column="0"
+                    materialDesign:HintAssist.Hint="Від дати"
+                    materialDesign:HintAssist.FloatingScale="1"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                    SelectedDate="{Binding Path=AdmissionStartDate, Mode=OneWayToSource}"
+                    FontSize="12px"
+                    Margin="5"/>
+			<DatePicker Grid.Column="1"
+                    materialDesign:HintAssist.Hint="До дати"
+                    materialDesign:HintAssist.FloatingScale="1"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                    SelectedDate="{Binding Path=AdmissionStartDate, Mode=OneWayToSource}"
+                    FontSize="12px"
+                    Margin="5"/>
+		</Grid>
+		<!--End filter for start/end period-->
+		<!--Filter for Question type-->
+		<TextBox Grid.Row="9"
+				 materialDesign:HintAssist.Hint="Тип питання"
+				 materialDesign:HintAssist.FloatingScale="1"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 Margin="5"/>
+		<Button Grid.Row="9"
+				HorizontalAlignment="Right"
+				VerticalAlignment="Center"
+				Height="Auto" Width="Auto"
+				Margin="0 15 5 0"
+				Padding="0"
+				Style="{x:Null}"
+				Background="{x:Null}"
+				BorderBrush="{x:Null}">
+			<materialDesign:PackIcon Kind="Magnify"
+									 Foreground="{DynamicResource PrimaryHueDarkBrush}"
+									 VerticalAlignment="Center" HorizontalAlignment="Center"
+									 Margin="0" Padding="0"/>
+		</Button>
+		<ListBox Grid.Row="10">
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel Orientation="Horizontal"/>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+		</ListBox>
+		<ListBox Grid.Row="11"></ListBox>
+		<Button Grid.Row="12"
+				Style="{StaticResource MaterialDesignFlatButton}"
+				Padding="40 5"
+				HorizontalAlignment="Center"
+				Height="Auto"
+				BorderBrush="{StaticResource PrimaryHueLightBrush}" BorderThickness="1">
+			<materialDesign:PackIcon Kind="DragHorizontal"/>
+		</Button>
+		<!--End filter for Question type-->
+		<!--Filter for deal type-->
+		<TextBox Grid.Row="13"
+				 materialDesign:HintAssist.Hint="Суть питання"
+				 materialDesign:HintAssist.FloatingScale="1"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 Margin="5"/>
+		<Button Grid.Row="13"
+				HorizontalAlignment="Right"
+				VerticalAlignment="Center"
+				Height="Auto" Width="Auto"
+				Margin="0 15 5 0"
+				Padding="0"
+				Style="{x:Null}"
+				Background="{x:Null}"
+				BorderBrush="{x:Null}">
+			<materialDesign:PackIcon Kind="Magnify"
+									 Foreground="{DynamicResource PrimaryHueDarkBrush}"
+									 VerticalAlignment="Center" HorizontalAlignment="Center"
+									 Margin="0" Padding="0"/>
+		</Button>
+		<ListBox Grid.Row="14">
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel Orientation="Horizontal"/>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+		</ListBox>
+		<ListBox Grid.Row="15"></ListBox>
+		<Button Grid.Row="16"
+				Style="{StaticResource MaterialDesignFlatButton}"
+				Padding="40 5"
+				HorizontalAlignment="Center"
+				Height="Auto"
+				BorderBrush="{StaticResource PrimaryHueLightBrush}" BorderThickness="1">
+			<materialDesign:PackIcon Kind="DragHorizontal"/>
+		</Button>
+		<!--End filter for deal type-->
+	</Grid>
 </UserControl>
