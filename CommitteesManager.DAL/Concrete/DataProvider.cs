@@ -56,6 +56,16 @@ namespace CommitteesManager.DAL.Concrete
 			}
 		}
 
-		public IRepository<DealType> DealTypes => throw new NotImplementedException();
+		public IRepository<DealType> DealTypes
+        {
+            get
+            {
+                if (_dealTypeRepo == null)
+                {
+                    _dealTypeRepo = new GeneralRepository<DealType>(_dbContext);
+                }
+                return _dealTypeRepo;
+            }
+        }
 	}
 }
