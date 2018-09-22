@@ -13,6 +13,6 @@ namespace CommitteesManager.DAL.Abstract
         IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
         T Get(object key);
         void AddOrUpdate(T obj);
-        void Delete(object key);
+        void Delete(T obj);
     }
 }

@@ -25,10 +25,9 @@ namespace CommitteesManager.DAL.Concrete
             _dbContext.SaveChanges();
         }
 
-        public void Delete(object key)
+        public void Delete(T obj)
         {
-            T efObj = dbSet.Find(key);
-            dbSet.Remove(efObj);
+            _dbContext.Entry<T>(obj).State = EntityState.Deleted;
             _dbContext.SaveChanges();
         }
 
