@@ -10,5 +10,7 @@ namespace CommitteesManager.BLL.Abstract
 {
     public interface ICommitteeService: ITemplateService<Committee>
     {
+        Committee Get(int key);
+        void Delete(int key);
     }
 }

@@ -9,5 +9,7 @@ namespace CommitteesManager.BLL.Abstract
 {
     public interface IDealTypeService:ITemplateService<DealType>
     {
+        DealType Get(int Id);
+        void Delete(int Id);
     }
 }

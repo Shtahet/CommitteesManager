@@ -9,5 +9,7 @@ namespace CommitteesManager.BLL.Abstract
 {
     public interface ICommitteModeService:ITemplateService<Mode>
     {
+        Mode Get(int Id);
+        void Delete(int Id);
     }
 }
