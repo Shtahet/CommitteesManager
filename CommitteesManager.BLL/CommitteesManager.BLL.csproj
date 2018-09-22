@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ICommitteeService.cs" />
+    <Compile Include="Abstract\ICommitteModeService.cs" />
+    <Compile Include="Abstract\IDealTypeService.cs" />
     <Compile Include="Abstract\IScheduleService.cs" />
     <Compile Include="Abstract\IServiceProvider.cs" />
+    <Compile Include="Abstract\ITemplateService.cs" />
     <Compile Include="Concrete\ScheduleProvider.cs" />
     <Compile Include="Concrete\ServiceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,5 +9,8 @@ namespace CommitteesManager.BLL.Abstract
     public interface IServiceProvider
     {
         IScheduleService ScheduleService{ get; }
+        ICommitteeService CommitteeService { get; }
+        ICommitteModeService CommitteeModeService { get; }
+        IDealTypeService DealTypeService { get; }
     }
 }
