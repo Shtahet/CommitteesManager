@@ -13,6 +13,8 @@ namespace CommitteesManager.BLL.Concrete
         private readonly IDataProvider _dataProvider;
         private IScheduleService _schedule;
         private ICommitteeService _committee;
+        private ICommitteModeService _comMode;
+        private IDealTypeService _dealType;
         public ServiceProvider(IDataProvider provider)
         {
             _dataProvider = provider;
@@ -36,6 +38,28 @@ namespace CommitteesManager.BLL.Concrete
                     _committee = new CommitteeProvider(_dataProvider);
                 }
                 return _committee;
+            }
+        }
+        public ICommitteModeService CommitteeModeService
+        {
+            get
+            {
+                if(_comMode == null)
+                {
+                    _comMode = new ModeProvider(_dataProvider);
+                }
+                return _comMode;
+            }
+        }
+        public IDealTypeService DealTypeService
+        {
+            get
+            {
+                if (_dealType == null)
+                {
+                    _dealType = new DealTypeProvider(_dataProvider);
+                }
+                return _dealType;
             }
         }
     }
