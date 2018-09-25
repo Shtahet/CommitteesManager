@@ -5,162 +5,231 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CommitteesManager.AppUIClient.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </UserControl.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-		<!--Filter for Committee type-->
-        <TextBox Grid.Row="0" 
-				 materialDesign:HintAssist.Hint="Тип комітету"
-				 materialDesign:HintAssist.FloatingScale="1"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                 Text="{Binding Path=SearchCommitteeMask, UpdateSourceTrigger=PropertyChanged}"
-                 Margin="5"/>
-		<Button Grid.Row="0"
-				HorizontalAlignment="Right"
-				VerticalAlignment="Center"
-				Height="Auto" Width="Auto"
-				Margin="0 15 5 0"
-				Padding="0"
-				Style="{x:Null}"
-				Background="{x:Null}"
-				BorderBrush="{x:Null}">
-			<materialDesign:PackIcon Kind="Magnify"
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!--Filter for Committee type-->
+            <Expander Grid.Row="0"
+                      Margin="5"
+                      materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                <Expander.Header>
+                    <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}"
+                               Text="Тип комітету"/>
+                </Expander.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBox Grid.Row="0" 
+				             materialDesign:HintAssist.Hint="Пошук"
+				             materialDesign:HintAssist.FloatingScale="1"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             Text="{Binding Path=SearchCommitteeMask, UpdateSourceTrigger=PropertyChanged}"
+                             Margin="5"/>
+                    <Button Grid.Row="0"
+				            HorizontalAlignment="Right"
+				            VerticalAlignment="Center"
+				            Height="Auto" Width="Auto"
+				            Margin="0 15 5 0"
+				            Padding="0"
+				            Style="{x:Null}"
+				            Background="{x:Null}"
+				            BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon Kind="Magnify"
+									             Foreground="{DynamicResource PrimaryHueDarkBrush}"
+									             VerticalAlignment="Center" HorizontalAlignment="Center"
+									             Margin="0" Padding="0"/>
+                    </Button>
+                    <ItemsControl Grid.Row="1"
+                                  ItemsSource="{Binding Path=FilteredCommitte}"
+                                  Padding="0" Margin="5"
+                                  Visibility="{Binding Path=FilteredCommitteState, Converter={StaticResource BoolToVis}}"
+                                  MaxWidth="{Binding ElementName=CommitteList, Path=ActualWidth}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <materialDesign:Chip Content="{Binding Path=Committee_name_UA}"
+                                                     IsDeletable="True" 
+                                                     Margin="5 5 0 0" Padding="0">
+                                    <materialDesign:Chip.LayoutTransform>
+                                        <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
+                                    </materialDesign:Chip.LayoutTransform>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="DeleteClick">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.UnselectCommittee}" CommandParameter="{Binding}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </materialDesign:Chip>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <ListBox Grid.Row="2" x:Name="CommitteList"
+                             ItemsSource="{Binding Path=Committees}"
+                             DisplayMemberPath="Committee_name_UA"
+                             Margin="5 5 5 0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectCommittee}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBox}}, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBox>
+                    <Button Grid.Row="3" Style="{StaticResource MaterialDesignFlatButton}"
+                            Command="{Binding ShowAllCommittees}"
+				            Padding="40 5" Margin="5"
+				            HorizontalAlignment="Stretch"
+				            Height="Auto"
+                            Visibility="{Binding Path=ShowAllCommitteBtnState, Converter={StaticResource BoolToVis}}"
+				            BorderBrush="{StaticResource PrimaryHueLightBrush}" BorderThickness="1">
+                        <materialDesign:PackIcon Kind="DragHorizontal"/>
+                    </Button>
+                </Grid>
+            </Expander>
+            <!--End filter for Committee type-->
+            <!--Filter for Deal mode type-->
+            <Expander Grid.Row="1"
+                      Margin="5"
+                      materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                <Expander.Header>
+                    <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}"
+                               Text="Тип слухання"/>
+                </Expander.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBox Grid.Row="0"
+				             materialDesign:HintAssist.Hint="Пошук"
+				             materialDesign:HintAssist.FloatingScale="1"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             Text="{Binding Path=SearchCommitteModeMask, UpdateSourceTrigger=PropertyChanged}"
+                             Margin="5"/>
+                    <Button Grid.Row="0"
+				            HorizontalAlignment="Right"
+				            VerticalAlignment="Center"
+				            Height="Auto" Width="Auto"
+				            Margin="0 15 5 0"
+				            Padding="0"
+				            Style="{x:Null}"
+				            Background="{x:Null}"
+				            BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon Kind="Magnify"
 									 Foreground="{DynamicResource PrimaryHueDarkBrush}"
 									 VerticalAlignment="Center" HorizontalAlignment="Center"
 									 Margin="0" Padding="0"/>
-		</Button>
-        <ItemsControl Grid.Row="1"
-                 ItemsSource="{Binding Path=FilteredCommitte}"
-                 Padding="0" Margin="5"
-                 MaxWidth="{Binding ElementName=CommitteList, Path=ActualWidth}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <materialDesign:Chip Content="{Binding Path=Committee_name_UA}"
-                                         IsDeletable="True" 
-                                         Margin="5 5 0 0" Padding="0">
-                        <materialDesign:Chip.LayoutTransform>
-                            <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
-                        </materialDesign:Chip.LayoutTransform>
-                    </materialDesign:Chip>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        <Border Grid.Row="2"
-                BorderBrush="{StaticResource InfoBrush}"
-                BorderThickness="1px"
-                CornerRadius="5"/>
-        <ListBox Grid.Row="2" x:Name="CommitteList"
-                 ItemsSource="{Binding Path=Committees}"
-                 DisplayMemberPath="Committee_name_UA"
-                 SelectedItem="{Binding SelectedCommittee}"
-                 SelectedIndex="{Binding SelectedCommitteeIdx}"
-                 IsSynchronizedWithCurrentItem="True">
-        </ListBox>
-        <Button Grid.Row="3"
-				Style="{StaticResource MaterialDesignFlatButton}"
-                Command="{Binding SearchAndAddCommittees}"
-                Visibility="{Binding SearchCommitteState, Converter={StaticResource BoolToVis}}"
-				Padding="40 5"
-				HorizontalAlignment="Center"
-				Height="Auto"
-				BorderBrush="{StaticResource PrimaryHueLightBrush}" BorderThickness="1">
-				<materialDesign:PackIcon Kind="DragHorizontal"/>
-        </Button>
-		<!--End filter for Committee type-->
-		<!--Filter for Deal mode type-->
-		<TextBox Grid.Row="4"
-				 materialDesign:HintAssist.Hint="Тип слухання"
-				 materialDesign:HintAssist.FloatingScale="1"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                 Margin="5"/>
-		<Button Grid.Row="4"
-				HorizontalAlignment="Right"
-				VerticalAlignment="Center"
-				Height="Auto" Width="Auto"
-				Margin="0 15 5 0"
-				Padding="0"
-				Style="{x:Null}"
-				Background="{x:Null}"
-				BorderBrush="{x:Null}">
-			<materialDesign:PackIcon Kind="Magnify"
-									 Foreground="{DynamicResource PrimaryHueDarkBrush}"
-									 VerticalAlignment="Center" HorizontalAlignment="Center"
-									 Margin="0" Padding="0"/>
-		</Button>
-		<ListBox Grid.Row="5">
-			<ListBox.ItemsPanel>
-				<ItemsPanelTemplate>
-					<WrapPanel Orientation="Horizontal"/>
-				</ItemsPanelTemplate>
-			</ListBox.ItemsPanel>
-		</ListBox>
-		<ListBox Grid.Row="6"></ListBox>
-		<Button Grid.Row="7"
-				Style="{StaticResource MaterialDesignFlatButton}"
-				Padding="40 5"
-				HorizontalAlignment="Center"
-				Height="Auto"
-				BorderBrush="{StaticResource PrimaryHueLightBrush}" BorderThickness="1">
-			<materialDesign:PackIcon Kind="DragHorizontal"/>
-		</Button>
-		<!--End filter for Deal mode type-->
-		<!--Filter for start/end period-->
-		<Grid Grid.Row="8">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*"/>
-				<ColumnDefinition Width="*"/>
-			</Grid.ColumnDefinitions>
-			<DatePicker Grid.Column="0"
+                    </Button>
+                    <ItemsControl Grid.Row="1"
+                                  ItemsSource="{Binding Path=FilteredCommitteeModes}"
+                                  Padding="0" Margin="5"
+                                  Visibility="{Binding Path=FilteredCommitteModeState, Converter={StaticResource BoolToVis}}"
+                                  MaxWidth="{Binding ElementName=CommitteModeList, Path=ActualWidth}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <materialDesign:Chip Content="{Binding Path=Mode_name_UA}"
+                                                     IsDeletable="True"
+                                                     Margin="5 5 0 0" Padding="0">
+                                    <materialDesign:Chip.LayoutTransform>
+                                        <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
+                                    </materialDesign:Chip.LayoutTransform>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="DeleteClick">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.UnselectCommitteMode}" CommandParameter="{Binding}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </materialDesign:Chip>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <ListBox Grid.Row="2" x:Name="CommitteModeList"
+                             ItemsSource="{Binding Path=CommitteeModes}"
+                             DisplayMemberPath="Mode_name_UA"
+                             Margin="5 5 5 0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectCommitteeMode}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBox}}, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBox>
+                    <Button Grid.Row="3" Style="{StaticResource MaterialDesignFlatButton}"
+                            Command="{Binding ShowAllCommitteeModes}"
+				            Padding="40 5" Margin="5"
+				            HorizontalAlignment="Stretch"
+				            Height="Auto"
+                            Visibility="{Binding Path=ShowAllCommitteModeBtnState, Converter={StaticResource BoolToVis}}"
+				            BorderBrush="{StaticResource PrimaryHueLightBrush}" BorderThickness="1">
+                        <materialDesign:PackIcon Kind="DragHorizontal"/>
+                    </Button>
+                </Grid>
+            </Expander>
+            <!--End filter for Deal mode type-->
+            <!--Filter for start/end period-->
+            <Grid Grid.Row="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <DatePicker Grid.Column="0"
                     materialDesign:HintAssist.Hint="Від дати"
                     materialDesign:HintAssist.FloatingScale="1"
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
-                    SelectedDate="{Binding Path=AdmissionStartDate, Mode=OneWayToSource}"
+                    SelectedDate="{Binding Path=FromDate}"
                     FontSize="12px"
                     Margin="5"/>
-			<DatePicker Grid.Column="1"
+                <DatePicker Grid.Column="1"
                     materialDesign:HintAssist.Hint="До дати"
                     materialDesign:HintAssist.FloatingScale="1"
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
-                    SelectedDate="{Binding Path=AdmissionStartDate, Mode=OneWayToSource}"
+                    SelectedDate="{Binding Path=ToDate}"
                     FontSize="12px"
                     Margin="5"/>
-		</Grid>
-		<!--End filter for start/end period-->
-		<!--Filter for Question type-->
-		<TextBox Grid.Row="9"
+            </Grid>
+            <!--End filter for start/end period-->
+            <!--Filter for Question type-->
+            <TextBox Grid.Row="9"
 				 materialDesign:HintAssist.Hint="Тип питання"
 				 materialDesign:HintAssist.FloatingScale="1"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  Margin="5"/>
-		<Button Grid.Row="9"
+            <Button Grid.Row="9"
 				HorizontalAlignment="Right"
 				VerticalAlignment="Center"
 				Height="Auto" Width="Auto"
@@ -169,35 +238,35 @@
 				Style="{x:Null}"
 				Background="{x:Null}"
 				BorderBrush="{x:Null}">
-			<materialDesign:PackIcon Kind="Magnify"
+                <materialDesign:PackIcon Kind="Magnify"
 									 Foreground="{DynamicResource PrimaryHueDarkBrush}"
 									 VerticalAlignment="Center" HorizontalAlignment="Center"
 									 Margin="0" Padding="0"/>
-		</Button>
-		<ListBox Grid.Row="10">
-			<ListBox.ItemsPanel>
-				<ItemsPanelTemplate>
-					<WrapPanel Orientation="Horizontal"/>
-				</ItemsPanelTemplate>
-			</ListBox.ItemsPanel>
-		</ListBox>
-		<ListBox Grid.Row="11"></ListBox>
-		<Button Grid.Row="12"
+            </Button>
+            <ListBox Grid.Row="10">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+            <ListBox Grid.Row="11"></ListBox>
+            <Button Grid.Row="12"
 				Style="{StaticResource MaterialDesignFlatButton}"
 				Padding="40 5"
 				HorizontalAlignment="Center"
 				Height="Auto"
 				BorderBrush="{StaticResource PrimaryHueLightBrush}" BorderThickness="1">
-			<materialDesign:PackIcon Kind="DragHorizontal"/>
-		</Button>
-		<!--End filter for Question type-->
-		<!--Filter for deal type-->
-		<TextBox Grid.Row="13"
+                <materialDesign:PackIcon Kind="DragHorizontal"/>
+            </Button>
+            <!--End filter for Question type-->
+            <!--Filter for deal type-->
+            <TextBox Grid.Row="13"
 				 materialDesign:HintAssist.Hint="Суть питання"
 				 materialDesign:HintAssist.FloatingScale="1"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  Margin="5"/>
-		<Button Grid.Row="13"
+            <Button Grid.Row="13"
 				HorizontalAlignment="Right"
 				VerticalAlignment="Center"
 				Height="Auto" Width="Auto"
@@ -206,29 +275,29 @@
 				Style="{x:Null}"
 				Background="{x:Null}"
 				BorderBrush="{x:Null}">
-			<materialDesign:PackIcon Kind="Magnify"
+                <materialDesign:PackIcon Kind="Magnify"
 									 Foreground="{DynamicResource PrimaryHueDarkBrush}"
 									 VerticalAlignment="Center" HorizontalAlignment="Center"
 									 Margin="0" Padding="0"/>
-		</Button>
-		<ListBox Grid.Row="14">
-			<ListBox.ItemsPanel>
-				<ItemsPanelTemplate>
-					<WrapPanel Orientation="Horizontal"/>
-				</ItemsPanelTemplate>
-			</ListBox.ItemsPanel>
-		</ListBox>
-		<ListBox Grid.Row="15"></ListBox>
-		<Button Grid.Row="16"
+            </Button>
+            <ListBox Grid.Row="14">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+            <ListBox Grid.Row="15"></ListBox>
+            <Button Grid.Row="16"
 				Style="{StaticResource MaterialDesignFlatButton}"
 				Padding="40 5"
 				HorizontalAlignment="Center"
 				Height="Auto"
 				BorderBrush="{StaticResource PrimaryHueLightBrush}" BorderThickness="1">
-			<materialDesign:PackIcon Kind="DragHorizontal"/>
-		</Button>
-		<!--End filter for deal type-->
-        <Button Grid.Row="17"
+                <materialDesign:PackIcon Kind="DragHorizontal"/>
+            </Button>
+            <!--End filter for deal type-->
+            <Button Grid.Row="17"
                 Style="{StaticResource MaterialDesignRaisedButton}" 
                 Background="{StaticResource SuccessBrush}"
                 Command="{Binding CreateMeeting}"
@@ -236,35 +305,36 @@
                             Padding="5 5"
                             HorizontalAlignment="Right"
                             materialDesign:ButtonProgressAssist.Value="{Binding Path=SaveProgressRate}">
-            <StackPanel Orientation="Horizontal">
-                <Viewbox>
-                    <materialDesign:PackIcon >
-                        <materialDesign:PackIcon.Style>
-                            <Style TargetType="materialDesign:PackIcon" BasedOn="{StaticResource {x:Type materialDesign:PackIcon}}">
-                                <Setter Property="Kind" Value="FilterOutline"/>
-                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsSaveCompleted}" Value="True">
-                                        <Setter Property="Kind" Value="Check"/>
-                                        <DataTrigger.EnterActions>
-                                            <BeginStoryboard>
-                                                <Storyboard>
-                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:00:0.8"/>
-                                                </Storyboard>
-                                            </BeginStoryboard>
-                                        </DataTrigger.EnterActions>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </materialDesign:PackIcon.Style>
-                    </materialDesign:PackIcon>
-                </Viewbox>
-                <TextBlock Text="Застосувати фільтр"
+                <StackPanel Orientation="Horizontal">
+                    <Viewbox>
+                        <materialDesign:PackIcon >
+                            <materialDesign:PackIcon.Style>
+                                <Style TargetType="materialDesign:PackIcon" BasedOn="{StaticResource {x:Type materialDesign:PackIcon}}">
+                                    <Setter Property="Kind" Value="FilterOutline"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsSaveCompleted}" Value="True">
+                                            <Setter Property="Kind" Value="Check"/>
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:00:0.8"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </materialDesign:PackIcon.Style>
+                        </materialDesign:PackIcon>
+                    </Viewbox>
+                    <TextBlock Text="Застосувати фільтр"
                            FontSize="18px"
                            Margin="5 0 0 0"
                            VerticalAlignment="Center"/>
-            </StackPanel>
-        </Button>
-                
-	</Grid>
+                </StackPanel>
+            </Button>
+
+        </Grid>
+    </ScrollViewer>
 </UserControl>
