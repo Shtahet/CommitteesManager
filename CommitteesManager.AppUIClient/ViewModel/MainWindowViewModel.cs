@@ -103,5 +103,18 @@ namespace CommitteesManager.AppUIClient.ViewModel
                 _openedViews.AddLast(newView);
             }
         }
+
+        private RelayCommand _closeAppCmd;
+        public RelayCommand CloseApp
+        {
+            get
+            {
+                if (_closeAppCmd == null)
+                {
+                    _closeAppCmd = new RelayCommand(obj => { App.Current.Shutdown(); });
+                }
+                return _closeAppCmd;
+            }
+        }
     }
 }
