@@ -61,7 +61,7 @@
                             </StackPanel>
                         </Button>
                         <Separator/>
-                        <Button>
+                        <Button Command="{Binding Path=CloseApp}">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Logout" />
                                 <TextBlock>Вихід</TextBlock>
