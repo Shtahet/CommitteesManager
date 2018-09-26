@@ -167,71 +167,69 @@
                 </ListViewItem>-->
             </ListView>
         </Grid>
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
-            <ItemsControl ItemsSource="{Binding OpenedViews}"
-                      HorizontalAlignment="Left">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Expander ExpandDirection="Right"
-                              IsExpanded="{Binding Path=IsExpanded}">
-                                <Expander.Header>
-                                    <Grid>
-                                        <TextBlock Text="{Binding Path=Name}"
-                                               RenderTransformOrigin=".5,.5">
-                                            <TextBlock.LayoutTransform>
-                                                <RotateTransform Angle="90" />
-                                            </TextBlock.LayoutTransform>
-                                        </TextBlock>
-                                    </Grid>
-                                </Expander.Header>
-                                <StackPanel Orientation="Vertical"
-                                        TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <Rectangle Grid.Row="0"
-                                                   RadiusX="5" RadiusY="5"
-                                                   Fill="{DynamicResource PrimaryHueLightBrush}"/>
-                                            <TextBlock Grid.Row="0" 
-                                                       Text="{Binding Path=Name}"
-                                                       Style="{StaticResource MaterialDesignTitleTextBlock}"
-                                                       VerticalAlignment="Center"
-                                                       Margin="10 5 70 5"/>
-                                            <Button Padding= "7 0"
-                                                    Margin="0 10 40 10"
-                                                    VerticalAlignment="Center"
-                                                    HorizontalAlignment="Right"
-                                                    Command="{Binding Path=Expand}">
-                                                <materialDesign:PackIcon Kind="WindowMinimize"
-                                                                     Width="10" Height="10" />
-                                            </Button>
-                                            <Button Padding="7 0"
-                                                    Margin="0 10 10 10"
-                                                    VerticalAlignment="Center"
-                                                    HorizontalAlignment="Right"
-                                                    Command="{Binding Path=Close}">
-                                                <materialDesign:PackIcon Kind="WindowClose"
-                                                                     Width="10" Height="10" />
-                                            </Button>
-                                        <ContentControl Grid.Row="1" 
-                                                        Content="{Binding Converter={StaticResource SectionConverter}}">
-                                        </ContentControl>
-                                    </Grid>
-                                </StackPanel>
-                            </Expander>
-                        </Grid>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-
-        </ScrollViewer>
+        <ItemsControl ItemsSource="{Binding OpenedViews}"
+                  HorizontalAlignment="Left">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Expander ExpandDirection="Right"
+                                  IsExpanded="{Binding Path=IsExpanded}"
+                                  VerticalAlignment="Stretch"
+                                  VerticalContentAlignment="Stretch">
+                            <Expander.Header>
+                                <Grid>
+                                    <TextBlock Text="{Binding Path=Name}"
+                                           RenderTransformOrigin=".5,.5">
+                                        <TextBlock.LayoutTransform>
+                                            <RotateTransform Angle="90" />
+                                        </TextBlock.LayoutTransform>
+                                    </TextBlock>
+                                </Grid>
+                            </Expander.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Rectangle Grid.Row="0"
+                                           RadiusX="5" RadiusY="5"
+                                           Fill="{DynamicResource PrimaryHueLightBrush}"/>
+                                <TextBlock Grid.Row="0" 
+                                           Text="{Binding Path=Name}"
+                                           Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                           VerticalAlignment="Center"
+                                           Margin="10 5 70 5"/>
+                                <Button Padding= "7 0"
+                                        Margin="0 10 40 10"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Right"
+                                        Command="{Binding Path=Expand}">
+                                    <materialDesign:PackIcon Kind="WindowMinimize"
+                                                             Width="10" Height="10" />
+                                </Button>
+                                <Button Padding="7 0"
+                                        Margin="0 10 10 10"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Right"
+                                        Command="{Binding Path=Close}">
+                                    <materialDesign:PackIcon Kind="WindowClose"
+                                                             Width="10" Height="10" />
+                                </Button>
+                                <ContentControl Grid.Row="1" 
+                                                Content="{Binding Converter={StaticResource SectionConverter}}"
+                                                VerticalContentAlignment="Stretch"
+                                                VerticalAlignment="Stretch">
+                                </ContentControl>
+                            </Grid>
+                        </Expander>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </DockPanel>
 </Window>
