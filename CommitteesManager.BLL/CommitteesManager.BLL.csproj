@@ -31,7 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,18 +51,23 @@
     <Compile Include="Abstract\ICommitteeService.cs" />
     <Compile Include="Abstract\ICommitteModeService.cs" />
     <Compile Include="Abstract\IDealTypeService.cs" />
+    <Compile Include="Abstract\IReportService.cs" />
     <Compile Include="Abstract\IScheduleService.cs" />
     <Compile Include="Abstract\IServiceProvider.cs" />
     <Compile Include="Abstract\ITemplateService.cs" />
     <Compile Include="Concrete\CommitteeProvider.cs" />
     <Compile Include="Concrete\DealTypeProvider.cs" />
     <Compile Include="Concrete\ModeProvider.cs" />
+    <Compile Include="Concrete\ReportProvider.cs" />
     <Compile Include="Concrete\ScheduleProvider.cs" />
     <Compile Include="Concrete\ServiceProvider.cs" />
     <Compile Include="Model\RegistryRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommitteesManager.DAL\CommitteesManager.DAL.csproj">
       <Project>{9c860dcf-0d9a-4c98-a787-a2a7ec9ca078}</Project>
