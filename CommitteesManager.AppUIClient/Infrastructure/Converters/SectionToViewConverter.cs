@@ -36,7 +36,10 @@ namespace CommitteesManager.AppUIClient.Infrastructure.Converters
                     retValue = null;
                     break;
             }
-            retValue.DataContext = value;
+            if (retValue != null)
+            {
+                retValue.DataContext = value;
+            }
             return retValue;
         }
 
