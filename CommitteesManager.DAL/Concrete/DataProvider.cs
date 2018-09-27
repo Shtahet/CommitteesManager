@@ -17,6 +17,8 @@ namespace CommitteesManager.DAL.Concrete
 		private GeneralRepository<Mode> _modeRepo;
 		private GeneralRepository<DealType> _dealTypeRepo;
         private GeneralRepository<Protocol> _protocolRepo;
+        private GeneralRepository<Agenda> _agendaRepo;
+        private GeneralRepository<Deal> _dealRepo;
         public DataProvider()
         {
             _dbContext = new CMDB();
@@ -78,6 +80,30 @@ namespace CommitteesManager.DAL.Concrete
                     _protocolRepo = new GeneralRepository<Protocol>(_dbContext);
                 }
                 return _protocolRepo;
+            }
+        }
+
+        public IRepository<Agenda> Agendas
+        {
+            get
+            {
+                if (_agendaRepo == null)
+                {
+                    _agendaRepo = new GeneralRepository<Agenda>(_dbContext);
+                }
+                return _agendaRepo;
+            }
+        }
+
+        public IRepository<Deal> Deals
+        {
+            get
+            {
+                if (_dealRepo == null)
+                {
+                    _dealRepo = new GeneralRepository<Deal>(_dbContext);
+                }
+                return _dealRepo;
             }
         }
 	}
