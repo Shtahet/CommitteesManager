@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="CommitteesManager.AppUIClient.View.DecisionRegistry"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CommitteesManager.AppUIClient.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1600">
+    <Grid Margin="5">
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True"
+                  ItemsSource="{Binding RegistryStatistic}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Реєстраційний номер" Binding="{Binding Path=Protocol_number}"/>
+                <DataGridTextColumn Header="Дата розгляду" Binding="{Binding Path=Protocol_date, StringFormat={}{0:dd.MM.yyyy}}"/>
+                <DataGridTextColumn Header="Термін дії" Binding="{Binding Path=EXPIRIOD_DATE_DECISION, StringFormat={}{0:dd.MM.yyyy}}"/>
+                <DataGridTextColumn Header="Відповідальний" Binding="{Binding Path=User_name_UA}"/>
+                <DataGridTextColumn Header="Тип засідання" Binding="{Binding Path=Mode_name_UA}"/>
+                <DataGridTextColumn Header="Тип комітету" Binding="{Binding Path=Committee_name_UA}"/>
+                <DataGridTextColumn Header="Результат розгляду" Binding="{Binding Path=Committe_status}"/>
+                <DataGridTextColumn Header="Причина відмови" Binding="{Binding Path=Reason_name_UA}"/>
+                <DataGridTextColumn Header="Область" Binding="{Binding Path=Region_name_UA}"/>
+                <DataGridTextColumn Header="ПІБ клієнта" Binding="{Binding Path=Contractor_Name}"/>
+                <DataGridTextColumn Header="Номер клієнта" Binding="{Binding Path=Contract_number}"/>
+                <DataGridTextColumn Header="Тип питання" Binding="{Binding Path=Question_type_UA}"/>
+                <DataGridTextColumn Header="Суть питання" Binding="{Binding Path=Deal_name_UA}"/>
+                <DataGridTextColumn Header="Результат виконання" Binding="{Binding Path=Deal_status}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

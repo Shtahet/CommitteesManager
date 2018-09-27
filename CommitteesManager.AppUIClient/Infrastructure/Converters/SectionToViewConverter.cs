@@ -20,7 +20,7 @@ namespace CommitteesManager.AppUIClient.Infrastructure.Converters
             switch (value)
             {
                 case PlaneMeetingViewModel pmvm:
-                    retValue = new PlaneMeeting();                   
+                    retValue = new PlaneMeeting();
                     break;
                 case CreateMeetingViewModel cmvm:
                     retValue = new CreateMeeting();
@@ -28,11 +28,15 @@ namespace CommitteesManager.AppUIClient.Infrastructure.Converters
                 case FilterViewModel fvm:
                     retValue = new Filter();
                     break;
+                case RegistryViewModel rvm:
+                    retValue = new DecisionRegistry();
+                    break;
                 case null:
                 default:
                     retValue = null;
                     break;
             }
+            retValue.DataContext = value;
             return retValue;
         }
 
