@@ -12,5 +12,7 @@ namespace CommitteesManager.BLL.Abstract
         ICommitteeService CommitteeService { get; }
         ICommitteModeService CommitteeModeService { get; }
         IDealTypeService DealTypeService { get; }
+        IReportService ReportService { get; }
+        
     }
 }

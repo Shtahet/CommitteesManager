@@ -15,6 +15,7 @@ namespace CommitteesManager.BLL.Concrete
         private ICommitteeService _committee;
         private ICommitteModeService _comMode;
         private IDealTypeService _dealType;
+        private IReportService _reports;
         public ServiceProvider(IDataProvider provider)
         {
             _dataProvider = provider;
@@ -60,6 +61,17 @@ namespace CommitteesManager.BLL.Concrete
                     _dealType = new DealTypeProvider(_dataProvider);
                 }
                 return _dealType;
+            }
+        }
+        public IReportService ReportService
+        {
+            get
+            {
+                if(_reports == null)
+                {
+                    _reports = new ReportProvider(_dataProvider);
+                }
+                return _reports;
             }
         }
     }
