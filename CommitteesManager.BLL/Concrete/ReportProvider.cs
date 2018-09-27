@@ -25,7 +25,7 @@ namespace CommitteesManager.BLL.Concrete
                     Protocol_number = d.Agenda.Protocol.Protocol_number,
                     Protocol_date = d.Agenda.Protocol.Protocol_date,
                     EXPIRIOD_DATE_DECISION = d.Agenda.Protocol.EXPIRIOD_DATE_DECISION,
-                    User_name_UA = d.Agenda.Protocol.User.User_name_UA,
+                    User_name_UA = d.Agenda.Protocol.User1.User_name_UA,
                     Mode_name_UA = d.Agenda.Protocol.Mode.Mode_name_UA,
                     Committee_name_UA = d.Agenda.Protocol.Committee.Committee_name_UA,
                     Committe_status = d.Agenda.Protocol.Status.Status_name_UA,
@@ -33,6 +33,7 @@ namespace CommitteesManager.BLL.Concrete
                     Contractor_Name = d.Agenda.Contractor_Name,
                     Contract_number = d.Agenda.Contract_number,
                     Deal_name_UA = d.DealType.Deal_name_UA,
+                    Question_type_UA = d.DealType.Question_type_UA,
                     Deal_status = d.Status.Status_name_UA,
                     Reason_name_UA = d.Reason.Reason_name_UA
                 });
