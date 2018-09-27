@@ -19,6 +19,7 @@ namespace CommitteesManager.BLL.Model
         public string Contractor_Name { get; set; }
         public string Contract_number { get; set; }
         public string Deal_name_UA { get; set; }
+        public string Question_type_UA { get; set; }
         public string Deal_status { get; set; }
         public string Reason_name_UA { get; set; }
     }
