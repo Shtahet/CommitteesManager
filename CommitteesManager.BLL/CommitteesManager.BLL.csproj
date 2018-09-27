@@ -52,11 +52,10 @@
     <Compile Include="Concrete\ModeProvider.cs" />
     <Compile Include="Concrete\ScheduleProvider.cs" />
     <Compile Include="Concrete\ServiceProvider.cs" />
+    <Compile Include="Model\RegistryRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\CommitteesManager.DAL\CommitteesManager.DAL.csproj">
       <Project>{9c860dcf-0d9a-4c98-a787-a2a7ec9ca078}</Project>
