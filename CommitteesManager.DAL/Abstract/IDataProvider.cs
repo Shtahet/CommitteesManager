@@ -15,5 +15,6 @@ namespace CommitteesManager.DAL.Abstract
 		IRepository<Committee> Committees { get; }
 		IRepository<Mode> Modes { get; }
 		IRepository<DealType> DealTypes { get; }
+        IRepository<Protocol> Protocols { get; }
     }
 }
