@@ -34,6 +34,9 @@ namespace CommitteesManager.AppUIClient.Infrastructure.Converters
                 case IssuesViewModel ivm:
                     retValue = new Issues();
                     break;
+                case ModifyProtocolViewModel mpvm:
+                    retValue = new ModifyProtocol();
+                    break;
                 case null:
                 default:
                     retValue = null;

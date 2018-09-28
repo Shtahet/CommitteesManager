@@ -74,6 +74,7 @@
     <Compile Include="Infrastructure\Converters\ScheduleStatusToDescribeConverter.cs" />
     <Compile Include="Infrastructure\Converters\SectionToViewConverter.cs" />
     <Compile Include="ViewModel\CreateMeetingViewModel.cs" />
+    <Compile Include="ViewModel\ModifyProtocolViewModel.cs" />
     <Compile Include="View\CreateMeeting.xaml.cs">
       <DependentUpon>CreateMeeting.xaml</DependentUpon>
     </Compile>
@@ -85,6 +86,9 @@
     </Compile>
     <Compile Include="View\Issues.xaml.cs">
       <DependentUpon>Issues.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ModifyProtocol.xaml.cs">
+      <DependentUpon>ModifyProtocol.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PlaneMeeting.xaml.cs">
       <DependentUpon>PlaneMeeting.xaml</DependentUpon>
@@ -128,6 +132,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\ModifyProtocol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PlaneMeeting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
