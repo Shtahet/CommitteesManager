@@ -19,6 +19,7 @@ namespace CommitteesManager.BLL.Concrete
         private IDealService _deals;
         private IProtocolService _protocols;
         private IAgendaService _agendas;
+        private IUserService _users;
         public ServiceProvider(IDataProvider provider)
         {
             _dataProvider = provider;
@@ -108,6 +109,17 @@ namespace CommitteesManager.BLL.Concrete
                     _agendas = new AgendaProvider(_dataProvider);
                 }
                 return _agendas;
+            }
+        }
+        public IUserService UserService
+        {
+            get
+            {
+                if (_users == null)
+                {
+                    _users = new UserProvider(_dataProvider);
+                }
+                return _users;
             }
         }
     }

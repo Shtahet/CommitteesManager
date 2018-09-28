@@ -16,5 +16,6 @@ namespace CommitteesManager.BLL.Abstract
         IDealService DealService { get; }
         IProtocolService ProtocolService { get; }
         IAgendaService AgendaService { get; }
+        IUserService UserService { get; }
     }
 }
