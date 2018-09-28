@@ -17,6 +17,7 @@ namespace CommitteesManager.BLL.Concrete
         private IDealTypeService _dealType;
         private IReportService _reports;
         private IDealService _deals;
+        private IProtocolService _protocols;
         public ServiceProvider(IDataProvider provider)
         {
             _dataProvider = provider;
@@ -84,6 +85,17 @@ namespace CommitteesManager.BLL.Concrete
                     _deals = new DealProvider(_dataProvider);
                 }
                 return _deals;
+            }
+        }
+        public IProtocolService ProtocolService
+        {
+            get
+            {
+                if (_protocols == null)
+                {
+                    _protocols = new ProtocolProvider(_dataProvider);
+                }
+                return _protocols;
             }
         }
     }
