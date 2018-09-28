@@ -33,6 +33,17 @@ namespace CommitteesManager.AppUIClient.ViewModel
                 OnPropertyChanged("ProtocolDate");
             }
         }
+        private Protocol _selectedProtocol;
+        public Protocol SelectedProtocol
+        {
+            get {
+                return _selectedProtocol;
+            }
+            set {
+                _selectedProtocol = value;
+                OnPropertyChanged("SelectedProtocol");
+            }
+        }
 
         private ObservableCollection<Protocol> _showedDeals;
         public ObservableCollection<Protocol> ShowedDeals
@@ -45,6 +56,51 @@ namespace CommitteesManager.AppUIClient.ViewModel
             {
                 _showedDeals = value;
                 OnPropertyChanged("ShowedDeals");
+            }
+        }
+
+        private RelayCommand _showProtocolInfo;
+        public RelayCommand ShowProtocolInfo
+        {
+            get
+            {
+                if (_showProtocolInfo == null)
+                {
+                    _showProtocolInfo = new RelayCommand( obj =>
+                    {
+                        var protocol = obj as Protocol;
+                        if (protocol == null)
+                            return;
+                        SelectedProtocol = protocol;
+                        ModifyProtocolViewModel protocolVM = new ModifyProtocolViewModel(_services, protocol, true);
+                        protocolVM.Name = "Інформація про протокол";
+                        InvokeCreateViewEvent(this, new ViewModelEventArgs(JoinDirectionEnum.After, protocolVM));
+                    });
+                }
+                return _showProtocolInfo;
+            }
+        }
+
+        private RelayCommand _addNewProtocol;
+        public RelayCommand AddNewProtocol
+        {
+            get
+            {
+                if (_addNewProtocol == null)
+                {
+                    _addNewProtocol = new RelayCommand(obj =>
+                    {
+                        Protocol newProtocol = new Protocol()
+                        {
+                            Protocol_date = DateTime.Now.Date,
+                            Add_date = DateTime.Now
+                        };
+                        ModifyProtocolViewModel protocolVM = new ModifyProtocolViewModel(_services, newProtocol, false);
+                        protocolVM.Name = "Інформація про протокол";
+                        InvokeCreateViewEvent(this, new ViewModelEventArgs(JoinDirectionEnum.After, protocolVM));
+                    });
+                }
+                return _addNewProtocol;
             }
         }
     }

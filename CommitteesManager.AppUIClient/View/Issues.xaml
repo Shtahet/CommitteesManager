@@ -11,7 +11,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <DatePicker Grid.Row="0" 
                     materialDesign:HintAssist.Hint="Дата протоколів" 
@@ -28,6 +29,7 @@
                    Margin="5 15 0 0"/>
         <ListBox Grid.Row="2" 
                  ItemsSource="{Binding ShowedDeals}"
+                 SelectedItem="{Binding SelectedProtocol, Mode=TwoWay}"
                  Margin="5"
                  HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
@@ -48,7 +50,8 @@
                                 VerticalContentAlignment="Stretch"
                                 Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" 
                                 BorderBrush="{StaticResource PrimaryHueLightBrush}" 
-                                Background="{StaticResource LightGrayBackgroundBrush}">
+                                Background="{StaticResource LightGrayBackgroundBrush}"
+                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.ShowProtocolInfo}" CommandParameter="{Binding}">
                             <materialDesign:PackIcon Grid.Column="1"
                                              Kind="InformationVariant"
                                              HorizontalAlignment="Stretch"
@@ -58,5 +61,29 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Button Grid.Row="3"
+                    Style="{StaticResource MaterialDesignRaisedButton}" 
+                    Background="{StaticResource SuccessBrush}"
+                    Command="{Binding AddNewProtocol}"
+                    Margin="5 15 10 10"
+                    Padding="5 5"
+                    HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal">
+                <Viewbox>
+                    <materialDesign:PackIcon >
+                        <materialDesign:PackIcon.Style>
+                            <Style TargetType="materialDesign:PackIcon" BasedOn="{StaticResource {x:Type materialDesign:PackIcon}}">
+                                <Setter Property="Kind" Value="BookPlus"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                            </Style>
+                        </materialDesign:PackIcon.Style>
+                    </materialDesign:PackIcon>
+                </Viewbox>
+                <TextBlock Text="Додати протокло"
+                               FontSize="18px"
+                               Margin="5 0 0 0"
+                               VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>
