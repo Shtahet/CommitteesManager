@@ -83,6 +83,9 @@
     <Compile Include="View\Filter.xaml.cs">
       <DependentUpon>Filter.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Issues.xaml.cs">
+      <DependentUpon>Issues.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PlaneMeeting.xaml.cs">
       <DependentUpon>PlaneMeeting.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Filter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Issues.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

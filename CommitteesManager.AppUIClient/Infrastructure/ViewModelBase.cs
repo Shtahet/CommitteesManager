@@ -39,7 +39,7 @@ namespace CommitteesManager.AppUIClient.Infrastructure
                     break;
                 case ViewModels.Issues:
                     retView = new IssuesViewModel(_service);
-                    retView.Name = "Огляд заявок";
+                    retView.Name = "Огляд протоколів";
                     break;
                 case ViewModels.ReqistryOfDecisions:
                     retView = new RegistryViewModel(_service);

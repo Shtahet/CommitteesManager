@@ -31,6 +31,9 @@ namespace CommitteesManager.AppUIClient.Infrastructure.Converters
                 case RegistryViewModel rvm:
                     retValue = new DecisionRegistry();
                     break;
+                case IssuesViewModel ivm:
+                    retValue = new Issues();
+                    break;
                 case null:
                 default:
                     retValue = null;
