@@ -13,6 +13,6 @@ namespace CommitteesManager.BLL.Abstract
         ICommitteModeService CommitteeModeService { get; }
         IDealTypeService DealTypeService { get; }
         IReportService ReportService { get; }
-        
+        IDealService DealService { get; }
     }
 }
