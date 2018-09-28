@@ -35,7 +35,7 @@ namespace CommitteesManager.BLL.Concrete
 
         public IEnumerable<Protocol> FindBy(Expression<Func<Protocol, bool>> predicate)
         {
-            return _dataProvider.Protocols.FindBy(predicate);
+            return _dataProvider.Protocols.FindBy(predicate).AsEnumerable();
         }
 
         public Protocol Get(int Id)

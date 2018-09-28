@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IAgendaService.cs" />
     <Compile Include="Abstract\ICommitteeService.cs" />
     <Compile Include="Abstract\ICommitteModeService.cs" />
     <Compile Include="Abstract\IDealService.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Abstract\IScheduleService.cs" />
     <Compile Include="Abstract\IServiceProvider.cs" />
     <Compile Include="Abstract\ITemplateService.cs" />
+    <Compile Include="Concrete\AgendaProvider.cs" />
     <Compile Include="Concrete\CommitteeProvider.cs" />
     <Compile Include="Concrete\DealProvider.cs" />
     <Compile Include="Concrete\DealTypeProvider.cs" />
