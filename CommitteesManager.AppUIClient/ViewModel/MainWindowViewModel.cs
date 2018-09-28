@@ -100,6 +100,12 @@ namespace CommitteesManager.AppUIClient.ViewModel
             }
             else
             {
+                var lastView = _openedViews.Last.Value;
+                while(!lastView.Equals(sender))
+                {
+                    _openedViews.RemoveLast();
+                    lastView = _openedViews.Last.Value;
+                }
                 _openedViews.AddLast(newView);
             }
         }
