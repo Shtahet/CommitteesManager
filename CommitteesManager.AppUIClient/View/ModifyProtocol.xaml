@@ -6,19 +6,188 @@
              xmlns:local="clr-namespace:CommitteesManager.AppUIClient.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" 
-                 materialDesign:HintAssist.Hint="ID протоколу"
-                 IsEnabled="{Binding Path=IsReadOnly}"
-                 Text="{Binding ProtocolID}">
-            
-        </TextBox>
-    </Grid>
+             d:DesignHeight="950" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" 
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     materialDesign:HintAssist.Hint="ID протоколу"
+                     materialDesign:HintAssist.FloatingScale="1.3"
+                     IsReadOnly="{Binding IsReadOnly}"
+                     Visibility="{Binding Path=IsReadOnly, Converter={StaticResource BoolToVis}}"
+                     Text="{Binding ProtocolID}"
+                     Margin="5"/>
+            <TextBox Grid.Row="1" 
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     materialDesign:HintAssist.Hint="Реєстраційний номер"
+                     materialDesign:HintAssist.FloatingScale="1.3"
+                     IsReadOnly="{Binding IsReadOnly}"
+                     Visibility="{Binding Path=IsReadOnly, Converter={StaticResource BoolToVis}}"
+                     Text="{Binding ProtocolNumber}"
+                     Margin="5"/>
+            <ComboBox Grid.Row="2"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  materialDesign:HintAssist.Hint="Відповідальний"
+                  materialDesign:HintAssist.FloatingScale="1.3"
+                  materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                  IsEnabled="{Binding IsEnable}"
+                  ItemsSource="{Binding UsersList}"
+                  SelectedItem="{Binding SelectedResponsible}"
+                  Margin="5">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding User_name_UA}" Margin="10 5 5 0"/>
+                            <TextBlock Text="{Binding Job_title}" Margin="10 5 5 0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox Grid.Row="3"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  materialDesign:HintAssist.Hint="Доповідач"
+                  materialDesign:HintAssist.FloatingScale="1.3"
+                  materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                  IsEnabled="{Binding IsEnable}"
+                  ItemsSource="{Binding UsersList}"
+                  SelectedItem="{Binding SelectedReporter}"
+                  Margin="5">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding User_name_UA}" Margin="10 5 5 0"/>
+                            <TextBlock Text="{Binding Job_title}" Margin="10 5 5 0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox Grid.Row="4"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  materialDesign:HintAssist.Hint="Тип слухання"
+                  materialDesign:HintAssist.FloatingScale="1.3"
+                  materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                  IsEnabled="{Binding IsEnable}"
+                  ItemsSource="{Binding ModesList}"
+                  SelectedItem="{Binding SelectedMode}"
+                  Margin="5">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Mode_name_UA}" Margin="10 5 5 0"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox Grid.Row="5"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  materialDesign:HintAssist.Hint="Тип комітету"
+                  materialDesign:HintAssist.FloatingScale="1.3"
+                  materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                  IsEnabled="{Binding IsEnable}"
+                  ItemsSource="{Binding CommitteeList}"
+                  SelectedItem="{Binding SelectedCommittee}"
+                  Margin="5">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Committee_name_UA}" Margin="10 5 5 0"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <DatePicker Grid.Row="6" 
+                    materialDesign:HintAssist.Hint="Дата протоколу" 
+                    materialDesign:HintAssist.FloatingScale="1"
+                    materialDesign:HintAssist.FloatingOffset="0,-20"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                    SelectedDate="{Binding Path=ProtocolDate}"
+                    IsEnabled="{Binding IsEnable}"
+                    FontSize="15px"
+                    Margin="5"/>
+            <DatePicker Grid.Row="7" 
+                        materialDesign:HintAssist.Hint="Термін дії протоколу" 
+                        materialDesign:HintAssist.FloatingScale="1"
+                        materialDesign:HintAssist.FloatingOffset="0,-20"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                        SelectedDate="{Binding Path=ExpiriodDate}"
+                        IsEnabled="{Binding IsEnable}"
+                        Visibility="{Binding Path=IsReadOnly, Converter={StaticResource BoolToVis}}"
+                        FontSize="15px"
+                        Margin="5"/>
+            <TextBlock Grid.Row="8" 
+                   Style="{StaticResource MaterialDesignBody2TextBlock}"
+                   Text="Текст протоколу"
+                   Margin="5"/>
+            <TextBox Grid.Row="9"
+                 Style="{StaticResource MaterialDesignTextAreaTextBox}"
+                 TextWrapping="Wrap"
+                 Text="{Binding DecisionText}"
+                 Margin="5" HorizontalAlignment="Stretch"
+                 MaxWidth="350"/>
+            <Button Grid.Row="10" 
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Command="{Binding ShowLinkedAgendas}"
+                    Margin="5 15 10 10"
+                    Padding="5 5"
+                    HorizontalAlignment="Right"
+                    HorizontalContentAlignment="Right">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Viewbox>
+                            <materialDesign:PackIcon >
+                                <materialDesign:PackIcon.Style>
+                                    <Style TargetType="materialDesign:PackIcon" BasedOn="{StaticResource {x:Type materialDesign:PackIcon}}">
+                                        <Setter Property="Kind" Value="ArrowRightDropCircleOutline"/>
+                                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                                    </Style>
+                                </materialDesign:PackIcon.Style>
+                            </materialDesign:PackIcon>
+                        </Viewbox>
+                        <TextBlock Text="Пов'язані договори"
+                           FontSize="18px"
+                           Margin="5 0 0 0"
+                           VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Grid.Row="11"
+                    Style="{StaticResource MaterialDesignRaisedButton}" 
+                    Background="{StaticResource SuccessBrush}"
+                    Command="{Binding SaveProtocol}"
+                    Margin="5 15 10 10"
+                    Padding="5 5"
+                    HorizontalAlignment="Right"
+                    Visibility="{Binding Path=IsEnable, Converter={StaticResource BoolToVis}}">
+                <StackPanel Orientation="Horizontal">
+                    <Viewbox>
+                        <materialDesign:PackIcon >
+                            <materialDesign:PackIcon.Style>
+                                <Style TargetType="materialDesign:PackIcon" BasedOn="{StaticResource {x:Type materialDesign:PackIcon}}">
+                                    <Setter Property="Kind" Value="ContentSave"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </materialDesign:PackIcon.Style>
+                        </materialDesign:PackIcon>
+                    </Viewbox>
+                    <TextBlock Text="Зберегти"
+                               FontSize="18px"
+                               Margin="5 0 0 0"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

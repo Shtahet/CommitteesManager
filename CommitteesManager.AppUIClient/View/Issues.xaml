@@ -79,7 +79,7 @@
                         </materialDesign:PackIcon.Style>
                     </materialDesign:PackIcon>
                 </Viewbox>
-                <TextBlock Text="Додати протокло"
+                <TextBlock Text="Додати протокол"
                                FontSize="18px"
                                Margin="5 0 0 0"
                                VerticalAlignment="Center"/>
