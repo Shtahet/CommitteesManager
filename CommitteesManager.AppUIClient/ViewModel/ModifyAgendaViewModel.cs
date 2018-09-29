@@ -22,6 +22,11 @@ namespace CommitteesManager.AppUIClient.ViewModel
         public override ViewModelSection Filter { get => null; set { } }
 
         #region Properties
+        public Agenda Agenda
+        {
+            get { return _modifyAgenda; }
+        }
+        public bool NeedToSave { get; set; } = false;
         public bool IsReadOnly
         {
             get { return _infoMode; }
@@ -93,6 +98,22 @@ namespace CommitteesManager.AppUIClient.ViewModel
         }
         #endregion
         #region Command
+        private RelayCommand _saveAndClose;
+        public RelayCommand SaveAndClose
+        {
+            get
+            {
+                if (_saveAndClose == null)
+                {
+                    _saveAndClose = new RelayCommand(obj =>
+                    {
+                        NeedToSave = true;
+                        this.Close.Execute(null);
+                    });
+                }
+                return _saveAndClose;
+            }
+        }
         #endregion
     }
 }
