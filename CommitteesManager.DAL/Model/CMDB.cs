@@ -4,7 +4,6 @@ namespace CommitteesManager.DAL.Model
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using CommitteesManager.DAL.Abstract;
 
     public partial class CMDB : DbContext
     {

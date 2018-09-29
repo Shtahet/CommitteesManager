@@ -17,6 +17,7 @@ namespace CommitteesManager.DAL.Model
         }
 
         [Column(TypeName = "numeric")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public decimal AgendaID { get; set; }
 
         public int ProtocolID { get; set; }
