@@ -54,6 +54,7 @@
     <Compile Include="Abstract\IDealService.cs" />
     <Compile Include="Abstract\IDealTypeService.cs" />
     <Compile Include="Abstract\IProtocolService.cs" />
+    <Compile Include="Abstract\IRegionService.cs" />
     <Compile Include="Abstract\IReportService.cs" />
     <Compile Include="Abstract\IScheduleService.cs" />
     <Compile Include="Abstract\IServiceProvider.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Concrete\DealTypeProvider.cs" />
     <Compile Include="Concrete\ModeProvider.cs" />
     <Compile Include="Concrete\ProtocolProvider.cs" />
+    <Compile Include="Concrete\RegionProvider.cs" />
     <Compile Include="Concrete\ReportProvider.cs" />
     <Compile Include="Concrete\ScheduleProvider.cs" />
     <Compile Include="Concrete\ServiceProvider.cs" />
