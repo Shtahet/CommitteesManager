@@ -13,8 +13,10 @@ namespace CommitteesManager.BLL.Concrete
     public class DealProvider : IDealService
     {
         private IDataProvider _dataProvider;
+        private int _nextId = -1;
         public DealProvider(IDataProvider incomingDataProvider)
         {
+            _dataProvider = incomingDataProvider;
         }
         public void AddOrUpdate(Deal obj)
         {
@@ -58,6 +60,15 @@ namespace CommitteesManager.BLL.Concrete
         public IEnumerable<Deal> GetAll()
         {
             return _dataProvider.Deals.GetAll().AsEnumerable();
+        }
+
+        public int GetNextId()
+        {
+            if (_nextId == -1)
+            {
+                _nextId = _dataProvider.Deals.GetAll().Max(d => d.DealID);
+            }
+            return ++_nextId;
         }
     }
 }

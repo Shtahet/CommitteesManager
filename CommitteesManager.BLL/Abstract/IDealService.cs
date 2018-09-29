@@ -11,5 +11,6 @@ namespace CommitteesManager.BLL.Abstract
     {
         Deal Get(int Id);
         void Delete(int Id);
+        int GetNextId();
     }
 }
