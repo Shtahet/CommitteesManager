@@ -73,8 +73,12 @@
     </ApplicationDefinition>
     <Compile Include="Infrastructure\Converters\ScheduleStatusToDescribeConverter.cs" />
     <Compile Include="Infrastructure\Converters\SectionToViewConverter.cs" />
+    <Compile Include="ViewModel\AgendasViewModel.cs" />
     <Compile Include="ViewModel\CreateMeetingViewModel.cs" />
     <Compile Include="ViewModel\ModifyProtocolViewModel.cs" />
+    <Compile Include="View\Agendas.xaml.cs">
+      <DependentUpon>Agendas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CreateMeeting.xaml.cs">
       <DependentUpon>CreateMeeting.xaml</DependentUpon>
     </Compile>
@@ -93,6 +97,10 @@
     <Compile Include="View\PlaneMeeting.xaml.cs">
       <DependentUpon>PlaneMeeting.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Agendas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CreateMeeting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="CommitteesManager.AppUIClient.View.Agendas"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CommitteesManager.AppUIClient.View"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListBox Grid.Row="0" 
+                 ItemsSource="{Binding LinkedAgendas}"
+                 SelectedItem="{Binding SelectedAgenda, Mode=TwoWay}"
+                 Margin="5"
+                 HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                       Text="{Binding Path=Contractor_Name}"/>
+                            <TextBlock Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                       Text="{Binding Path=Contract_number}"/>
+                        </StackPanel>
+                        <Button Grid.Column="1"
+                                HorizontalContentAlignment="Stretch"
+                                VerticalContentAlignment="Stretch"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" 
+                                BorderBrush="{StaticResource PrimaryHueLightBrush}" 
+                                Background="{StaticResource LightGrayBackgroundBrush}"
+                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.ShowProtocolInfo}" CommandParameter="{Binding}">
+                            <materialDesign:PackIcon Grid.Column="1"
+                                             Kind="InformationVariant"
+                                             HorizontalAlignment="Stretch"
+                                             VerticalAlignment="Stretch"/>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Grid.Row="1"
+                    Style="{StaticResource MaterialDesignRaisedButton}" 
+                    Background="{StaticResource SuccessBrush}"
+                    Command="{Binding AddNewProtocol}"
+                    Margin="5 15 10 10"
+                    Padding="5 5"
+                    HorizontalAlignment="Right"
+                Visibility="{Binding IsEnable, Converter={StaticResource BoolToVis}}">
+            <StackPanel Orientation="Horizontal">
+                <Viewbox>
+                    <materialDesign:PackIcon >
+                        <materialDesign:PackIcon.Style>
+                            <Style TargetType="materialDesign:PackIcon" BasedOn="{StaticResource {x:Type materialDesign:PackIcon}}">
+                                <Setter Property="Kind" Value="LibraryPlus"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                            </Style>
+                        </materialDesign:PackIcon.Style>
+                    </materialDesign:PackIcon>
+                </Viewbox>
+                <TextBlock Text="Додати повязаний договір"
+                               FontSize="18px"
+                               Margin="5 0 0 0"
+                               VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>
