@@ -20,6 +20,7 @@ namespace CommitteesManager.BLL.Concrete
         private IProtocolService _protocols;
         private IAgendaService _agendas;
         private IUserService _users;
+        private IRegionService _regions;
         public ServiceProvider(IDataProvider provider)
         {
             _dataProvider = provider;
@@ -120,6 +121,17 @@ namespace CommitteesManager.BLL.Concrete
                     _users = new UserProvider(_dataProvider);
                 }
                 return _users;
+            }
+        }
+        public IRegionService RegionService
+        {
+            get
+            {
+                if (_regions == null)
+                {
+                    _regions = new RegionProvider(_dataProvider);
+                }
+                return _regions;
             }
         }
     }

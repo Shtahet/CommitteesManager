@@ -6,11 +6,125 @@
              xmlns:local="clr-namespace:CommitteesManager.AppUIClient.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="850" d:DesignWidth="800">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </UserControl.Resources>
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" 
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Hint="ID договору"
+                 materialDesign:HintAssist.FloatingScale="1.3"
+                 IsReadOnly="{Binding IsReadOnly}"
+                 Visibility="{Binding Path=IsReadOnly, Converter={StaticResource BoolToVis}}"
+                 Text="{Binding AgendaID}"
+                 Margin="5"/>
+        <ComboBox Grid.Row="1"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  materialDesign:HintAssist.Hint="Регіон договору"
+                  materialDesign:HintAssist.FloatingScale="1.3"
+                  materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                  IsEnabled="{Binding IsIsEnable}"
+                  ItemsSource="{Binding RegionsList}"
+                  SelectedItem="{Binding SelectedRegion}"
+                  Margin="5">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Region_name_UA}" Margin="10 5 5 0"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBox Grid.Row="2" 
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Hint="Номер договору"
+                 materialDesign:HintAssist.FloatingScale="1.3"
+                 IsReadOnly="{Binding IsReadOnly}"
+                 Text="{Binding ContractNumber}"
+                 Margin="5"/>
+        <DatePicker Grid.Row="3" 
+                    materialDesign:HintAssist.Hint="Дата договору" 
+                    materialDesign:HintAssist.FloatingScale="1"
+                    materialDesign:HintAssist.FloatingOffset="0,-20"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                    SelectedDate="{Binding Path=ContractDate}"
+                    IsEnabled="{Binding IsEnable}"
+                    FontSize="15px"
+                    Margin="5"/>
+        <TextBox Grid.Row="4" 
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Hint="Сума договору"
+                 materialDesign:HintAssist.FloatingScale="1.3"
+                 IsReadOnly="{Binding IsReadOnly}"
+                 Text="{Binding DealAmount}"
+                 Margin="5"/>
+        <TextBox Grid.Row="5" 
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Hint="ПІБ контрагента"
+                 materialDesign:HintAssist.FloatingScale="1.3"
+                 IsReadOnly="{Binding IsReadOnly}"
+                 Text="{Binding ContractorName}"
+                 Margin="5"/>
+        <TextBox Grid.Row="6" 
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Hint="Податковий номер контрагента"
+                 materialDesign:HintAssist.FloatingScale="1.3"
+                 IsReadOnly="{Binding IsReadOnly}"
+                 Text="{Binding TaxCode}"
+                 Margin="5"/>
+        <TextBox Grid.Row="7" 
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Hint="Код договору"
+                 materialDesign:HintAssist.FloatingScale="1.3"
+                 IsReadOnly="{Binding IsReadOnly}"
+                 Text="{Binding ContractId}"
+                 Margin="5"/>
+        <TextBlock Grid.Row="8" 
+                   Style="{StaticResource MaterialDesignBody2TextBlock}"
+                   Text="Коментарі"
+                   Margin="5"/>
+        <TextBox Grid.Row="9"
+                 Style="{StaticResource MaterialDesignTextAreaTextBox}"
+                 TextWrapping="Wrap"
+                 Text="{Binding Comments}"
+                 Margin="5" HorizontalAlignment="Stretch"
+                 MaxWidth="350"/>
+        <Button Grid.Row="10"
+                Style="{StaticResource MaterialDesignRaisedButton}" 
+                Background="{StaticResource SuccessBrush}"
+                Command="{Binding Close}"
+                Margin="5 15 10 10"
+                Padding="5 5"
+                HorizontalAlignment="Right"
+                Visibility="{Binding Path=IsEnable, Converter={StaticResource BoolToVis}}">
+            <StackPanel Orientation="Horizontal">
+                <Viewbox>
+                    <materialDesign:PackIcon >
+                        <materialDesign:PackIcon.Style>
+                            <Style TargetType="materialDesign:PackIcon" BasedOn="{StaticResource {x:Type materialDesign:PackIcon}}">
+                                <Setter Property="Kind" Value="Check"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                            </Style>
+                        </materialDesign:PackIcon.Style>
+                    </materialDesign:PackIcon>
+                </Viewbox>
+                <TextBlock Text="Завершити"
+                               FontSize="18px"
+                               Margin="5 0 0 0"
+                               VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>
