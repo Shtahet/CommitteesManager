@@ -134,8 +134,9 @@
             <TextBox Grid.Row="9"
                  Style="{StaticResource MaterialDesignTextAreaTextBox}"
                  TextWrapping="Wrap"
+                 AcceptsReturn="True"
                  Text="{Binding DecisionText}"
-                     IsReadOnly="{Binding IsReadOnly}"
+                 IsReadOnly="{Binding IsReadOnly}"
                  Margin="5" HorizontalAlignment="Stretch"
                  MaxWidth="350"/>
             <Button Grid.Row="10" 

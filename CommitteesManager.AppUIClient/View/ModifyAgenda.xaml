@@ -5,26 +5,31 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CommitteesManager.AppUIClient.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="850" d:DesignWidth="800">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </UserControl.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" 
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" 
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  materialDesign:HintAssist.Hint="ID договору"
                  materialDesign:HintAssist.FloatingScale="1.3"
@@ -32,7 +37,7 @@
                  Visibility="{Binding Path=IsReadOnly, Converter={StaticResource BoolToVis}}"
                  Text="{Binding AgendaID}"
                  Margin="5"/>
-        <ComboBox Grid.Row="1"
+            <ComboBox Grid.Row="1"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                   materialDesign:HintAssist.Hint="Регіон договору"
                   materialDesign:HintAssist.FloatingScale="1.3"
@@ -41,20 +46,20 @@
                   ItemsSource="{Binding RegionsList}"
                   SelectedItem="{Binding SelectedRegion}"
                   Margin="5">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Region_name_UA}" Margin="10 5 5 0"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <TextBox Grid.Row="2" 
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Region_name_UA}" Margin="10 5 5 0"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Grid.Row="2" 
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  materialDesign:HintAssist.Hint="Номер договору"
                  materialDesign:HintAssist.FloatingScale="1.3"
                  IsReadOnly="{Binding IsReadOnly}"
                  Text="{Binding ContractNumber}"
                  Margin="5"/>
-        <DatePicker Grid.Row="3" 
+            <DatePicker Grid.Row="3" 
                     materialDesign:HintAssist.Hint="Дата договору" 
                     materialDesign:HintAssist.FloatingScale="1"
                     materialDesign:HintAssist.FloatingOffset="0,-20"
@@ -63,46 +68,90 @@
                     IsEnabled="{Binding IsEnable}"
                     FontSize="15px"
                     Margin="5"/>
-        <TextBox Grid.Row="4" 
+            <TextBox Grid.Row="4" 
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  materialDesign:HintAssist.Hint="Сума договору"
                  materialDesign:HintAssist.FloatingScale="1.3"
                  IsReadOnly="{Binding IsReadOnly}"
                  Text="{Binding DealAmount}"
                  Margin="5"/>
-        <TextBox Grid.Row="5" 
+            <TextBox Grid.Row="5" 
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  materialDesign:HintAssist.Hint="ПІБ контрагента"
                  materialDesign:HintAssist.FloatingScale="1.3"
                  IsReadOnly="{Binding IsReadOnly}"
                  Text="{Binding ContractorName}"
                  Margin="5"/>
-        <TextBox Grid.Row="6" 
+            <TextBox Grid.Row="6" 
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  materialDesign:HintAssist.Hint="Податковий номер контрагента"
                  materialDesign:HintAssist.FloatingScale="1.3"
                  IsReadOnly="{Binding IsReadOnly}"
                  Text="{Binding TaxCode}"
                  Margin="5"/>
-        <TextBox Grid.Row="7" 
+            <TextBox Grid.Row="7" 
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  materialDesign:HintAssist.Hint="Код договору"
                  materialDesign:HintAssist.FloatingScale="1.3"
                  IsReadOnly="{Binding IsReadOnly}"
                  Text="{Binding ContractId}"
                  Margin="5"/>
-        <TextBlock Grid.Row="8" 
+            <TextBlock Grid.Row="8" 
                    Style="{StaticResource MaterialDesignBody2TextBlock}"
                    Text="Коментарі"
                    Margin="5"/>
-        <TextBox Grid.Row="9"
+            <TextBox Grid.Row="9"
                  Style="{StaticResource MaterialDesignTextAreaTextBox}"
                  TextWrapping="Wrap"
                  Text="{Binding Comments}"
                  IsReadOnly="{Binding IsReadOnly}"
                  Margin="5" HorizontalAlignment="Stretch"
                  MaxWidth="350"/>
-        <Button Grid.Row="10"
+            <TextBlock Grid.Row="10" 
+                   Style="{StaticResource MaterialDesignBody2TextBlock}"
+                   Text="Питання до розгляду"
+                   Margin="5"/>
+            <ItemsControl Grid.Row="11"
+                      ItemsSource="{Binding Path=DealsList}"
+                      Padding="0" Margin="5"
+                      BorderBrush="{StaticResource PrimaryHueDarkBrush}"
+                      BorderThickness="2">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <materialDesign:Chip Content="{Binding Path=DealType.Deal_name_UA}"
+                                         IsDeletable="True" 
+                                         Margin="5 5 0 0" Padding="0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="DeleteClick">
+                                    <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.UnselectDeal}" CommandParameter="{Binding}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </materialDesign:Chip>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <ComboBox Grid.Row="12"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  materialDesign:HintAssist.Hint="Суть питання"
+                  materialDesign:HintAssist.FloatingScale="1.3"
+                  materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                  Visibility="{Binding IsEnable, Converter={StaticResource BoolToVis}}"
+                  ItemsSource="{Binding DealTypesList}"
+                  SelectedItem="{Binding SelectedDealType}"
+                  SelectedIndex="{Binding SelectedDealTypeIdx}"
+                  Margin="5">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Deal_name_UA}" Margin="10 5 5 0"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Grid.Row="13"
                 Style="{StaticResource MaterialDesignRaisedButton}" 
                 Background="{StaticResource SuccessBrush}"
                 Command="{Binding SaveAndClose}"
@@ -110,22 +159,23 @@
                 Padding="5 5"
                 HorizontalAlignment="Right"
                 Visibility="{Binding Path=IsEnable, Converter={StaticResource BoolToVis}}">
-            <StackPanel Orientation="Horizontal">
-                <Viewbox>
-                    <materialDesign:PackIcon >
-                        <materialDesign:PackIcon.Style>
-                            <Style TargetType="materialDesign:PackIcon" BasedOn="{StaticResource {x:Type materialDesign:PackIcon}}">
-                                <Setter Property="Kind" Value="Check"/>
-                                <Setter Property="VerticalAlignment" Value="Center"/>
-                            </Style>
-                        </materialDesign:PackIcon.Style>
-                    </materialDesign:PackIcon>
-                </Viewbox>
-                <TextBlock Text="Завершити"
+                <StackPanel Orientation="Horizontal">
+                    <Viewbox>
+                        <materialDesign:PackIcon >
+                            <materialDesign:PackIcon.Style>
+                                <Style TargetType="materialDesign:PackIcon" BasedOn="{StaticResource {x:Type materialDesign:PackIcon}}">
+                                    <Setter Property="Kind" Value="Check"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </materialDesign:PackIcon.Style>
+                        </materialDesign:PackIcon>
+                    </Viewbox>
+                    <TextBlock Text="Завершити"
                                FontSize="18px"
                                Margin="5 0 0 0"
                                VerticalAlignment="Center"/>
-            </StackPanel>
-        </Button>
-    </Grid>
+                </StackPanel>
+            </Button>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

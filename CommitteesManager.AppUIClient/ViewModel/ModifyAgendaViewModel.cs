@@ -82,6 +82,32 @@ namespace CommitteesManager.AppUIClient.ViewModel
             get { return _modifyAgenda.Comments; }
             set { _modifyAgenda.Comments = value; OnPropertyChanged("Comments"); }
         }
+        private DealType _selectedDealType;
+        public DealType SelectedDealType
+        {
+            get { return _selectedDealType; }
+            set {
+                Deal newDeal = new Deal()
+                {
+                    DealID = _services.DealService.GetNextId(),
+                    Agenda = _modifyAgenda,
+                    Deal_typeID = value.Deal_typeID,
+                    DealType = value
+                };
+                _modifyAgenda.Deals.Add(newDeal);
+                _deals.Add(newDeal);
+                _selectedDealType = null;
+                SelectedDealTypeIdx = -1;
+                OnPropertyChanged("SelectedDealType");
+            }
+        }
+        private int _selectedDealTypeIdx = -1;
+        public int SelectedDealTypeIdx
+        {
+            get { return _selectedDealTypeIdx; }
+            set { _selectedDealTypeIdx = value; OnPropertyChanged("SelectedDealTypeIdx"); }
+        }
+
         #endregion
         #region Collection
         private ObservableCollection<Region> _regions;
@@ -94,6 +120,35 @@ namespace CommitteesManager.AppUIClient.ViewModel
                     _regions = new ObservableCollection<Region>(_services.RegionService.GetActualAll());
                 }
                 return _regions;
+            }
+        }
+        private ObservableCollection<Deal> _deals;
+        public ObservableCollection<Deal> DealsList
+        {
+            get
+            {
+                if (_deals == null)
+                {
+                    _deals = new ObservableCollection<Deal>(_modifyAgenda.Deals);
+                }
+                return _deals;
+            }
+            set
+            {
+                _deals = value;
+                OnPropertyChanged("DealsList");
+            }
+        }
+        private ObservableCollection<DealType> _dealTypes;
+        public ObservableCollection<DealType> DealTypesList
+        {
+            get
+            {
+                if (_dealTypes == null)
+                {
+                    _dealTypes = new ObservableCollection<DealType>(_services.DealTypeService.GetActualAll());
+                }
+                return _dealTypes;
             }
         }
         #endregion
@@ -112,6 +167,27 @@ namespace CommitteesManager.AppUIClient.ViewModel
                     });
                 }
                 return _saveAndClose;
+            }
+        }
+
+        private RelayCommand _unselectDeal;
+        public RelayCommand UnselectDeal
+        {
+            get
+            {
+                if (_unselectDeal == null)
+                {
+                    _unselectDeal = new RelayCommand(obj =>
+                    {
+                        Deal unselectDeal = obj as Deal;
+                        if (IsEnable == false || unselectDeal == null)
+                            return;
+
+                        _modifyAgenda.Deals.Remove(unselectDeal);
+                        _deals.Remove(unselectDeal);
+                    });
+                }
+                return _unselectDeal;
             }
         }
         #endregion
