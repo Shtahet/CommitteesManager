@@ -75,6 +75,7 @@
     <Compile Include="Infrastructure\Converters\SectionToViewConverter.cs" />
     <Compile Include="ViewModel\AgendasViewModel.cs" />
     <Compile Include="ViewModel\CreateMeetingViewModel.cs" />
+    <Compile Include="ViewModel\ModifyAgendaViewModel.cs" />
     <Compile Include="ViewModel\ModifyProtocolViewModel.cs" />
     <Compile Include="View\Agendas.xaml.cs">
       <DependentUpon>Agendas.xaml</DependentUpon>
@@ -90,6 +91,9 @@
     </Compile>
     <Compile Include="View\Issues.xaml.cs">
       <DependentUpon>Issues.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ModifyAgenda.xaml.cs">
+      <DependentUpon>ModifyAgenda.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ModifyProtocol.xaml.cs">
       <DependentUpon>ModifyProtocol.xaml</DependentUpon>
@@ -140,6 +144,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\ModifyAgenda.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ModifyProtocol.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -40,6 +40,9 @@ namespace CommitteesManager.AppUIClient.Infrastructure.Converters
                 case AgendasViewModel avm:
                     retValue = new Agendas();
                     break;
+                case ModifyAgendaViewModel mavm:
+                    retValue = new ModifyAgenda();
+                    break;
                 case null:
                 default:
                     retValue = null;
