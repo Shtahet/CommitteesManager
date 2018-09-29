@@ -127,6 +127,7 @@ namespace CommitteesManager.AppUIClient.ViewModel
                     _saveProtocol = new RelayCommand(obj =>
                     {
                         _services.ProtocolService.AddOrUpdate(_modifyProtocol);
+                        this.Close.Execute(null);
                     });
                 }
                 return _saveProtocol;

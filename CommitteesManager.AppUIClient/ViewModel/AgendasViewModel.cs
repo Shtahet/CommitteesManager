@@ -14,6 +14,7 @@ namespace CommitteesManager.AppUIClient.ViewModel
     {
         private Protocol _currentProtocol;
         private bool _infoMode;
+        private ModifyAgendaViewModel modifyAgendaVM;
         public AgendasViewModel(IServiceProvider incomingService, Protocol protocol, bool ForInfoOnly) : base(incomingService)
         {
             _currentProtocol = protocol;
@@ -73,7 +74,7 @@ namespace CommitteesManager.AppUIClient.ViewModel
                             return;
 
                         SelectedAgenda = agenda;
-                        ModifyAgendaViewModel modifyAgendaVM = new ModifyAgendaViewModel(_services, agenda, true);
+                        modifyAgendaVM = new ModifyAgendaViewModel(_services, agenda, true);
                         modifyAgendaVM.Name = "Інформація про договір";
                         InvokeCreateViewEvent(this, new ViewModelEventArgs(JoinDirectionEnum.After, modifyAgendaVM));
                     });
@@ -81,6 +82,16 @@ namespace CommitteesManager.AppUIClient.ViewModel
                 return _showAgendaInfo;
             }
         }
+
+        private void ModifyAgendaVM_WantToClose(object sender, ViewModelEventArgs e)
+        {
+            if (!modifyAgendaVM.NeedToSave)
+                return;
+
+            LinkedAgendas.Add(modifyAgendaVM.Agenda);
+            _currentProtocol.Agendas.Add(modifyAgendaVM.Agenda);
+        }
+
         private RelayCommand _addNewAgenda;
         public RelayCommand AddNewAgenda
         {
@@ -95,8 +106,9 @@ namespace CommitteesManager.AppUIClient.ViewModel
                             ProtocolID = _currentProtocol.ProtocolID,
                             Add_date = DateTime.Now
                         };
-                        ModifyAgendaViewModel modifyAgendaVM = new ModifyAgendaViewModel(_services, newAgenda, false);
+                        modifyAgendaVM = new ModifyAgendaViewModel(_services, newAgenda, false);
                         modifyAgendaVM.Name = "Інформація про договір";
+                        modifyAgendaVM.WantToClose += ModifyAgendaVM_WantToClose;
                         InvokeCreateViewEvent(this, new ViewModelEventArgs(JoinDirectionEnum.After, modifyAgendaVM));
                     });
                 }
