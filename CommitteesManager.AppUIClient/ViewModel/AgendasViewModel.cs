@@ -58,5 +58,51 @@ namespace CommitteesManager.AppUIClient.ViewModel
             }
         }
         #endregion
+        #region Command
+        private RelayCommand _showAgendaInfo;
+        public RelayCommand ShowAgendaInfo
+        {
+            get
+            {
+                if (_showAgendaInfo == null)
+                {
+                    _showAgendaInfo = new RelayCommand(obj =>
+                    {
+                        Agenda agenda = obj as Agenda;
+                        if (agenda == null)
+                            return;
+
+                        SelectedAgenda = agenda;
+                        ModifyAgendaViewModel modifyAgendaVM = new ModifyAgendaViewModel(_services, agenda, true);
+                        modifyAgendaVM.Name = "Інформація про договір";
+                        InvokeCreateViewEvent(this, new ViewModelEventArgs(JoinDirectionEnum.After, modifyAgendaVM));
+                    });
+                }
+                return _showAgendaInfo;
+            }
+        }
+        private RelayCommand _addNewAgenda;
+        public RelayCommand AddNewAgenda
+        {
+            get
+            {
+                if (_addNewAgenda == null)
+                {
+                    _addNewAgenda = new RelayCommand(obj =>
+                    {
+                        Agenda newAgenda = new Agenda()
+                        {
+                            ProtocolID = _currentProtocol.ProtocolID,
+                            Add_date = DateTime.Now
+                        };
+                        ModifyAgendaViewModel modifyAgendaVM = new ModifyAgendaViewModel(_services, newAgenda, false);
+                        modifyAgendaVM.Name = "Інформація про договір";
+                        InvokeCreateViewEvent(this, new ViewModelEventArgs(JoinDirectionEnum.After, modifyAgendaVM));
+                    });
+                }
+                return _addNewAgenda;
+            }
+        }
+        #endregion
     }
 }
