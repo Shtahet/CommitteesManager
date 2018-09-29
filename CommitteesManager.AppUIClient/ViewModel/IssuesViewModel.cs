@@ -97,11 +97,17 @@ namespace CommitteesManager.AppUIClient.ViewModel
                         };
                         ModifyProtocolViewModel protocolVM = new ModifyProtocolViewModel(_services, newProtocol, false);
                         protocolVM.Name = "Інформація про протокол";
+                        protocolVM.WantToClose += ProtocolVM_WantToClose;
                         InvokeCreateViewEvent(this, new ViewModelEventArgs(JoinDirectionEnum.After, protocolVM));
                     });
                 }
                 return _addNewProtocol;
             }
+        }
+
+        private void ProtocolVM_WantToClose(object sender, ViewModelEventArgs e)
+        {
+            ProtocolDate = ProtocolDate;
         }
     }
 }
