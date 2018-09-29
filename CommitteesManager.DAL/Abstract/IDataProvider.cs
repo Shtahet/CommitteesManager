@@ -19,5 +19,6 @@ namespace CommitteesManager.DAL.Abstract
         IRepository<Agenda> Agendas { get; }
         IRepository<Deal> Deals { get; }
         IRepository<User> Users { get; }
+        IRepository<Region> Regions { get; }
     }
 }

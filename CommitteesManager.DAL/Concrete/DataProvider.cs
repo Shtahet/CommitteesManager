@@ -20,6 +20,7 @@ namespace CommitteesManager.DAL.Concrete
         private GeneralRepository<Agenda> _agendaRepo;
         private GeneralRepository<Deal> _dealRepo;
         private GeneralRepository<User> _userRepo;
+        private GeneralRepository<Region> _regionRepo;
         public DataProvider()
         {
             _dbContext = new CMDB();
@@ -116,6 +117,17 @@ namespace CommitteesManager.DAL.Concrete
                     _userRepo = new GeneralRepository<User>(_dbContext);
                 }
                 return _userRepo;
+            }
+        }
+        public IRepository<Region> Regions
+        {
+            get
+            {
+                if(_regionRepo == null)
+                {
+                    _regionRepo = new GeneralRepository<Region>(_dbContext);
+                }
+                return _regionRepo;
             }
         }
 	}
